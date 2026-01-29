@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Package } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ProductCard from '../ui/ProductCard';
@@ -13,7 +13,11 @@ const Products = () => {
     }));
 
     return (
-        <section id="products" className="py-32 bg-[#fafafa] relative overflow-hidden">
+        <section id="products" className="py-32 bg-gradient-light relative overflow-hidden">
+            {/* Background Decoration */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-fresh-green/10 rounded-full blur-[120px]"></div>
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-deep-blue/10 rounded-full blur-[120px]"></div>
+
             <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
                     <motion.div
@@ -22,23 +26,26 @@ const Products = () => {
                         viewport={{ once: true }}
                     >
                         <div className="flex items-center gap-3 mb-6">
-                            <span className="text-brand-indigo font-bold text-[10px] uppercase tracking-[0.3em]">Curated Solutions</span>
+                            <div className="p-2 bg-gradient-to-r from-deep-blue/10 to-fresh-green/10 rounded-lg">
+                                <Package className="w-5 h-5 text-fresh-green" />
+                            </div>
+                            <span className="text-deep-blue font-bold text-[11px] uppercase tracking-[0.3em]">Our Products</span>
                         </div>
-                        <h3 className="text-4xl lg:text-7xl font-bold text-slate-900 leading-tight tracking-tight">
-                            Enterprise <br />
-                            <span className="text-slate-400 font-medium italic underline decoration-brand-indigo/30 underline-offset-8">Inventory.</span>
+                        <h3 className="text-5xl lg:text-7xl font-black text-deep-blue leading-tight tracking-tight">
+                            Premium <br />
+                            <span className="text-gradient-green">Product Range</span>
                         </h3>
                     </motion.div>
 
                     <Link
                         to="/catalog"
-                        className="group flex items-center gap-8 bg-white px-10 py-8 rounded-[32px] shadow-sm border border-slate-100 hover:border-brand-indigo/30 transition-all hover:shadow-xl hover:shadow-brand-indigo/5"
+                        className="group flex items-center gap-6 bg-white px-8 py-6 rounded-2xl shadow-card border-2 border-soft-gray hover:border-fresh-green transition-all hover:shadow-elevated hover-lift"
                     >
                         <div className="flex flex-col">
-                            <span className="font-bold text-[10px] uppercase tracking-[0.2em] text-slate-400 group-hover:text-brand-indigo transition-colors">Digital Catalogue</span>
-                            <span className="font-bold text-lg text-slate-900">Browse Full Series</span>
+                            <span className="font-bold text-[10px] uppercase tracking-[0.2em] text-gray-500 group-hover:text-fresh-green transition-colors">Full Catalog</span>
+                            <span className="font-bold text-lg text-deep-blue">View All Products</span>
                         </div>
-                        <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center group-hover:bg-brand-indigo group-hover:text-white transition-all">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-deep-blue to-ocean-blue flex items-center justify-center text-white group-hover:scale-110 transition-all shadow-md">
                             <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
                         </div>
                     </Link>

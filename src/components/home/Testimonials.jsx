@@ -5,19 +5,19 @@ import { Star, Quote } from 'lucide-react';
 const Testimonials = () => {
     const reviews = [
         {
-            text: "Wadha's industrial formulations have significantly optimized our facility maintenance overheads. The consistency in pH balance across batches is exceptional for large-scale operations.",
+            text: "Swami's industrial formulations have significantly optimized our facility maintenance overheads. The consistency in pH balance across batches is exceptional for large-scale operations.",
             author: "Marquee Hospitality",
             role: "Operations Director",
             rating: 5
         },
         {
-            text: "Reliable distribution and high-purity chemicals. Swami Industries (Wadha) has established the benchmark for industrial hygiene in Central India. Their supply chain reliability is commendable.",
+            text: "Reliable distribution and high-purity chemicals. Swami Industries has established the benchmark for industrial hygiene in Central India. Their supply chain reliability is commendable.",
             author: "Technical Logistics",
             role: "Procurement Head",
             rating: 5
         },
         {
-            text: "The Pro-Series line delivers surgical-grade purity. Under the Wadha brand, we've found a partner that understands the rigorous demands of institutional sanitation.",
+            text: "The Pro-Series line delivers surgical-grade purity. Under the Swami brand, we've found a partner that understands the rigorous demands of institutional sanitation.",
             author: "Corporate Wellness",
             role: "Facility Lead",
             rating: 5

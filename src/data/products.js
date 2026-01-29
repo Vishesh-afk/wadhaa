@@ -17,12 +17,12 @@ export const productsData = [
     description: "Superior stain removal and fabric care formulations.",
     products: [
       {
-        name: "Detergent Powder 1 Kg – Wadha",
+        name: "Detergent Powder 1 Kg – Swami",
         price: "Rs. 55.10 / Kg",
         moq: "200,000 Kg",
-        desc: "With our vast experience and in-depth industry knowledge, we are engaged in offering a quality-assured range of Wadha Detergent Powder. The product provides effective cleaning performance and is suitable for daily laundry use.",
+        desc: "With our vast experience and in-depth industry knowledge, we are engaged in offering a quality-assured range of Swami Detergent Powder. The product provides effective cleaning performance and is suitable for daily laundry use.",
         specs: { 
-          Brand: "Wadha", 
+          Brand: "Swami", 
           Grade: "Medium", 
           Fragrance: "Lemon", 
           Color: "White", 
@@ -57,7 +57,7 @@ export const productsData = [
         name: "Detergent Washing Powder – 5 Kg",
         price: "Rs. 373.83 / Piece",
         moq: "25,000 Pieces",
-        desc: "WADHA detergent powders ensure superior cleaning performance. Manufactured under hygienic conditions using a precise blend of Borax, Washing Soda, Bleach, Builders, and Perfumes, ensuring long shelf life and consistent effectiveness.",
+        desc: "Swami detergent powders ensure superior cleaning performance. Manufactured under hygienic conditions using a precise blend of Borax, Washing Soda, Bleach, Builders, and Perfumes, ensuring long shelf life and consistent effectiveness.",
         specs: { 
           Brand: "Ariel", 
           Weight: "5 Kg", 
@@ -82,12 +82,12 @@ export const productsData = [
     description: "Powerful cleaning bars for hand-wash laundry.",
     products: [
       {
-        name: "Detergent Cake 240 g – WADHA MAHABAR",
+        name: "Detergent Cake 240 g – SWAMI MAHABAR",
         price: "Rs. 7.85 / Piece",
         moq: "10,000 Pieces",
         desc: "Backed by rich industry experience, we are actively engaged in offering a premium quality 240 g Detergent Cake (Mahabar). It is known for strong stain-removal performance and is recognized as one of the largest cake sizes available in the market.",
         specs: { 
-          Brand: "Wadha", 
+          Brand: "Swami", 
           Weight: "250 gm", 
           PackSize: "240 g",
           Shape: "Rectangle", 
@@ -99,12 +99,12 @@ export const productsData = [
         }
       },
       {
-        name: "Detergent Cake 240 g – WADHA",
+        name: "Detergent Cake 240 g – SWAMI",
         price: "Rs. 6.65 / Piece",
         moq: "25,000 Pieces",
         desc: "We are among the reputed organizations engaged in offering an optimum quality 240 g Detergent Cake with Rs. 10 MRP, suitable for both handwash and regular laundry needs.",
         specs: { 
-          Brand: "Wadha", 
+          Brand: "Swami", 
           Weight: "250 gm",
           PackSize: "240 gm",
           Shape: "Rectangle",
@@ -121,12 +121,12 @@ export const productsData = [
         }
       },
       {
-        name: "Detergent Cake 110 g – WADHA",
+        name: "Detergent Cake 110 g – SWAMI",
         price: "Rs. 3.33 / Piece",
         moq: "50,000 Pieces",
         desc: "We offer a high-quality 110 g Detergent Cake with Rs. 5 MRP, specially designed for effective cleaning. Known as a large-size cake in its category, it delivers excellent performance and durability.",
         specs: { 
-          Brand: "Wadha", 
+          Brand: "Swami", 
           PackSize: "115 gm", 
           Shape: "Rectangle",
           Color: "Blue", 
@@ -146,12 +146,12 @@ export const productsData = [
     description: "Kill 99.9% germs with our high-viscosity blue formula.",
     products: [
       {
-        name: "Toilet Cleaner – WADHA (500 ml)",
+        name: "Toilet Cleaner – SWAMI (500 ml)",
         price: "Rs. 45.45 / Bottle",
         moq: "1,000 Bottles",
         desc: "Backed by in-depth industry knowledge, we are engaged in offering a high-quality liquid toilet cleaner that effectively removes stains, kills germs, and ensures long-lasting freshness.",
         specs: { 
-          Brand: "Wadha", 
+          Brand: "Swami", 
           Form: "Liquid",
           Color: "Blue",
           PackSize: "500 ml",
@@ -168,11 +168,11 @@ export const productsData = [
         }
       },
       {
-        name: "Toilet Cleaner – WADHA (200 ml)",
+        name: "Toilet Cleaner – SWAMI (200 ml)",
         price: "Rs. 23.64 / Bottle",
         desc: "An effective compact-size toilet cleaner, ideal for household and travel use, delivering powerful cleaning action in a convenient bottle.",
         specs: { 
-          Brand: "Wadha", 
+          Brand: "Swami", 
           Form: "Liquid", 
           Color: "Blue", 
           PackType: "Bottle",
@@ -181,11 +181,11 @@ export const productsData = [
         }
       },
       {
-        name: "Toilet Cleaner – WADHA (5 Litre)",
+        name: "Toilet Cleaner – SWAMI (5 Litre)",
         price: "Rs. 288 / Bottle",
-        desc: "Ideal for commercial and bulk usage, the 5-litre Wadha Toilet Cleaner provides powerful stain removal and hygiene maintenance at an economical cost.",
+        desc: "Ideal for commercial and bulk usage, the 5-litre Swami Toilet Cleaner provides powerful stain removal and hygiene maintenance at an economical cost.",
         specs: { 
-          Brand: "Wadha", 
+          Brand: "Swami", 
           Form: "Liquid",
           Color: "Blue",
           PackSize: "5 L", 
@@ -203,12 +203,12 @@ export const productsData = [
     description: "Grease-cutting lemon formula for crystal clear dishes.",
     products: [
       {
-        name: "Dishwash Liquid – WADHA (250 ml)",
+        name: "Dishwash Liquid – SWAMI (250 ml)",
         price: "Rs. 28.24 / Bottle",
         moq: "10,000 Bottles",
-        desc: "WADHA Dishwash Liquid is among the best in its segment, delivering powerful grease-cutting action while being gentle on utensils. Offered at affordable rates, it ensures high cleaning efficiency with low consumption.",
+        desc: "SWAMI Dishwash Liquid is among the best in its segment, delivering powerful grease-cutting action while being gentle on utensils. Offered at affordable rates, it ensures high cleaning efficiency with low consumption.",
         specs: { 
-          Brand: "Wadha", 
+          Brand: "Swami", 
           Usage: "Dish Washing",
           PackSize: "250 ml",
           Fragrance: "Lemon", 
@@ -218,11 +218,11 @@ export const productsData = [
         }
       },
       {
-        name: "Dishwash Liquid – WADHA (500 ml)",
+        name: "Dishwash Liquid – SWAMI (500 ml)",
         price: "Rs. 75 / Bottle",
         desc: "The 500 ml variant is ideal for regular household usage, offering long-lasting performance and effective cleaning results.",
         specs: { 
-          Brand: "Wadha", 
+          Brand: "Swami", 
           Usage: "Dish Washing",
           PackSize: "500 ml",
           PackType: "Can",
@@ -232,11 +232,11 @@ export const productsData = [
         }
       },
       {
-        name: "Dishwash Liquid – WADHA (5 Litre)",
+        name: "Dishwash Liquid – SWAMI (5 Litre)",
         price: "Rs. 288 / Bottle",
-        desc: "Designed for bulk and commercial use, the 5-litre WADHA Dishwash Liquid offers superior grease removal at an economical cost, making it ideal for hotels, restaurants, and large households.",
+        desc: "Designed for bulk and commercial use, the 5-litre SWAMI Dishwash Liquid offers superior grease removal at an economical cost, making it ideal for hotels, restaurants, and large households.",
         specs: { 
-          Brand: "Wadha", 
+          Brand: "Swami", 
           Usage: "Dish Washing",
           PackSize: "5 L", 
           PackType: "Bottle",
@@ -254,12 +254,12 @@ export const productsData = [
     description: "Disinfectant phenyls for hygienic living spaces.",
     products: [
       {
-        name: "White Phenyl – WADHA (5 Litre)",
+        name: "White Phenyl – SWAMI (5 Litre)",
         price: "Rs. 173.86 / Can",
         moq: "250 Cans",
         desc: "We are among the renowned organizations engaged in offering a premium quality range of 5 Litre White Phenyl. The product provides excellent cleaning performance, pleasant fragrance, and is suitable for homes, offices, hospitals, and commercial spaces.",
         specs: { 
-          Brand: "Wadha", 
+          Brand: "Swami", 
           Form: "Liquid",
           CleanType: "Floor Cleaning",
           Usage: "Floor Cleaning",
@@ -272,12 +272,12 @@ export const productsData = [
         }
       },
       {
-        name: "Phenyl – WADHA (1 Litre)",
+        name: "Phenyl – SWAMI (1 Litre)",
         price: "Rs. 30.50 / Litre",
         moq: "5,000 Litres",
-        desc: "Leveraging extensive industry expertise, we offer a broad range of WADHA Phenyl, formulated for effective cleaning, hygiene, and long-lasting freshness across multiple surfaces.",
+        desc: "Leveraging extensive industry expertise, we offer a broad range of SWAMI Phenyl, formulated for effective cleaning, hygiene, and long-lasting freshness across multiple surfaces.",
         specs: { 
-          Brand: "Wadha", 
+          Brand: "Swami", 
           Form: "Liquid", 
           PackSize: "1 Litre",
           PackType: "Bottle",
@@ -304,7 +304,7 @@ export const productsData = [
       {
         name: "Contract Manufacturing",
         price: "Consultation Required",
-        desc: "Wadha Enterprise offers professional end-to-end contract manufacturing services for home cleaning and industrial chemical solutions. Our state-of-the-art facilities and quality control ensure your brand meets the highest standards.",
+        desc: "Swami Industries offers professional end-to-end contract manufacturing services for home cleaning and industrial chemical solutions. Our state-of-the-art facilities and quality control ensure your brand meets the highest standards.",
         specs: { 
           Sector: "Home Care & Industrial", 
           Grade: "Premium / Customized", 

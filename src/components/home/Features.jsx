@@ -9,7 +9,7 @@ const Features = () => {
                     <div className="max-w-2xl">
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-indigo/5 rounded-full mb-4">
                             <span className="w-1.5 h-1.5 rounded-full bg-brand-indigo animate-pulse"></span>
-                            <span className="text-[10px] font-bold text-brand-indigo tracking-widest uppercase">The Wadha Edge</span>
+                            <span className="text-[10px] font-bold text-brand-indigo tracking-widest uppercase">The Swami Edge</span>
                         </div>
                         <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 leading-tight tracking-tight">
                             Engineered for <br />

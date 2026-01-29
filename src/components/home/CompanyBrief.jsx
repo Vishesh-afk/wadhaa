@@ -1,11 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, Clock, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
+import { Award, Factory, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const CompanyBrief = () => {
     return (
         <section id="about" className="py-32 bg-white relative overflow-hidden scroll-mt-20">
+            {/* Background Decorations */}
+            <div className="absolute top-1/4 left-0 w-96 h-96 bg-sky-blue/5 rounded-full blur-[100px]"></div>
+            <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-fresh-green/5 rounded-full blur-[100px]"></div>
+
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 <div className="lg:grid lg:grid-cols-2 gap-24 items-center">
 
@@ -18,13 +22,13 @@ const CompanyBrief = () => {
                         className="relative"
                     >
                         <div className="relative z-10 p-6">
-                            <div className="aspect-[4/5] rounded-[60px] overflow-hidden shadow-2xl border-[16px] border-slate-50 relative group">
+                            <div className="aspect-[4/5] rounded-[60px] overflow-hidden shadow-2xl border-[16px] border-white relative group">
                                 <img
                                     src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop"
-                                    alt="R&D Laboratory"
-                                    className="w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                                    alt="Manufacturing Facility"
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000"
                                 />
-                                <div className="absolute inset-0 bg-slate-900/10 mix-blend-multiply"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-deep-blue/60 via-transparent to-transparent"></div>
                             </div>
 
                             {/* Stats Card */}
@@ -32,16 +36,16 @@ const CompanyBrief = () => {
                                 initial={{ y: 20, opacity: 0 }}
                                 whileInView={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 0.5 }}
-                                className="absolute -bottom-8 -right-8 bg-slate-900 p-10 rounded-[48px] shadow-2xl text-white z-20 hidden md:block"
+                                className="absolute -bottom-8 -right-8 bg-gradient-to-br from-deep-blue to-ocean-blue p-10 rounded-[40px] shadow-2xl text-white z-20 hidden md:block"
                             >
-                                <div className="text-6xl font-bold mb-1 leading-none tracking-tighter">12+</div>
-                                <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Production Units</div>
-                                <div className="w-12 h-1.5 bg-brand-indigo rounded-full mt-6"></div>
+                                <div className="text-6xl font-black mb-1 leading-none tracking-tighter">10+</div>
+                                <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/70">Years Experience</div>
+                                <div className="w-12 h-1.5 bg-fresh-green rounded-full mt-6"></div>
                             </motion.div>
                         </div>
 
                         {/* Decorative background element */}
-                        <div className="absolute top-0 right-0 w-full h-full bg-slate-50 rounded-[60px] -z-10 translate-x-4 translate-y-4"></div>
+                        <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-sky-blue/10 to-fresh-green/10 rounded-[60px] -z-10 translate-x-4 translate-y-4"></div>
                     </motion.div>
 
                     {/* Content Column */}
@@ -53,45 +57,48 @@ const CompanyBrief = () => {
                             transition={{ duration: 0.6 }}
                         >
                             <div className="flex items-center gap-3 mb-8">
-                                <span className="text-brand-indigo font-bold text-[10px] uppercase tracking-[0.3em]">Institutional Heritage</span>
+                                <div className="p-2 bg-gradient-to-r from-deep-blue/10 to-fresh-green/10 rounded-lg">
+                                    <Factory className="w-5 h-5 text-deep-blue" />
+                                </div>
+                                <span className="text-deep-blue font-bold text-[11px] uppercase tracking-[0.3em]">About Swami</span>
                             </div>
 
-                            <h3 className="text-5xl lg:text-7xl font-bold text-slate-900 mb-10 leading-[1.05] tracking-tight">
-                                Intelligence in <br />
-                                <span className="text-slate-400 italic">Chemistry</span>.
+                            <h3 className="text-5xl lg:text-7xl font-black text-deep-blue mb-10 leading-[1.05] tracking-tight">
+                                Quality in <br />
+                                <span className="text-gradient-green">Every Drop</span>
                             </h3>
 
                             <div className="space-y-6 mb-12">
-                                <p className="text-xl text-slate-900 font-semibold leading-relaxed">
-                                    Founded in 2014, Wadha Industries has evolved into a powerhouse of industrial chemical innovation.
+                                <p className="text-xl text-deep-blue font-semibold leading-relaxed">
+                                    Established in 2014, SWAMI Industries has become a trusted name in professional cleaning solutions across India.
                                 </p>
-                                <p className="text-lg text-slate-500 leading-relaxed font-medium">
-                                    Our facilities are optimized for precision engineering and high-volume output. Beyond surface cleaning, we create molecular formulations renowned for high purity and extreme stability. Every batch is a testament to our technical rigor.
+                                <p className="text-lg text-gray-600 leading-relaxed font-medium">
+                                    From our state-of-the-art manufacturing facility in Gondia, Maharashtra, we produce premium detergents, cleaning agents, and hygiene products. Our commitment to quality and innovation ensures every product delivers exceptional cleaning power while being safe for your family and the environment.
                                 </p>
                             </div>
 
                             <div className="grid grid-cols-2 gap-10 mb-16">
                                 <div className="space-y-4">
-                                    <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-900">
-                                        <Award className="w-6 h-6" />
+                                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-deep-blue to-ocean-blue flex items-center justify-center text-white shadow-lg">
+                                        <Award className="w-7 h-7" />
                                     </div>
-                                    <h4 className="font-bold text-slate-900 text-sm tracking-tight">High Purity Grades</h4>
-                                    <p className="text-xs text-slate-400 font-medium leading-relaxed">Lab-verified molecular consistency across every batch.</p>
+                                    <h4 className="font-bold text-deep-blue text-base tracking-tight">ISO Certified</h4>
+                                    <p className="text-sm text-gray-600 font-medium leading-relaxed">Quality assurance in every batch we manufacture.</p>
                                 </div>
                                 <div className="space-y-4">
-                                    <div className="w-12 h-12 rounded-2xl bg-brand-indigo/5 flex items-center justify-center text-brand-indigo">
-                                        <ShieldCheck className="w-6 h-6" />
+                                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-fresh-green to-lime-green flex items-center justify-center text-white shadow-lg">
+                                        <Sparkles className="w-7 h-7" />
                                     </div>
-                                    <h4 className="font-bold text-slate-900 text-sm tracking-tight">Stability Matrix</h4>
-                                    <p className="text-xs text-slate-400 font-medium leading-relaxed">Extended shelf life engineered for logistics cycles.</p>
+                                    <h4 className="font-bold text-deep-blue text-base tracking-tight">Eco-Friendly</h4>
+                                    <p className="text-sm text-gray-600 font-medium leading-relaxed">Sustainable formulations for a cleaner tomorrow.</p>
                                 </div>
                             </div>
 
                             <Link
                                 to="/about"
-                                className="inline-flex items-center gap-6 bg-slate-900 text-white px-10 py-5 rounded-full font-bold text-sm tracking-wide hover:bg-brand-indigo transition-all shadow-xl shadow-slate-900/10 group"
+                                className="inline-flex items-center gap-4 bg-gradient-to-r from-deep-blue to-ocean-blue text-white px-10 py-5 rounded-xl font-bold text-sm tracking-wide hover:shadow-glow-blue transition-all shadow-lg group hover:scale-105"
                             >
-                                Operational Factsheet
+                                Learn More About Us
                                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                             </Link>
                         </motion.div>
