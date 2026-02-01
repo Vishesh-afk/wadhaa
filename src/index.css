@@ -2,27 +2,20 @@
 @import "tailwindcss";
 
 @theme {
-  /* Detergent Brand Colors - Iconic Indian Style */
-  --color-deep-blue: #1e3a8a;
-  --color-ocean-blue: #2563eb;
-  --color-electric-blue: #3b82f6;
-  --color-neon-blue: #60a5fa;
+  /* Wadha Consumer Brand - 'Deep Clean' Theme */
+  --color-brand-primary: #0047AB; /* Deep Clean Blue */
+  --color-brand-secondary: #4BA3E3; /* Light Blue */
+  --color-brand-accent: #E5E7EB; /* Soft Grey */
+  --color-brand-text: #1F2937; /* Dark Grey for text */
+  --color-brand-blue-dark: #1e3a8a;
   
-  --color-fresh-green: #16a34a;
-  --color-lime-green: #4ade80;
-  
-  --color-bright-yellow: #facc15;
-  --color-alert-red: #dc2626;
-  --color-energy-orange: #ea580c;
-  
-  --color-pure-white: #ffffff;
-  --color-cool-gray: #f8fafc;
-  
-  /* Primary Palette Remapped */
-  --color-primary: var(--color-ocean-blue);
-  --color-secondary: var(--color-fresh-green);
-  --color-accent: var(--color-energy-orange);
-  --color-surface: var(--color-pure-white);
+  --color-surface: #ffffff;
+  --color-surface-dim: #f3f4f6;
+
+  /* Legacy support or mapped vars */
+  --color-primary: var(--color-brand-primary);
+  --color-secondary: var(--color-brand-secondary);
+  --color-accent: var(--color-brand-accent);
   
   /* Typography */
   --font-heading: 'Montserrat', sans-serif;
@@ -30,10 +23,9 @@
   --font-sans: var(--font-body), system-ui, sans-serif;
   
   /* Shadows */
-  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-elevated: 0 10px 15px -3px rgba(37, 99, 235, 0.2), 0 4px 6px -2px rgba(37, 99, 235, 0.1);
-  --shadow-premium: 0 25px 50px -12px rgba(37, 99, 235, 0.25);
-  --shadow-inner-glow: inset 0 0 20px rgba(255, 255, 255, 0.5);
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-floating: 0 10px 15px -3px rgba(0, 71, 171, 0.15), 0 4px 6px -2px rgba(0, 71, 171, 0.1);
+  --shadow-soft: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 /* Custom Utilities */
@@ -43,13 +35,17 @@
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
   }
 
+  .clip-path-slant {
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
   /* Text Gradients */
   .text-gradient-brand {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-green-500;
   }
   
   .glass-card {
-    @apply bg-white/80 backdrop-blur-lg border border-white/50 shadow-elevated;
+    @apply bg-white/80 backdrop-blur-lg border border-white/50 shadow-floating;
   }
   
   /* Animation Keyframes */

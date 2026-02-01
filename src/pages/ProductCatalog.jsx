@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Filter, ArrowRight, Package, Sparkles, ChevronRight, ShieldCheck, Box, Info } from 'lucide-react';
 import { productsData } from '../data/products';
 import { useSearchParams } from 'react-router-dom';
-import Navbar from '../components/layout/Navbar';
+import NavbarWadha from '../components/layout/NavbarWadha';
 import Footer from '../components/layout/Footer';
 
 const ProductCatalog = () => {
@@ -14,7 +14,12 @@ const ProductCatalog = () => {
     // Sync category with URL
     useEffect(() => {
         const cat = searchParams.get('cat');
-        if (cat) setActiveCategory(cat);
+        if (cat) {
+            setActiveCategory(cat);
+        } else {
+            setActiveCategory('all');
+        }
+        window.scrollTo(0, 0);
     }, [searchParams]);
 
     const categories = [
@@ -36,7 +41,7 @@ const ProductCatalog = () => {
 
     return (
         <div className="min-h-screen bg-white font-sans">
-            <Navbar />
+            <NavbarWadha />
             <main className="pt-32 pb-24 bg-gradient-to-b from-blue-50 to-white min-h-screen">
                 <div className="max-w-[1400px] mx-auto px-6">
                     {/* Header Section */}

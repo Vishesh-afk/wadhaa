@@ -17,6 +17,7 @@ export const productsData = [
     description: "Superior stain removal and fabric care formulations.",
     products: [
       {
+        id: "swami-detergent-powder-1kg",
         name: "Detergent Powder 1 Kg – Swami",
         price: "Rs. 55.10 / Kg",
         moq: "200,000 Kg",
@@ -35,6 +36,7 @@ export const productsData = [
         }
       },
       {
+        id: "toto-detergent-powder-1kg",
         name: "1 Kg TOTO Detergent Powder",
         price: "Rs. 39.17 / Pack",
         moq: "5,000 Packs",
@@ -54,6 +56,7 @@ export const productsData = [
         }
       },
       {
+        id: "swami-detergent-powder-5kg",
         name: "Detergent Washing Powder – 5 Kg",
         price: "Rs. 373.83 / Piece",
         moq: "25,000 Pieces",
@@ -82,6 +85,7 @@ export const productsData = [
     description: "Powerful cleaning bars for hand-wash laundry.",
     products: [
       {
+        id: "swami-mahabar-detergent-cake-240g",
         name: "Detergent Cake 240 g – SWAMI MAHABAR",
         price: "Rs. 7.85 / Piece",
         moq: "10,000 Pieces",
@@ -99,6 +103,7 @@ export const productsData = [
         }
       },
       {
+        id: "swami-detergent-cake-240g",
         name: "Detergent Cake 240 g – SWAMI",
         price: "Rs. 6.65 / Piece",
         moq: "25,000 Pieces",
@@ -121,6 +126,7 @@ export const productsData = [
         }
       },
       {
+        id: "swami-detergent-cake-110g",
         name: "Detergent Cake 110 g – SWAMI",
         price: "Rs. 3.33 / Piece",
         moq: "50,000 Pieces",
@@ -146,6 +152,7 @@ export const productsData = [
     description: "Kill 99.9% germs with our high-viscosity blue formula.",
     products: [
       {
+        id: "swami-toilet-cleaner-500ml",
         name: "Toilet Cleaner – SWAMI (500 ml)",
         price: "Rs. 45.45 / Bottle",
         moq: "1,000 Bottles",
@@ -168,6 +175,7 @@ export const productsData = [
         }
       },
       {
+        id: "swami-toilet-cleaner-200ml",
         name: "Toilet Cleaner – SWAMI (200 ml)",
         price: "Rs. 23.64 / Bottle",
         desc: "An effective compact-size toilet cleaner, ideal for household and travel use, delivering powerful cleaning action in a convenient bottle.",
@@ -181,6 +189,7 @@ export const productsData = [
         }
       },
       {
+        id: "swami-toilet-cleaner-5l",
         name: "Toilet Cleaner – SWAMI (5 Litre)",
         price: "Rs. 288 / Bottle",
         desc: "Ideal for commercial and bulk usage, the 5-litre Swami Toilet Cleaner provides powerful stain removal and hygiene maintenance at an economical cost.",
@@ -203,6 +212,7 @@ export const productsData = [
     description: "Grease-cutting lemon formula for crystal clear dishes.",
     products: [
       {
+        id: "swami-dishwash-liquid-250ml",
         name: "Dishwash Liquid – SWAMI (250 ml)",
         price: "Rs. 28.24 / Bottle",
         moq: "10,000 Bottles",
@@ -218,6 +228,7 @@ export const productsData = [
         }
       },
       {
+        id: "swami-dishwash-liquid-500ml",
         name: "Dishwash Liquid – SWAMI (500 ml)",
         price: "Rs. 75 / Bottle",
         desc: "The 500 ml variant is ideal for regular household usage, offering long-lasting performance and effective cleaning results.",
@@ -232,6 +243,7 @@ export const productsData = [
         }
       },
       {
+        id: "swami-dishwash-liquid-5l",
         name: "Dishwash Liquid – SWAMI (5 Litre)",
         price: "Rs. 288 / Bottle",
         desc: "Designed for bulk and commercial use, the 5-litre SWAMI Dishwash Liquid offers superior grease removal at an economical cost, making it ideal for hotels, restaurants, and large households.",
@@ -254,6 +266,7 @@ export const productsData = [
     description: "Disinfectant phenyls for hygienic living spaces.",
     products: [
       {
+        id: "swami-white-phenyl-5l",
         name: "White Phenyl – SWAMI (5 Litre)",
         price: "Rs. 173.86 / Can",
         moq: "250 Cans",
@@ -272,6 +285,7 @@ export const productsData = [
         }
       },
       {
+        id: "swami-phenyl-1l",
         name: "Phenyl – SWAMI (1 Litre)",
         price: "Rs. 30.50 / Litre",
         moq: "5,000 Litres",
@@ -302,6 +316,7 @@ export const productsData = [
     description: "Custom contract manufacturing for your home care brand.",
     products: [
       {
+        id: "contract-manufacturing-service",
         name: "Contract Manufacturing",
         price: "Consultation Required",
         desc: "Swami Industries offers professional end-to-end contract manufacturing services for home cleaning and industrial chemical solutions. Our state-of-the-art facilities and quality control ensure your brand meets the highest standards.",
