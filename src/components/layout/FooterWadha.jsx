@@ -23,10 +23,11 @@ const FooterWadha = () => {
                     <div>
                         <h4 className="text-lg font-bold text-white mb-6">Products</h4>
                         <ul className="space-y-3 text-sm">
-                            <li><a href="#" className="hover:text-white transition-colors">All Products</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Detergent Powder</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Liquid Detergent</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Pods & Capsules</a></li>
+                            <li><a href="/catalog" className="hover:text-white transition-colors">All Products</a></li>
+                            <li><a href="/catalog?cat=detergent-powder" className="hover:text-white transition-colors">Detergent Powder</a></li>
+                            <li><a href="/catalog?cat=detergent-cake" className="hover:text-white transition-colors">Detergent Cake</a></li>
+                            <li><a href="/catalog?cat=toilet-cleaner" className="hover:text-white transition-colors">Toilet Cleaner</a></li>
+                            <li><a href="/catalog?cat=liquid-dishwash" className="hover:text-white transition-colors">Liquid Dishwash</a></li>
                         </ul>
                     </div>
 

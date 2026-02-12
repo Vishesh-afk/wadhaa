@@ -1,11 +1,10 @@
-import React from 'react';
-import { Package, Droplet, Layers, Hand, ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, Droplets, UtensilsCrossed } from 'lucide-react';
 
 const categories = [
-    { name: "Detergent Powder", icon: Package, desc: "Deep cleaning power for everyday loads", color: "text-blue-600", bg: "bg-blue-100", border: "hover:border-blue-300" },
-    { name: "Liquid Detergent", icon: Droplet, desc: "Gentle care for delicate fabrics", color: "text-cyan-600", bg: "bg-cyan-100", border: "hover:border-cyan-300" },
-    { name: "Detergent Pods", icon: Layers, desc: "Pre-measured for perfect results", color: "text-purple-600", bg: "bg-purple-100", border: "hover:border-purple-300" },
-    { name: "Hand Wash", icon: Hand, desc: "Tough on germs, soft on hands", color: "text-pink-600", bg: "bg-pink-100", border: "hover:border-pink-300" }
+    { name: "Detergent Powder", icon: Sparkles, desc: "Deep cleaning power for everyday loads", color: "text-blue-600", bg: "bg-blue-100", border: "hover:border-blue-300", link: "/catalog?cat=detergent-powder" },
+    { name: "Detergent Cake", icon: Zap, desc: "Powerful cleaning bars for hand-wash laundry", color: "text-yellow-600", bg: "bg-yellow-100", border: "hover:border-yellow-300", link: "/catalog?cat=detergent-cake" },
+    { name: "Toilet Cleaner", icon: Droplets, desc: "Kills 99.9% germs, removes touch stains", color: "text-cyan-600", bg: "bg-cyan-100", border: "hover:border-cyan-300", link: "/catalog?cat=toilet-cleaner" },
+    { name: "Liquid Dishwash", icon: UtensilsCrossed, desc: "Grease-cutting lemon formula", color: "text-green-600", bg: "bg-green-100", border: "hover:border-green-300", link: "/catalog?cat=liquid-dishwash" }
 ];
 
 const CategoryBrowse = () => {
@@ -24,7 +23,7 @@ const CategoryBrowse = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {categories.map((cat, idx) => (
-                        <a key={idx} href="#" className={`flex flex-col items-center p-8 bg-white rounded-2xl shadow-sm hover:shadow-floating transition-all duration-300 border border-gray-100 ${cat.border} group relative overflow-hidden`}>
+                        <a key={idx} href={cat.link} className={`flex flex-col items-center p-8 bg-white rounded-2xl shadow-sm hover:shadow-floating transition-all duration-300 border border-gray-100 ${cat.border} group relative overflow-hidden`}>
                             {/* Decorative background blob */}
                             <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full ${cat.bg} opacity-50 group-hover:scale-150 transition-transform duration-500 ease-out`}></div>
 

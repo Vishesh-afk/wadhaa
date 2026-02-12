@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ShoppingCart, Menu, X, ChevronDown, ArrowRight, Sparkles, ShieldCheck, Star } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight, Sparkles, ShieldCheck } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { productsData } from '../../data/products';
 import logoImg from '../../assets/logo-90x90.webp';
 
@@ -9,7 +9,9 @@ const NavbarWadha = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeMenu, setActiveMenu] = useState(null);
+    const [pendingHash, setPendingHash] = useState(null);
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -19,13 +21,42 @@ const NavbarWadha = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Handle scrolling to hash after navigation completes
+    useEffect(() => {
+        if (pendingHash && location.pathname === '/') {
+            const timer = setTimeout(() => {
+                const element = document.querySelector(pendingHash);
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+                setPendingHash(null);
+            }, 300);
+            return () => clearTimeout(timer);
+        }
+    }, [location.pathname, pendingHash]);
+
     const navLinks = [
-        { name: 'Shop Products', id: 'products', hasDropdown: true },
-        { name: 'About Us', href: '/about' },
-        { name: 'Stain Removal', href: '#stain-guide' },
-        { name: 'Why Wadha', href: '#why-wadha' },
-        { name: 'Contact Us', href: '#contact' },
+        { name: 'Shop Products', id: 'products', hasDropdown: true, route: '/catalog' },
+        { name: 'About Us', route: '/about' },
+        { name: 'Stain Removal', hash: '#stain-guide' },
+        { name: 'Why Wadha', hash: '#why-wadha' },
+        { name: 'Contact Us', route: '/contact' },
     ];
+
+    const handleNavClick = (link) => {
+        setActiveMenu(null);
+        setIsMobileMenuOpen(false);
+
+        if (link.route) {
+            navigate(link.route);
+        } else if (link.hash) {
+            if (location.pathname === '/') {
+                const element = document.querySelector(link.hash);
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                setPendingHash(link.hash);
+                navigate('/');
+            }
+        }
+    };
 
     return (
         <nav
@@ -36,8 +67,12 @@ const NavbarWadha = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center">
                     {/* Logo */}
-                    <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => navigate('/')}>
+                    <div className="flex-shrink-0 flex items-center gap-3 cursor-pointer" onClick={() => navigate('/')}>
                         <img src={logoImg} alt="Wadha Logo" className="h-12 w-auto object-contain" />
+                        <div className="flex flex-col">
+                            <span className="text-xl font-black tracking-tight text-blue-900 leading-none">SWAMI</span>
+                            <span className="text-[10px] font-bold tracking-widest text-green-600 uppercase leading-none">Industry</span>
+                        </div>
                     </div>
 
                     {/* Desktop Navigation */}
@@ -48,22 +83,13 @@ const NavbarWadha = () => {
                                 className="relative group"
                                 onMouseEnter={() => link.hasDropdown && setActiveMenu(link.id)}
                             >
-                                <a
-                                    href={link.href || '#'}
+                                <button
                                     className={`flex items-center text-gray-700 hover:text-[var(--color-brand-primary)] font-medium transition-colors ${activeMenu === link.id ? 'text-[var(--color-brand-primary)]' : ''}`}
-                                    onClick={(e) => {
-                                        if (link.hasDropdown) {
-                                            e.preventDefault();
-                                            navigate('/catalog');
-                                        } else if (link.href && link.href.startsWith('/')) {
-                                            e.preventDefault();
-                                            navigate(link.href);
-                                        }
-                                    }}
+                                    onClick={() => handleNavClick(link)}
                                 >
                                     {link.name}
                                     {link.hasDropdown && <ChevronDown className={`ml-1 w-4 h-4 transition-transform duration-300 ${activeMenu === link.id ? 'rotate-180' : ''}`} />}
-                                </a>
+                                </button>
 
                                 {/* Mega Menu Dropdown */}
                                 <AnimatePresence>
@@ -123,8 +149,7 @@ const NavbarWadha = () => {
                                                                 {cat.products.slice(0, 3).map((product, pIdx) => (
                                                                     <li key={pIdx}>
                                                                         <button
-                                                                            onClick={(e) => {
-                                                                                e.preventDefault();
+                                                                            onClick={() => {
                                                                                 navigate(`/catalog?cat=${cat.id}`);
                                                                                 setActiveMenu(null);
                                                                             }}
@@ -147,16 +172,24 @@ const NavbarWadha = () => {
                         ))}
                     </div>
 
-                    {/* Right Icons */}
-                    <div className="hidden md:flex items-center space-x-6">
-                        <div className="relative group">
-                            <input
-                                type="text"
-                                placeholder="Search..."
-                                className="pl-8 pr-4 py-1.5 rounded-full bg-gray-100 focus:bg-white focus:ring-1 focus:ring-blue-500 border-none text-sm w-32 focus:w-48 transition-all"
+                    {/* IndiaMART Trusted Badge */}
+                    <div className="hidden md:flex items-center">
+                        <a
+                            href="https://www.indiamart.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-full px-4 py-1.5 hover:shadow-md transition-all group"
+                        >
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/f/f0/IndiaMart_logo.png"
+                                alt="IndiaMART"
+                                className="h-5 w-auto object-contain"
                             />
-                            <Search className="w-4 h-4 absolute left-2.5 top-1/2 transform -translate-y-1/2 text-gray-500" />
-                        </div>
+                            <div className="flex items-center gap-1">
+                                <ShieldCheck className="w-4 h-4 text-green-600" />
+                                <span className="text-xs font-bold text-green-700 uppercase tracking-wide">Trusted</span>
+                            </div>
+                        </a>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -174,24 +207,30 @@ const NavbarWadha = () => {
                     <div className="px-4 pt-4 pb-6 space-y-2">
                         {navLinks.map((link) => (
                             <div key={link.name}>
-                                <a
-                                    href={link.href || '#'}
-                                    className="block px-3 py-3 text-base font-bold text-gray-800 hover:bg-blue-50 rounded-md border-b border-gray-50"
+                                <button
+                                    className="block w-full text-left px-3 py-3 text-base font-bold text-gray-800 hover:bg-blue-50 rounded-md border-b border-gray-50"
                                     onClick={() => {
-                                        if (!link.hasDropdown) setIsMobileMenuOpen(false);
+                                        if (!link.hasDropdown) handleNavClick(link);
                                     }}
                                 >
                                     {link.name}
-                                </a>
+                                </button>
                                 {link.hasDropdown && (
                                     <div className="pl-6 space-y-2 mt-2 mb-2">
                                         {productsData.map((cat, idx) => (
                                             <div key={idx}>
                                                 <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1 mt-2">{cat.category}</p>
                                                 {cat.products.slice(0, 3).map((p, pIdx) => (
-                                                    <a key={pIdx} href="#" className="block py-1 text-sm text-gray-600 hover:text-blue-600 pl-2 border-l-2 border-transparent hover:border-blue-500">
+                                                    <button
+                                                        key={pIdx}
+                                                        className="block w-full text-left py-1 text-sm text-gray-600 hover:text-blue-600 pl-2 border-l-2 border-transparent hover:border-blue-500"
+                                                        onClick={() => {
+                                                            navigate(`/catalog?cat=${cat.id}`);
+                                                            setIsMobileMenuOpen(false);
+                                                        }}
+                                                    >
                                                         {p.name}
-                                                    </a>
+                                                    </button>
                                                 ))}
                                             </div>
                                         ))}
@@ -199,10 +238,21 @@ const NavbarWadha = () => {
                                 )}
                             </div>
                         ))}
-                        <div className="pt-6 flex items-center space-x-4">
-                            <button className="flex-1 bg-gray-100 py-3 rounded-lg flex justify-center items-center text-gray-700 font-bold">
-                                <Search className="w-4 h-4 mr-2" /> Search
-                            </button>
+                        <div className="pt-6">
+                            <a
+                                href="https://www.indiamart.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-2 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg px-4 py-3 w-full"
+                            >
+                                <img
+                                    src="https://upload.wikimedia.org/wikipedia/commons/f/f0/IndiaMart_logo.png"
+                                    alt="IndiaMART"
+                                    className="h-5 w-auto object-contain"
+                                />
+                                <ShieldCheck className="w-4 h-4 text-green-600" />
+                                <span className="text-sm font-bold text-green-700">Trusted Seller</span>
+                            </a>
                         </div>
                     </div>
                 </div>

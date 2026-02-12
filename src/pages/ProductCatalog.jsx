@@ -4,7 +4,7 @@ import { Search, Filter, ArrowRight, Package, Sparkles, ChevronRight, ShieldChec
 import { productsData } from '../data/products';
 import { useSearchParams } from 'react-router-dom';
 import NavbarWadha from '../components/layout/NavbarWadha';
-import Footer from '../components/layout/Footer';
+import FooterWadha from '../components/layout/FooterWadha';
 
 const ProductCatalog = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -229,7 +229,7 @@ const ProductCatalog = () => {
                     </div>
                 </div>
             </main>
-            <Footer />
+            <FooterWadha />
         </div>
     );
 };

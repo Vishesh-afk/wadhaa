@@ -1,6 +1,6 @@
 import React from 'react';
 import NavbarWadha from '../components/layout/NavbarWadha';
-import Footer from '../components/layout/Footer';
+import FooterWadha from '../components/layout/FooterWadha';
 
 const AboutUs = () => {
     const factsheet = {
@@ -181,7 +181,7 @@ const AboutUs = () => {
                 </div>
             </main>
 
-            <Footer />
+            <FooterWadha />
         </div>
     );
 };
