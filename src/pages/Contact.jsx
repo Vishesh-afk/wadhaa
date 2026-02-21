@@ -1,8 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { CheckCircle, Loader2 } from 'lucide-react';
 import NavbarWadha from '../components/layout/NavbarWadha';
 import FooterWadha from '../components/layout/FooterWadha';
+import SocialProofWadha from '../components/home/SocialProofWadha';
+
+// ⚠️ IMPORTANT: Replace this with your real Web3Forms access key!
+// Get yours free at https://web3forms.com/ (enter: support@swamiindustries.in)
+const WEB3FORMS_ACCESS_KEY = '68ca5138-578c-47b9-ad97-67e431c0c2f0';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        subject: 'General Inquiry',
+        message: '',
+    });
+    const [status, setStatus] = useState('idle'); // idle | loading | success | error
+    const [errorMsg, setErrorMsg] = useState('');
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('loading');
+        setErrorMsg('');
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    access_key: WEB3FORMS_ACCESS_KEY,
+                    subject: `[${formData.subject}] Message from ${formData.firstName} ${formData.lastName}`,
+                    from_name: `${formData.firstName} ${formData.lastName}`,
+                    name: `${formData.firstName} ${formData.lastName}`,
+                    email: formData.email,
+                    message: formData.message,
+                    category: formData.subject,
+                }),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                setStatus('success');
+                setFormData({ firstName: '', lastName: '', email: '', subject: 'General Inquiry', message: '' });
+                setTimeout(() => setStatus('idle'), 4000);
+            } else {
+                setStatus('error');
+                setErrorMsg(result.message || 'Something went wrong. Please try again.');
+            }
+        } catch (err) {
+            setStatus('error');
+            setErrorMsg('Network error. Please check your connection and try again.');
+        }
+    };
+
     return (
         <div className="min-h-screen bg-slate-50 font-sans">
             <NavbarWadha />
@@ -31,26 +87,55 @@ const Contact = () => {
                             {/* Contact Form */}
                             <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-xl border border-slate-100 text-left">
                                 <h2 className="text-3xl font-black text-blue-900 mb-8">Send us a Message</h2>
-                                <form className="space-y-6">
-                                    <div className="grid grid-cols-2 gap-6">
+                                <form className="space-y-6" onSubmit={handleSubmit}>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                         <div>
                                             <label className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">First Name</label>
-                                            <input type="text" className="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none font-medium" placeholder="Rahul" />
+                                            <input
+                                                type="text"
+                                                name="firstName"
+                                                value={formData.firstName}
+                                                onChange={handleChange}
+                                                required
+                                                className="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none font-medium"
+                                                placeholder="Rahul"
+                                            />
                                         </div>
                                         <div>
                                             <label className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Last Name</label>
-                                            <input type="text" className="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none font-medium" placeholder="Sharma" />
+                                            <input
+                                                type="text"
+                                                name="lastName"
+                                                value={formData.lastName}
+                                                onChange={handleChange}
+                                                required
+                                                className="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none font-medium"
+                                                placeholder="Sharma"
+                                            />
                                         </div>
                                     </div>
 
                                     <div>
                                         <label className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Email Address</label>
-                                        <input type="email" className="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none font-medium" placeholder="rahul@example.com" />
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            required
+                                            className="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none font-medium"
+                                            placeholder="rahul@example.com"
+                                        />
                                     </div>
 
                                     <div>
                                         <label className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Subject</label>
-                                        <select className="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none font-medium text-slate-600">
+                                        <select
+                                            name="subject"
+                                            value={formData.subject}
+                                            onChange={handleChange}
+                                            className="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none font-medium text-slate-600"
+                                        >
                                             <option>General Inquiry</option>
                                             <option>Distributorship</option>
                                             <option>Bulk Order</option>
@@ -60,12 +145,44 @@ const Contact = () => {
 
                                     <div>
                                         <label className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Message</label>
-                                        <textarea rows="4" className="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none font-medium" placeholder="How can we help you today?"></textarea>
+                                        <textarea
+                                            name="message"
+                                            rows="4"
+                                            value={formData.message}
+                                            onChange={handleChange}
+                                            required
+                                            className="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none font-medium"
+                                            placeholder="How can we help you today?"
+                                        ></textarea>
                                     </div>
 
-                                    <button type="button" className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-black py-4 rounded-xl shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1 transition-all">
-                                        Send Message 🚀
-                                    </button>
+                                    {status === 'error' && (
+                                        <p className="text-red-600 text-sm font-medium bg-red-50 px-4 py-3 rounded-xl">
+                                            ⚠️ {errorMsg}
+                                        </p>
+                                    )}
+
+                                    {status === 'success' ? (
+                                        <div className="w-full py-4 bg-green-500 text-white font-black rounded-xl flex items-center justify-center gap-2 shadow-lg">
+                                            <CheckCircle className="w-5 h-5" />
+                                            Message Sent Successfully! 🎉
+                                        </div>
+                                    ) : (
+                                        <button
+                                            type="submit"
+                                            disabled={status === 'loading'}
+                                            className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-black py-4 rounded-xl shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                                        >
+                                            {status === 'loading' ? (
+                                                <>
+                                                    <Loader2 className="w-5 h-5 animate-spin" />
+                                                    Sending...
+                                                </>
+                                            ) : (
+                                                'Send Message 🚀'
+                                            )}
+                                        </button>
+                                    )}
                                 </form>
                             </div>
 
@@ -116,7 +233,7 @@ const Contact = () => {
                     </div>
                 </section>
             </main>
-
+            <SocialProofWadha />
             <FooterWadha />
         </div>
     );

@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { productsData } from '../../data/products';
 import logoImg from '../../assets/logo-90x90.webp';
+import oipImg from '../../assets/OIP.jpg';
 
 const NavbarWadha = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -178,17 +179,14 @@ const NavbarWadha = () => {
                             href="https://www.indiamart.com"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-full px-4 py-1.5 hover:shadow-md transition-all group"
+                            className="flex items-center gap-2 hover:shadow-md transition-all bg-green-50 border border-green-200 rounded-full px-4 py-1.5"
                         >
                             <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/f/f0/IndiaMart_logo.png"
-                                alt="IndiaMART"
-                                className="h-5 w-auto object-contain"
+                                src={oipImg}
+                                alt="IndiaMART Verified"
+                                className="h-12 w-auto object-contain rounded"
                             />
-                            <div className="flex items-center gap-1">
-                                <ShieldCheck className="w-4 h-4 text-green-600" />
-                                <span className="text-xs font-bold text-green-700 uppercase tracking-wide">Trusted</span>
-                            </div>
+                            <span className="text-sm font-extrabold text-green-800 tracking-tight leading-tight">IndiaMART<br />Verified</span>
                         </a>
                     </div>
 
@@ -243,15 +241,14 @@ const NavbarWadha = () => {
                                 href="https://www.indiamart.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-2 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg px-4 py-3 w-full"
+                                className="flex items-center justify-center gap-3 w-full bg-green-50 border border-green-200 rounded-xl px-4 py-3"
                             >
                                 <img
-                                    src="https://upload.wikimedia.org/wikipedia/commons/f/f0/IndiaMart_logo.png"
-                                    alt="IndiaMART"
-                                    className="h-5 w-auto object-contain"
+                                    src={oipImg}
+                                    alt="IndiaMART Verified"
+                                    className="h-12 w-auto object-contain rounded"
                                 />
-                                <ShieldCheck className="w-4 h-4 text-green-600" />
-                                <span className="text-sm font-bold text-green-700">Trusted Seller</span>
+                                <span className="text-sm font-extrabold text-green-800">IndiaMART Verified</span>
                             </a>
                         </div>
                     </div>

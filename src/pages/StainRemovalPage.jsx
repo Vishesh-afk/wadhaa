@@ -232,7 +232,7 @@ const StainRemovalPage = () => {
                                 <span className="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider rounded-full mb-4">
                                     Stain Removal Guide
                                 </span>
-                                <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-[var(--color-brand-blue-dark)] mb-4">
+                                <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-[var(--color-brand-blue-dark)] mb-4">
                                     How to remove <span className="text-red-600">{stain.name}</span> stains
                                 </h1>
                                 <p className="text-xl text-gray-600 leading-relaxed">
@@ -241,7 +241,7 @@ const StainRemovalPage = () => {
                             </div>
 
                             {/* Stats Grid */}
-                            <div className="grid grid-cols-2 gap-4 mb-10">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                                 <div className="bg-gray-50 p-6 rounded-2xl flex items-center">
                                     <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm mr-4 text-orange-500">
                                         <AlertTriangle className="w-6 h-6" />

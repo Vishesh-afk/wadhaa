@@ -1,6 +1,7 @@
 import React from 'react';
 import NavbarWadha from '../components/layout/NavbarWadha';
 import FooterWadha from '../components/layout/FooterWadha';
+import SocialProofWadha from '../components/home/SocialProofWadha';
 
 const AboutUs = () => {
     const factsheet = {
@@ -52,7 +53,7 @@ const AboutUs = () => {
                                 <span className="text-xl">✅</span>
                                 <span className="text-white font-bold text-xs uppercase tracking-[0.2em]">Since 2014</span>
                             </div>
-                            <h1 className="text-5xl lg:text-7xl font-black text-white leading-tight tracking-tight mb-8">
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-tight tracking-tight mb-8">
                                 Chemistry of <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-300 italic">Purity & Power</span>.
                             </h1>
@@ -65,7 +66,7 @@ const AboutUs = () => {
                 </section>
 
                 <div className="max-w-7xl mx-auto px-6 lg:px-12 -mt-20 relative z-20 pb-20">
-                    <div className="bg-white rounded-[40px] p-8 lg:p-16 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100 flex flex-col lg:flex-row gap-16">
+                    <div className="bg-white rounded-2xl sm:rounded-[40px] p-6 sm:p-8 lg:p-16 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100 flex flex-col lg:flex-row gap-8 lg:gap-16">
                         <div className="lg:w-2/3">
                             <div className="flex items-center gap-4 mb-8">
                                 <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-2xl">
@@ -113,7 +114,7 @@ const AboutUs = () => {
                     <div className="mt-24">
                         <div className="flex flex-col items-center text-center mb-16">
                             <span className="text-blue-600 font-bold text-xs uppercase tracking-[0.3em] mb-4">Operations Ledger</span>
-                            <h3 className="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">Industrial <span className="text-slate-400 italic">Scorecard</span>.</h3>
+                            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">Industrial <span className="text-slate-400 italic">Scorecard</span>.</h3>
                         </div>
 
                         <div className="grid lg:grid-cols-3 gap-8 text-left">
@@ -180,7 +181,7 @@ const AboutUs = () => {
                     </div>
                 </div>
             </main>
-
+            <SocialProofWadha />
             <FooterWadha />
         </div>
     );

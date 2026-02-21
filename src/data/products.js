@@ -79,6 +79,29 @@ export const productsData = [
     ]
   },
   {
+    category: "Liquid Detergent",
+    id: "liquid-detergent",
+    icon: Waves,
+    description: "Concentrated liquid solutions for modern washing machines.",
+    products: [
+      {
+        id: "wadha-matic-liquid-1l",
+        name: "Wadha Matic Liquid 1L",
+        price: "Rs. 39.17 / Pack",
+        moq: "5,000 Packs",
+        desc: "Premium liquid detergent specialized for washing machines. Deep cleaning formula that protects your machine and your clothes.",
+        specs: {
+          Brand: "Wadha",
+          Size: "1 Litre",
+          Usage: "Machine Wash",
+          Type: "Liquid",
+          Fragrance: "Fresh Floral",
+          Delivery: "3 Days"
+        }
+      }
+    ]
+  },
+  {
     category: "Detergent Cake",
     id: "detergent-cake",
     icon: Zap,

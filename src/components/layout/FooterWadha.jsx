@@ -1,6 +1,8 @@
-import React from 'react';
+import { Instagram, Facebook, Twitter } from 'lucide-react';
 
 const FooterWadha = () => {
+    const instagramUrl = "https://www.instagram.com/wadhadetergent?igsh=MTB2dGY0emVnZW8wYQ==";
+
     return (
         <footer className="bg-gray-900 text-gray-300 pt-16 pb-8 font-sans">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -8,14 +10,25 @@ const FooterWadha = () => {
 
                     {/* Column 1 */}
                     <div>
-                        <h3 className="text-2xl font-bold text-white mb-6">Wadha</h3>
+                        <h3 className="text-2xl font-bold text-white mb-6 uppercase tracking-wider">Wadha</h3>
                         <p className="text-sm text-gray-400 mb-6 leading-relaxed">
                             Bringing powerful cleaning technology to every Indian household. Tough on stains, gentle on hands.
                         </p>
+                        <div className="flex space-x-4 mb-6">
+                            <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[var(--color-brand-primary)] hover:text-white transition-all duration-300">
+                                <Instagram className="w-5 h-5" />
+                            </a>
+                            <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300">
+                                <Facebook className="w-5 h-5" />
+                            </a>
+                            <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-sky-500 hover:text-white transition-all duration-300">
+                                <Twitter className="w-5 h-5" />
+                            </a>
+                        </div>
                         <div className="flex flex-col space-y-2 text-sm">
-                            <a href="#" className="hover:text-white transition-colors">About Us</a>
+                            <a href="/about" className="hover:text-white transition-colors">About Us</a>
                             <a href="#" className="hover:text-white transition-colors">Careers</a>
-                            <a href="#" className="hover:text-white transition-colors">Contact</a>
+                            <a href="/contact" className="hover:text-white transition-colors">Contact</a>
                         </div>
                     </div>
 

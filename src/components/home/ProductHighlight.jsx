@@ -12,31 +12,31 @@ import imgMatic from '../../assets/IMG_2192.PNG';
 const products = [
     {
         id: 1,
-        name: "Wadha Detergent Powder",
+        name: "Wadha Detergent Powder 1Kg",
         benefit: "Deep cleaning for bright whites",
         rating: 4.8,
         reviews: 1240,
-        price: "₹180",
+        price: "Rs. 55.10 / Kg",
         image: imgPowder,
         tag: "Bestseller"
     },
     {
         id: 2,
-        name: "Wadha Dishwash Bar",
+        name: "WADHA MAHABAR 240gm",
         benefit: "Tough on grease, gentle on hands",
         rating: 4.7,
         reviews: 850,
-        price: "₹20",
+        price: "Rs. 7.85 / Piece",
         image: imgBar,
         tag: "New Arrival"
     },
     {
         id: 3,
-        name: "Wadha Matic Liquid",
+        name: "Wadha Matic Liquid 1L",
         benefit: "Specialized for washing machines",
         rating: 4.9,
         reviews: 2100,
-        price: "₹220",
+        price: "Rs. 39.17 / Pack",
         image: imgMatic,
         tag: "Premium Care"
     }

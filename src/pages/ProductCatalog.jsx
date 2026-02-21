@@ -5,6 +5,12 @@ import { productsData } from '../data/products';
 import { useSearchParams } from 'react-router-dom';
 import NavbarWadha from '../components/layout/NavbarWadha';
 import FooterWadha from '../components/layout/FooterWadha';
+import SocialProofWadha from '../components/home/SocialProofWadha';
+
+// Product Images
+import imgPowder from '../assets/wadha powder.jpeg';
+import imgBar from '../assets/wadha bar.jpeg';
+import imgMatic from '../assets/IMG_2192.PNG';
 
 const ProductCatalog = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -56,7 +62,7 @@ const ProductCatalog = () => {
                                     <Sparkles className="w-3 h-3" />
                                     Product Catalog
                                 </div>
-                                <h1 className="text-5xl lg:text-6xl font-black text-blue-900 tracking-tight leading-none">
+                                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-blue-900 tracking-tight leading-none">
                                     Our <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">Products</span>
                                 </h1>
                                 <p className="text-slate-600 max-w-xl text-lg font-medium">
@@ -72,7 +78,7 @@ const ProductCatalog = () => {
                                         placeholder="Search products..."
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
-                                        className="pl-11 pr-6 py-3 bg-slate-50 border-none rounded-xl text-sm font-semibold w-full md:w-[300px] focus:ring-2 focus:ring-blue-200 transition-all outline-none text-slate-900"
+                                        className="pl-11 pr-6 py-3 bg-slate-50 border-none rounded-xl text-sm font-semibold w-full sm:w-[300px] focus:ring-2 focus:ring-blue-200 transition-all outline-none text-slate-900"
                                     />
                                 </div>
                             </div>
@@ -80,8 +86,24 @@ const ProductCatalog = () => {
                     </div>
 
                     <div className="grid grid-cols-12 gap-10">
-                        {/* Sidebar Filters */}
-                        <div className="col-span-12 lg:col-span-3 space-y-8">
+                        {/* Mobile Category Filter */}
+                        <div className="col-span-12 lg:hidden">
+                            <select
+                                value={activeCategory}
+                                onChange={(e) => {
+                                    setActiveCategory(e.target.value);
+                                    setSearchParams(e.target.value === 'all' ? {} : { cat: e.target.value });
+                                }}
+                                className="w-full px-4 py-3 bg-white rounded-2xl border border-slate-200 shadow-sm text-sm font-bold text-blue-900 focus:ring-2 focus:ring-blue-200 outline-none"
+                            >
+                                {categories.map((cat) => (
+                                    <option key={cat.id} value={cat.id}>{cat.name}</option>
+                                ))}
+                            </select>
+                        </div>
+
+                        {/* Sidebar Filters (Desktop) */}
+                        <div className="hidden lg:block lg:col-span-3 space-y-8">
                             <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm sticky top-32">
                                 <h3 className="text-sm font-bold text-blue-900 uppercase tracking-widest mb-8 flex items-center gap-3">
                                     <Filter className="w-4 h-4 text-green-600" />
@@ -146,17 +168,39 @@ const ProductCatalog = () => {
                                                     )}
                                                 </div>
 
-                                                {/* Visual Placeholder */}
+                                                {/* Visual Placeholder / Image */}
                                                 <motion.div
                                                     animate={{
                                                         y: [0, -8, 0],
                                                         rotate: [0, 2, 0]
                                                     }}
                                                     transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-                                                    className="w-32 h-52 bg-white rounded-2xl shadow-xl flex items-center justify-center relative border border-slate-200 overflow-hidden group-hover:scale-105 transition-transform duration-700"
+                                                    className="w-48 h-64 bg-white rounded-2xl shadow-xl flex items-center justify-center relative border border-slate-200 overflow-hidden group-hover:scale-105 transition-transform duration-700 p-4"
                                                 >
-                                                    <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-blue-500 to-green-500" />
-                                                    <Sparkles className="w-12 h-12 text-slate-200 group-hover:text-green-500/30 transition-colors" />
+                                                    <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-blue-500 to-green-500 shadow-sm" />
+
+                                                    {(() => {
+                                                        const name = product.name.toLowerCase();
+                                                        const brand = (product.specs.Brand || "").toLowerCase();
+                                                        const isWadha = name.includes('wadha') || brand.includes('wadha');
+
+                                                        let imgSrc = null;
+                                                        if (name.includes('powder') && isWadha) imgSrc = imgPowder;
+                                                        else if (name.includes('mahabar') || name.includes('mahabase')) imgSrc = imgBar;
+                                                        else if (name.includes('liquid') && isWadha) imgSrc = imgMatic;
+                                                        else if (name.includes('matic')) imgSrc = imgMatic;
+
+                                                        if (imgSrc) {
+                                                            return (
+                                                                <img
+                                                                    src={imgSrc}
+                                                                    alt={product.name}
+                                                                    className="w-full h-full object-contain drop-shadow-lg"
+                                                                />
+                                                            );
+                                                        }
+                                                        return <Sparkles className="w-12 h-12 text-slate-200 group-hover:text-green-500/30 transition-colors" />;
+                                                    })()}
                                                 </motion.div>
                                             </div>
 
@@ -229,6 +273,7 @@ const ProductCatalog = () => {
                     </div>
                 </div>
             </main>
+            <SocialProofWadha />
             <FooterWadha />
         </div>
     );
