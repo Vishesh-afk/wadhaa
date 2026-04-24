@@ -221,6 +221,63 @@ const Contact = () => {
                                     </div>
                                 </div>
 
+                                {/* Social Media */}
+                                <div className="bg-purple-50 p-8 rounded-3xl border border-purple-100">
+                                    <h3 className="text-xl font-black text-purple-800 mb-4 flex items-center gap-2">
+                                        <span className="text-2xl">📲</span> Follow Us
+                                    </h3>
+                                    <div className="flex flex-col gap-3">
+                                        {/* Instagram */}
+                                        <a
+                                            href="https://www.instagram.com/wadhadetergent?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-4 bg-white rounded-2xl px-5 py-3 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all group"
+                                        >
+                                            <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-lg flex-shrink-0"
+                                                style={{ background: 'linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)' }}>
+                                                📸
+                                            </div>
+                                            <div>
+                                                <p className="text-xs font-bold text-slate-500 uppercase">Instagram</p>
+                                                <p className="font-bold text-slate-800 group-hover:text-pink-600 transition-colors">@wadhadetergent</p>
+                                            </div>
+                                        </a>
+
+                                        {/* YouTube */}
+                                        <a
+                                            href="https://www.youtube.com/@Wadhadetergent/videos"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-4 bg-white rounded-2xl px-5 py-3 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all group"
+                                        >
+                                            <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white text-lg flex-shrink-0">
+                                                ▶
+                                            </div>
+                                            <div>
+                                                <p className="text-xs font-bold text-slate-500 uppercase">YouTube</p>
+                                                <p className="font-bold text-slate-800 group-hover:text-red-600 transition-colors">@Wadhadetergent</p>
+                                            </div>
+                                        </a>
+
+                                        {/* Facebook */}
+                                        <a
+                                            href="https://www.facebook.com/share/1CimkLh6wZ/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-4 bg-white rounded-2xl px-5 py-3 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all group"
+                                        >
+                                            <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-black text-lg flex-shrink-0">
+                                                f
+                                            </div>
+                                            <div>
+                                                <p className="text-xs font-bold text-slate-500 uppercase">Facebook</p>
+                                                <p className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">Wadha Detergent</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
                                 {/* Placeholder for Map */}
                                 <div className="h-64 bg-slate-200 rounded-3xl overflow-hidden relative">
                                     <div className="absolute inset-0 flex items-center justify-center text-slate-400 font-bold">
