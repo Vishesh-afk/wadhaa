@@ -23,7 +23,7 @@ const stainDetails = {
             "Wash with Wadha Detergent Powder in warm water."
         ],
         proTip: "For dried stains, soak the garment in warm water with a scoop of Wadha detergent for 30 minutes before washing.",
-        products: ["Wadha Detergent Powder", "Wadha Matic Liquid"]
+        products: ["Wadha Detergent Powder", "Toto Matic Liquid"]
     },
     "curry-spices": {
         name: "Curry & Spices",
@@ -38,7 +38,7 @@ const stainDetails = {
             "Wash using the 'Heavy' cycle on your machine with Wadha Matic Detergent."
         ],
         proTip: "Dry the stained area in direct sunlight after washing; sunlight helps fade turmeric marks naturally.",
-        products: ["Wadha Matic Liquid", "Wadha Detergent Bar"]
+        products: ["Toto Matic Liquid", "Wadha Detergent Bar"]
     },
     // ... (rest of the keys are same, I will use ReplaceFileContent wisely to move them)
     // Actually I will just replace the whole file structure to be safe and clean.
@@ -87,7 +87,7 @@ const stainDetails = {
             "Wash with Wadha Detergent."
         ],
         proTip: "Hairspray (alcohol-based) can also work in a pinch to lift ink stains.",
-        products: ["Wadha Matic Liquid"]
+        products: ["Toto Matic Liquid"]
     },
     "blood": {
         name: "Blood",
@@ -116,7 +116,7 @@ const stainDetails = {
             "Wash in warm water."
         ],
         proTip: "Milk breaks down fats! Soaking the stain in milk for 30 mins before washing can help.",
-        products: ["Wadha Matic Liquid"]
+        products: ["Toto Matic Liquid"]
     },
     "sweat": {
         name: "Sweat",
@@ -158,7 +158,7 @@ const stainDetails = {
             "Rinse and wash."
         ],
         proTip: "Sunlight is a natural bleaching agent for tomato stains on white fabrics.",
-        products: ["Wadha Matic Liquid"]
+        products: ["Toto Matic Liquid"]
     },
     "fruit-juice": {
         name: "Fruit Juice",

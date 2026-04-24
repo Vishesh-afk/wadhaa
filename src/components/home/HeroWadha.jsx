@@ -1,25 +1,240 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import heroBanner from '../../assets/IMG_2192.PNG';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 
+// ─── Config ───────────────────────────────────────────────────────────────────
+const TOTAL_FRAMES = 121;
+const IMG_PATH = (n) => `/300/${String(n).padStart(5, '0')}.jpg`;
+
+// Cap DPR at 2 — phones with dpr=3/4 would create massive canvases
+const getDpr = () => Math.min(window.devicePixelRatio || 1, 2);
+
+// Dynamically measure the actual fixed navbar height
+const getNavbarHeight = () => {
+  const nav = document.querySelector('nav');
+  return nav ? nav.getBoundingClientRect().height : 72;
+};
+
+// Use the real visible viewport height (avoids the mobile 100vh bug where
+// mobile browser chrome is included in 100vh)
+const getViewportH = () =>
+  window.visualViewport ? window.visualViewport.height : window.innerHeight;
+
+// ─── Preloader ────────────────────────────────────────────────────────────────
+function preloadImages(onProgress) {
+  const images = new Array(TOTAL_FRAMES);
+  let loaded = 0;
+
+  return new Promise((resolve) => {
+    for (let i = 1; i <= TOTAL_FRAMES; i++) {
+      const img = new Image();
+      img.src = IMG_PATH(i);
+      img.onload = img.onerror = () => {
+        loaded++;
+        onProgress(loaded / TOTAL_FRAMES);
+        if (loaded === TOTAL_FRAMES) resolve(images);
+      };
+      images[i - 1] = img;
+    }
+  });
+}
+
+// ─── Component ────────────────────────────────────────────────────────────────
 const HeroWadha = () => {
-  return (
-    <section className="w-full bg-gray-50 overflow-hidden relative mt-16 md:mt-0">
-      <motion.div
-        initial={{ opacity: 0.8 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        className="w-full"
-      >
-        <img
-          src={heroBanner}
-          alt="Wadha Detergent Hero Banner"
-          className="w-full h-auto object-contain block"
-        />
-      </motion.div>
+  const sectionRef   = useRef(null);
+  const stickyRef    = useRef(null);
+  const canvasRef    = useRef(null);
+  const imagesRef    = useRef([]);
+  const frameRef     = useRef(0);
+  const rafRef       = useRef(null);
+  const navHRef      = useRef(72);   // live navbar height in px
+  const viewHRef     = useRef(600);  // live visible viewport height
 
-      {/* Optional Overlay Gradient for better text integration later if needed */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
+  const [loadProgress, setLoadProgress] = useState(0);
+  const [ready, setReady]               = useState(false);
+
+  // ── Draw frame (all dimensions in physical pixels — NO ctx.scale) ─────────
+  const drawFrame = useCallback((index) => {
+    const canvas = canvasRef.current;
+    const img    = imagesRef.current[index];
+    if (!canvas || !img || !img.complete || !img.naturalWidth) return;
+
+    const ctx = canvas.getContext('2d');
+    // canvas.width / canvas.height are the physical pixel dimensions
+    const W = canvas.width;
+    const H = canvas.height;
+
+    // Object-fit: cover in physical pixel space
+    const scale = Math.max(W / img.naturalWidth, H / img.naturalHeight);
+    const sw    = img.naturalWidth  * scale;
+    const sh    = img.naturalHeight * scale;
+    const sx    = (W - sw) / 2;
+    const sy    = (H - sh) / 2;
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.drawImage(img, sx, sy, sw, sh);
+  }, []);
+
+  // ── Resize canvas (correct HiDPI — no ctx.scale) ─────────────────────────
+  const resizeCanvas = useCallback(() => {
+    const canvas = canvasRef.current;
+    const sticky = stickyRef.current;
+    if (!canvas || !sticky) return;
+
+    const navH   = getNavbarHeight();
+    const viewH  = getViewportH();
+    const dpr    = getDpr();
+
+    // Store live values for scroll handler
+    navHRef.current  = navH;
+    viewHRef.current = viewH;
+
+    const displayW = window.innerWidth;
+    const displayH = viewH - navH;
+
+    // Physical pixel canvas size (setting .width resets the context transform)
+    canvas.width  = Math.round(displayW * dpr);
+    canvas.height = Math.round(displayH * dpr);
+
+    // CSS display size — browser scales physical → display pixels automatically
+    canvas.style.width  = `${displayW}px`;
+    canvas.style.height = `${displayH}px`;
+
+    // Update sticky container dimensions inline to match real viewport
+    sticky.style.top    = `${navH}px`;
+    sticky.style.height = `${displayH}px`;
+
+    // Redraw at current frame with the fresh canvas size
+    drawFrame(frameRef.current);
+  }, [drawFrame]);
+
+  // ── Preload images ────────────────────────────────────────────────────────
+  useEffect(() => {
+    preloadImages((p) => setLoadProgress(p)).then((imgs) => {
+      imagesRef.current = imgs;
+      setReady(true);
+    });
+  }, []);
+
+  // ── Attach resize / orientation listeners ─────────────────────────────────
+  useEffect(() => {
+    resizeCanvas();
+
+    const onResize = () => resizeCanvas();
+
+    window.addEventListener('resize', onResize);
+    window.addEventListener('orientationchange', onResize);
+
+    // visualViewport fires when mobile browser chrome shows/hides
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', onResize);
+    }
+
+    return () => {
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('orientationchange', onResize);
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener('resize', onResize);
+      }
+    };
+  }, [resizeCanvas]);
+
+  // ── Redraw first frame once images are loaded ─────────────────────────────
+  useEffect(() => {
+    if (ready) {
+      resizeCanvas();
+      drawFrame(0);
+    }
+  }, [ready, resizeCanvas, drawFrame]);
+
+  // ── Scroll driver ─────────────────────────────────────────────────────────
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = sectionRef.current;
+      if (!section || !ready) return;
+
+      const rect            = section.getBoundingClientRect();
+      // scrollable distance = section height minus the visible window height
+      const scrollableH     = section.offsetHeight - window.innerHeight;
+      const scrolled        = -rect.top;
+      const progress        = Math.max(0, Math.min(1, scrolled / scrollableH));
+      const targetFrame     = Math.round(progress * (TOTAL_FRAMES - 1));
+
+      if (targetFrame !== frameRef.current) {
+        frameRef.current = targetFrame;
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = requestAnimationFrame(() => drawFrame(targetFrame));
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Also listen on visual-viewport scroll for some mobile browsers
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener('scroll', handleScroll);
+      }
+      cancelAnimationFrame(rafRef.current);
+    };
+  }, [ready, drawFrame]);
+
+  return (
+    /*
+     * Section height drives how long the user scrolls through the animation.
+     * 500vh gives a comfortable scroll on both desktop and mobile.
+     */
+    <section
+      ref={sectionRef}
+      style={{ height: '500vh' }}
+      className="relative w-full"
+    >
+      {/*
+       * Sticky container — dimensions are set inline by resizeCanvas()
+       * so they always match the real visible area on every device.
+       * Initial inline values are sensible defaults before JS runs.
+       */}
+      <div
+        ref={stickyRef}
+        className="sticky left-0 w-full overflow-hidden bg-black"
+        style={{ top: '72px', height: 'calc(100vh - 72px)' }}
+      >
+        {/* Loading overlay */}
+        {!ready && (
+          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black gap-6">
+            <div className="text-white text-sm font-semibold tracking-[0.3em] uppercase opacity-60">
+              Loading
+            </div>
+            <div className="w-48 h-[2px] bg-white/10 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-white rounded-full transition-all duration-300"
+                style={{ width: `${loadProgress * 100}%` }}
+              />
+            </div>
+            <div className="text-white/40 text-xs font-mono">
+              {Math.round(loadProgress * 100)}%
+            </div>
+          </div>
+        )}
+
+        {/* Canvas — sized by resizeCanvas(), crisp on all pixel densities */}
+        <canvas
+          ref={canvasRef}
+          className="absolute top-0 left-0 block"
+          style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.6s ease' }}
+        />
+
+        {/* Scroll hint */}
+        {ready && (
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none z-10">
+            <span className="text-white/50 text-[9px] tracking-[0.4em] uppercase font-semibold">
+              Scroll
+            </span>
+            <div className="w-[1px] h-8 bg-gradient-to-b from-white/50 to-transparent animate-pulse" />
+          </div>
+        )}
+      </div>
     </section>
   );
 };

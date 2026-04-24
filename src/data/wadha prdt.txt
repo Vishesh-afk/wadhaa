@@ -34,47 +34,6 @@ Delivery Time: 3 Days
 
 Packaging Details: Pouch Packing
 
-1 Kg TOTO Detergent Powder
-
-Product Price:
-Rs. 39.17 / Pack
-
-Minimum Order Quantity:
-5,000 Packs
-
-Product Details
-
-Brand: Wheel
-
-Packaging Size: 1 Kg
-
-Color: White
-
-Fragrance: Lime
-
-Packaging Type: Pouch
-
-Usage/Application: Laundry
-
-Shelf Life: 9 Months
-
-Country of Origin: Made in India
-
-Description
-
-Best quality product in its segment. Superior performance compared to other detergent powders in the same price range. Comparable to detergent powders priced between Rs. 70–80.
-MRP: Rs. 60/-
-
-Additional Information
-
-Item Code: TDP1KG
-
-Production Capacity: 1000 Ton
-
-Delivery Time: 5 Days
-
-Packaging Details: 2 Kg, 1 Kg, 500 gm, 350 gm
-
 Detergent Washing Powder – 5 Kg
 
 Product Price:
@@ -126,6 +85,33 @@ Production Capacity: 2,500,000
 Delivery Time: 5 Days
 
 Packaging Details: Pouch
+
+- 1 Kg TOTO Detergent Powder
+-
+- Product Price:
+- Rs. 39.17 / Pack
+-
+- Minimum Order Quantity:
+- 5,000 Packs
+-
+- Product Details
+-
+- Brand: Wheel
+- Size: 1 Kg
+- Fragrance: Lime
+- Shelf Life: 9 Months
+- MRP: Rs. 60
+- Packaging: Pouch
+-
+- Description
+-
+- Best quality product in its segment. Superior performance compared to other detergent powders in the same price range. Comparable to detergent powders priced between Rs. 70–80.
+-
+- Additional Information
+-
+- Delivery Time: 3-5 Days
+-
+- Packaging Details: Pouch Packing
 
 If you want, I can also:
 
@@ -906,16 +892,16 @@ add_product(
 )
 
 add_product(
+    "Detergent Washing Powder – 5 Kg",
+    "Price: Rs. 373.83/Piece | MOQ: 25,000 Pieces<br/>"
+    "Quality: Premium | Features: Stain Removal, Germ Protection, Hard Water Formula"
+)
+
+add_product(
     "TOTO Detergent Powder – 1 Kg",
     "Price: Rs. 39.17/Pack | MOQ: 5,000 Packs<br/>"
     "Fragrance: Lime | Shelf Life: 9 Months<br/>"
     "MRP: Rs. 60 | Packaging: Pouch"
-)
-
-add_product(
-    "Detergent Washing Powder – 5 Kg",
-    "Price: Rs. 373.83/Piece | MOQ: 25,000 Pieces<br/>"
-    "Quality: Premium | Features: Stain Removal, Germ Protection, Hard Water Formula"
 )
 
 story.append(PageBreak())

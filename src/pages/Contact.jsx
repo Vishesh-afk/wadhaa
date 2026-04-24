@@ -208,14 +208,14 @@ const Contact = () => {
                                             <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-orange-500">📞</div>
                                             <div>
                                                 <p className="text-xs font-bold text-slate-500 uppercase">Phone</p>
-                                                <p className="font-bold text-slate-800">+91 98765 43210</p>
+                                                <p className="font-bold text-slate-800">9404007182, 7887881694</p>
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-4">
                                             <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-orange-500">✉️</div>
                                             <div>
                                                 <p className="text-xs font-bold text-slate-500 uppercase">Email</p>
-                                                <p className="font-bold text-slate-800">support@swamiindustries.in</p>
+                                                <p className="font-bold text-slate-800">swamiindustries.wadha@gmail.com</p>
                                             </div>
                                         </div>
                                     </div>

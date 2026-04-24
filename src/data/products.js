@@ -11,7 +11,7 @@ import {
 
 export const productsData = [
   {
-    category: "Detergent Powder",
+    category: "Wash and Shine Range",
     id: "detergent-powder",
     icon: Sparkles,
     description: "Superior stain removal and fabric care formulations.",
@@ -36,26 +36,6 @@ export const productsData = [
         }
       },
       {
-        id: "toto-detergent-powder-1kg",
-        name: "1 Kg TOTO Detergent Powder",
-        price: "Rs. 39.17 / Pack",
-        moq: "5,000 Packs",
-        desc: "Best quality product in its segment. Superior performance compared to other detergent powders in the same price range. Comparable to detergent powders priced between Rs. 70–80. MRP: Rs. 60/-",
-        specs: { 
-          Brand: "Wheel", 
-          Size: "1 Kg", 
-          Color: "White", 
-          Fragrance: "Lime", 
-          Packaging: "Pouch", 
-          Usage: "Laundry",
-          ShelfLife: "9 Months",
-          Origin: "Made in India",
-          Capacity: "1000 Ton",
-          Delivery: "5 Days",
-          AvailableSizes: "2 Kg, 1 Kg, 500 gm, 350 gm"
-        }
-      },
-      {
         id: "wadha-detergent-powder-5kg",
         name: "Detergent Washing Powder – 5 Kg",
         price: "Rs. 373.83 / Piece",
@@ -75,6 +55,34 @@ export const productsData = [
           Delivery: "5 Days",
           Packaging: "Pouch"
         }
+      },
+      {
+        id: "wadha-detergent-powder-5kg-new",
+        name: "Detergent Powder - 5 Kg",
+        price: "Rs. 373.83 / Bag",
+        moq: "5,000 Bags",
+        desc: "Superior cleaning power in a Family Pack. Our 5 Kg Detergent Powder provides deep stain fighting and long-lasting freshness for all your laundry needs.",
+        specs: {
+          Brand: "Wadha",
+          Weight: "5 Kg",
+          Fragrance: "Lemon Fresh",
+          Packaging: "Family Pack Bag"
+        }
+      },
+      {
+        id: "toto-detergent-powder-1kg",
+        name: "1 Kg TOTO Detergent Powder",
+        price: "Rs. 39.17 / Pack",
+        moq: "5,000 Packs",
+        desc: "Best quality product in its segment. Superior performance compared to other detergent powders in the same price range. Comparable to detergent powders priced between Rs. 70–80. MRP: Rs. 60/-",
+        specs: { 
+          Brand: "Toto", 
+          Size: "1 Kg", 
+          Fragrance: "Lime",
+          ShelfLife: "9 Months",
+          MRP: "Rs. 60",
+          Packaging: "Pouch"
+        }
       }
     ]
   },
@@ -85,14 +93,14 @@ export const productsData = [
     description: "Concentrated liquid solutions for modern washing machines.",
     products: [
       {
-        id: "wadha-matic-liquid-1l",
-        name: "Wadha Matic Liquid 1L",
-        price: "Rs. 39.17 / Pack",
+        id: "toto-matic-liquid-2l",
+        name: "Toto Matic Liquid 2L",
+        price: "Rs. 99 / 2L",
         moq: "5,000 Packs",
         desc: "Premium liquid detergent specialized for washing machines. Deep cleaning formula that protects your machine and your clothes.",
         specs: {
-          Brand: "Wadha",
-          Size: "1 Litre",
+          Brand: "Toto",
+          Size: "2 Litre",
           Usage: "Machine Wash",
           Type: "Liquid",
           Fragrance: "Fresh Floral",
@@ -102,7 +110,7 @@ export const productsData = [
     ]
   },
   {
-    category: "Detergent Cake",
+    category: "Wash and Shine Cakes",
     id: "detergent-cake",
     icon: Zap,
     description: "Powerful cleaning bars for hand-wash laundry.",
@@ -151,7 +159,7 @@ export const productsData = [
       },
       {
         id: "wadha-detergent-cake-110g",
-        name: "Detergent Cake 110 g – WADHA",
+        name: "Detergent Tikiya 110 g – WADHA",
         price: "Rs. 3.33 / Piece",
         moq: "50,000 Pieces",
         desc: "We offer a high-quality 110 g Detergent Cake with Rs. 5 MRP, specially designed for effective cleaning. Known as a large-size cake in its category, it delivers excellent performance and durability.",

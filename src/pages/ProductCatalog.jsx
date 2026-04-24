@@ -11,6 +11,13 @@ import SocialProofWadha from '../components/home/SocialProofWadha';
 import imgPowder from '../assets/wadha powder.jpeg';
 import imgBar from '../assets/wadha bar.jpeg';
 import imgMatic from '../assets/IMG_2192.PNG';
+import img5Kg from '../assets/WhatsApp Image 2026-01-17 at 5.05.56 PM.jpeg';
+import imgToto from '../assets/WhatsApp Image 2026-01-17 at 5.05.55 PM.jpeg';
+import imgDishwash from '../assets/dishwash.jpeg';
+import imgTikiya from '../assets/tikiya.jpeg';
+import imgCake from '../assets/cake.jpeg';
+import imgPhenyl1L from '../assets/phenyl/hf_20260221_125455_8617201f-82c2-402a-9c97-5506a6a14d97.png';
+import imgPhenyl5L from '../assets/phenyl/hf_20260221_130847_98686629-861c-44fd-84a8-c08598b441d2.jpeg';
 
 const ProductCatalog = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -152,11 +159,9 @@ const ProductCatalog = () => {
                                             className="group bg-white rounded-3xl overflow-hidden border border-slate-200 hover:border-blue-200 shadow-sm hover:shadow-xl transition-all flex flex-col md:flex-row"
                                         >
                                             {/* Product Image Area */}
-                                            <div className="md:w-1/3 relative bg-gradient-to-br from-blue-50 to-green-50 flex items-center justify-center p-12 overflow-hidden border-b md:border-b-0 md:border-r border-slate-100">
-                                                <div className="absolute inset-0 bg-gradient-to-br from-blue-100/20 via-transparent to-transparent"></div>
-
+                                            <div className="md:w-1/3 relative bg-white flex items-center justify-center p-8 lg:p-12 overflow-hidden border-b md:border-b-0 md:border-r border-slate-100 aspect-[3/4] md:aspect-auto">
                                                 {/* Status Badges */}
-                                                <div className="absolute top-6 left-6 flex flex-col gap-2 z-10">
+                                                <div className="absolute top-4 left-4 flex flex-col gap-2 z-20">
                                                     <span className="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-md">
                                                         {product.categoryName}
                                                     </span>
@@ -168,40 +173,41 @@ const ProductCatalog = () => {
                                                     )}
                                                 </div>
 
-                                                {/* Visual Placeholder / Image */}
-                                                <motion.div
-                                                    animate={{
-                                                        y: [0, -8, 0],
-                                                        rotate: [0, 2, 0]
-                                                    }}
-                                                    transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-                                                    className="w-48 h-64 bg-white rounded-2xl shadow-xl flex items-center justify-center relative border border-slate-200 overflow-hidden group-hover:scale-105 transition-transform duration-700 p-4"
-                                                >
-                                                    <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-blue-500 to-green-500 shadow-sm" />
-
+                                                <div className="w-full h-full flex items-center justify-center mt-12 md:mt-0">
                                                     {(() => {
                                                         const name = product.name.toLowerCase();
                                                         const brand = (product.specs.Brand || "").toLowerCase();
                                                         const isWadha = name.includes('wadha') || brand.includes('wadha');
 
                                                         let imgSrc = null;
-                                                        if (name.includes('powder') && isWadha) imgSrc = imgPowder;
+                                                        if (name.includes('5 kg') && name.includes('powder')) imgSrc = img5Kg;
+                                                        else if (name.includes('powder') && isWadha) imgSrc = imgPowder;
                                                         else if (name.includes('mahabar') || name.includes('mahabase')) imgSrc = imgBar;
+                                                        else if (name.includes('dishwash')) imgSrc = imgDishwash;
                                                         else if (name.includes('liquid') && isWadha) imgSrc = imgMatic;
                                                         else if (name.includes('matic')) imgSrc = imgMatic;
+                                                        else if (name.includes('toto')) imgSrc = imgToto;
+                                                        else if (name.includes('tikiya')) imgSrc = imgTikiya;
+                                                        else if (name.includes('cake')) imgSrc = imgCake;
+                                                        else if (name.includes('phenyl') && name.includes('5 l')) imgSrc = imgPhenyl5L;
+                                                        else if (name.includes('phenyl')) imgSrc = imgPhenyl1L;
 
                                                         if (imgSrc) {
                                                             return (
                                                                 <img
                                                                     src={imgSrc}
                                                                     alt={product.name}
-                                                                    className="w-full h-full object-contain drop-shadow-lg"
+                                                                    className="max-w-full max-h-full md:max-h-[85%] object-contain group-hover:scale-105 transition-transform duration-700 drop-shadow-sm"
                                                                 />
                                                             );
                                                         }
-                                                        return <Sparkles className="w-12 h-12 text-slate-200 group-hover:text-green-500/30 transition-colors" />;
+                                                        return (
+                                                            <div className="w-full h-full flex items-center justify-center">
+                                                                <Sparkles className="w-12 h-12 text-slate-200 group-hover:text-green-500/30 transition-colors" />
+                                                            </div>
+                                                        );
                                                     })()}
-                                                </motion.div>
+                                                </div>
                                             </div>
 
                                             {/* Content Area */}

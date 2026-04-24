@@ -1,12 +1,13 @@
 import React from 'react';
 import { Star, ShoppingBag, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 // Product Images
 import imgPowder from '../../assets/wadha powder.jpeg';
-import imgBar from '../../assets/wadha bar.jpeg';
-import imgMatic from '../../assets/IMG_2192.PNG';
+import imgDishwash from '../../assets/dishwash.jpeg';
+import imgTikiya from '../../assets/tikiya.jpeg';
+import imgCake from '../../assets/cake.jpeg';
 
 
 const products = [
@@ -22,22 +23,32 @@ const products = [
     },
     {
         id: 2,
-        name: "WADHA MAHABAR 240gm",
-        benefit: "Tough on grease, gentle on hands",
+        name: "Wadha Dishwash",
+        benefit: "Sparkling clean vessels",
         rating: 4.7,
         reviews: 850,
-        price: "Rs. 7.85 / Piece",
-        image: imgBar,
-        tag: "New Arrival"
+        price: "Best Price",
+        image: imgDishwash,
+        tag: "Grease Fighter"
     },
     {
         id: 3,
-        name: "Wadha Matic Liquid 1L",
-        benefit: "Specialized for washing machines",
+        name: "Wadha Detergent Tikiya",
+        benefit: "Powerful stain removal",
         rating: 4.9,
         reviews: 2100,
-        price: "Rs. 39.17 / Pack",
-        image: imgMatic,
+        price: "Best Price",
+        image: imgTikiya,
+        tag: "New Arrival"
+    },
+    {
+        id: 4,
+        name: "Wadha Detergent Cake",
+        benefit: "Long-lasting freshness",
+        rating: 4.8,
+        reviews: 980,
+        price: "Best Price",
+        image: imgCake,
         tag: "Premium Care"
     }
 ];
@@ -103,12 +114,12 @@ const ProductHighlight = () => {
                             )}
 
                             {/* Image Area */}
-                            <div className="h-72 bg-gray-50 flex items-center justify-center p-6 group-hover:bg-blue-50/30 transition-colors relative overflow-hidden">
+                            <div className="w-full h-72 bg-white flex items-center justify-center p-8 transition-colors relative overflow-hidden">
                                 <motion.img
                                     src={product.image}
                                     alt={product.name}
-                                    className="w-full h-full object-contain drop-shadow-md group-hover:drop-shadow-xl transition-all duration-500"
-                                    whileHover={{ scale: 1.1 }}
+                                    className="w-full h-full object-contain transition-all duration-500 drop-shadow-sm"
+                                    whileHover={{ scale: 1.05 }}
                                 />
 
                                 {/* Flash effect on hover */}
@@ -147,9 +158,9 @@ const ProductHighlight = () => {
                     transition={{ delay: 0.5 }}
                     className="mt-12 text-center"
                 >
-                    <a href="/products" className="inline-block text-[var(--color-brand-primary)] font-bold hover:underline transition-all hover:translate-x-1">
+                    <Link to="/products" className="inline-block text-[var(--color-brand-primary)] font-bold hover:underline transition-all hover:translate-x-1">
                         View All Products &rarr;
-                    </a>
+                    </Link>
                 </motion.div>
             </div>
         </section>

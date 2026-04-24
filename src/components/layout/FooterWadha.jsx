@@ -1,4 +1,5 @@
 import { Instagram, Facebook, Twitter } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const FooterWadha = () => {
     const instagramUrl = "https://www.instagram.com/wadhadetergent?igsh=MTB2dGY0emVnZW8wYQ==";
@@ -11,24 +12,18 @@ const FooterWadha = () => {
                     {/* Column 1 */}
                     <div>
                         <h3 className="text-2xl font-bold text-white mb-6 uppercase tracking-wider">Wadha</h3>
-                        <p className="text-sm text-gray-400 mb-6 leading-relaxed">
-                            Bringing powerful cleaning technology to every Indian household. Tough on stains, gentle on hands.
-                        </p>
-                        <div className="flex space-x-4 mb-6">
-                            <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[var(--color-brand-primary)] hover:text-white transition-all duration-300">
-                                <Instagram className="w-5 h-5" />
-                            </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300">
-                                <Facebook className="w-5 h-5" />
-                            </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-sky-500 hover:text-white transition-all duration-300">
-                                <Twitter className="w-5 h-5" />
-                            </a>
+                        <div className="flex flex-col space-y-2 text-sm">
+                            <div className="flex items-center gap-2">
+                                <span>📞</span> 9404007182, 7887881694
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <span>✉️</span> swamiindustries.wadha@gmail.com
+                            </div>
                         </div>
                         <div className="flex flex-col space-y-2 text-sm">
-                            <a href="/about" className="hover:text-white transition-colors">About Us</a>
+                            <Link to="/about" className="hover:text-white transition-colors">About Us</Link>
                             <a href="#" className="hover:text-white transition-colors">Careers</a>
-                            <a href="/contact" className="hover:text-white transition-colors">Contact</a>
+                            <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
                         </div>
                     </div>
 
@@ -36,11 +31,11 @@ const FooterWadha = () => {
                     <div>
                         <h4 className="text-lg font-bold text-white mb-6">Products</h4>
                         <ul className="space-y-3 text-sm">
-                            <li><a href="/catalog" className="hover:text-white transition-colors">All Products</a></li>
-                            <li><a href="/catalog?cat=detergent-powder" className="hover:text-white transition-colors">Detergent Powder</a></li>
-                            <li><a href="/catalog?cat=detergent-cake" className="hover:text-white transition-colors">Detergent Cake</a></li>
-                            <li><a href="/catalog?cat=toilet-cleaner" className="hover:text-white transition-colors">Toilet Cleaner</a></li>
-                            <li><a href="/catalog?cat=liquid-dishwash" className="hover:text-white transition-colors">Liquid Dishwash</a></li>
+                            <li><Link to="/catalog" className="hover:text-white transition-colors">All Products</Link></li>
+                            <li><Link to="/catalog?cat=detergent-powder" className="hover:text-white transition-colors">Wash and Shine Range</Link></li>
+                            <li><Link to="/catalog?cat=detergent-cake" className="hover:text-white transition-colors">Wash and Shine Cakes</Link></li>
+                            <li><Link to="/catalog?cat=toilet-cleaner" className="hover:text-white transition-colors">Toilet Cleaner</Link></li>
+                            <li><Link to="/catalog?cat=liquid-dishwash" className="hover:text-white transition-colors">Liquid Dishwash</Link></li>
                         </ul>
                     </div>
 
