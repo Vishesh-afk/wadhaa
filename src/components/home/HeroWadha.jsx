@@ -2,7 +2,10 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 const TOTAL_FRAMES = 121;
-const IMG_PATH = (n) => `/400/${String(n).padStart(5, '0')}.jpg`;
+
+// Portrait (mobile) → /900/   |   Landscape (desktop) → /400/
+const getImgPath = (n, portrait) =>
+  `/${portrait ? '900' : '400'}/${String(n).padStart(5, '0')}.jpg`;
 
 // Cap DPR at 2 — phones with dpr=3/4 would create massive canvases
 const getDpr = () => Math.min(window.devicePixelRatio || 1, 2);
@@ -18,15 +21,20 @@ const getNavbarHeight = () => {
 const getViewportH = () =>
   window.visualViewport ? window.visualViewport.height : window.innerHeight;
 
+// Reliable portrait check — use matchMedia so it works immediately after mount
+const isPortraitScreen = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia('(orientation: portrait)').matches;
+
 // ─── Preloader ────────────────────────────────────────────────────────────────
-function preloadImages(onProgress) {
+function preloadImages(portrait, onProgress) {
   const images = new Array(TOTAL_FRAMES);
   let loaded = 0;
 
   return new Promise((resolve) => {
     for (let i = 1; i <= TOTAL_FRAMES; i++) {
       const img = new Image();
-      img.src = IMG_PATH(i);
+      img.src = getImgPath(i, portrait);
       img.onload = img.onerror = () => {
         loaded++;
         onProgress(loaded / TOTAL_FRAMES);
@@ -39,14 +47,15 @@ function preloadImages(onProgress) {
 
 // ─── Component ────────────────────────────────────────────────────────────────
 const HeroWadha = () => {
-  const sectionRef   = useRef(null);
-  const stickyRef    = useRef(null);
-  const canvasRef    = useRef(null);
-  const imagesRef    = useRef([]);
-  const frameRef     = useRef(0);
-  const rafRef       = useRef(null);
-  const navHRef      = useRef(72);   // live navbar height in px
-  const viewHRef     = useRef(600);  // live visible viewport height
+  const sectionRef     = useRef(null);
+  const stickyRef      = useRef(null);
+  const canvasRef      = useRef(null);
+  const imagesRef      = useRef([]);
+  const frameRef       = useRef(0);
+  const rafRef         = useRef(null);
+  const navHRef        = useRef(72);    // live navbar height in px
+  const viewHRef       = useRef(600);   // live visible viewport height
+  const portraitRef    = useRef(isPortraitScreen()); // which sequence is loaded
 
   const [loadProgress, setLoadProgress] = useState(0);
   const [ready, setReady]               = useState(false);
@@ -58,16 +67,17 @@ const HeroWadha = () => {
     if (!canvas || !img || !img.complete || !img.naturalWidth) return;
 
     const ctx = canvas.getContext('2d');
-    // canvas.width / canvas.height are the physical pixel dimensions
     const W = canvas.width;
     const H = canvas.height;
 
-    // Object-fit: cover in physical pixel space
+    // Always use cover — the correct aspect-ratio sequence is loaded per
+    // orientation (/900/ for portrait, /400/ for landscape) so there is
+    // no mismatch and the image fills edge-to-edge on every device.
     const scale = Math.max(W / img.naturalWidth, H / img.naturalHeight);
-    const sw    = img.naturalWidth  * scale;
-    const sh    = img.naturalHeight * scale;
-    const sx    = (W - sw) / 2;
-    const sy    = (H - sh) / 2;
+    const sw = img.naturalWidth  * scale;
+    const sh = img.naturalHeight * scale;
+    const sx = (W - sw) / 2;
+    const sy = (H - sh) / 2;
 
     ctx.clearRect(0, 0, W, H);
     ctx.drawImage(img, sx, sy, sw, sh);
@@ -87,15 +97,17 @@ const HeroWadha = () => {
     navHRef.current  = navH;
     viewHRef.current = viewH;
 
-    const displayW = window.innerWidth;
+    // Use the container's actual rendered width to avoid any mismatch with
+    // window.innerWidth on mobile (e.g. scrollbar offset, sub-pixel rounding)
+    const displayW = sticky.clientWidth || window.innerWidth;
     const displayH = viewH - navH;
 
     // Physical pixel canvas size (setting .width resets the context transform)
     canvas.width  = Math.round(displayW * dpr);
     canvas.height = Math.round(displayH * dpr);
 
-    // CSS display size — browser scales physical → display pixels automatically
-    canvas.style.width  = `${displayW}px`;
+    // CSS display size — fill the container exactly, no overflow
+    canvas.style.width  = '100%';
     canvas.style.height = `${displayH}px`;
 
     // Update sticky container dimensions inline to match real viewport
@@ -106,9 +118,14 @@ const HeroWadha = () => {
     drawFrame(frameRef.current);
   }, [drawFrame]);
 
-  // ── Preload images ────────────────────────────────────────────────────────
+  // ── Preload images (pick correct sequence for current orientation) ─────────
   useEffect(() => {
-    preloadImages((p) => setLoadProgress(p)).then((imgs) => {
+    const portrait = isPortraitScreen();
+    portraitRef.current = portrait;
+    setReady(false);
+    setLoadProgress(0);
+    imagesRef.current = [];
+    preloadImages(portrait, (p) => setLoadProgress(p)).then((imgs) => {
       imagesRef.current = imgs;
       setReady(true);
     });
@@ -118,7 +135,24 @@ const HeroWadha = () => {
   useEffect(() => {
     resizeCanvas();
 
-    const onResize = () => resizeCanvas();
+    const onResize = () => {
+      const nowPortrait = isPortraitScreen();
+
+      // If orientation flipped, reload the correct image sequence
+      if (nowPortrait !== portraitRef.current) {
+        portraitRef.current = nowPortrait;
+        setReady(false);
+        setLoadProgress(0);
+        imagesRef.current = [];
+        frameRef.current = 0;
+        preloadImages(nowPortrait, (p) => setLoadProgress(p)).then((imgs) => {
+          imagesRef.current = imgs;
+          setReady(true);
+        });
+      }
+
+      resizeCanvas();
+    };
 
     window.addEventListener('resize', onResize);
     window.addEventListener('orientationchange', onResize);
@@ -221,8 +255,16 @@ const HeroWadha = () => {
         {/* Canvas — sized by resizeCanvas(), crisp on all pixel densities */}
         <canvas
           ref={canvasRef}
-          className="absolute top-0 left-0 block"
-          style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.6s ease' }}
+          className="block"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            width: '100%',
+            opacity: ready ? 1 : 0,
+            transition: 'opacity 0.6s ease',
+          }}
         />
 
         {/* Scroll hint */}
