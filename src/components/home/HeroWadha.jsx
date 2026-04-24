@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 const TOTAL_FRAMES = 121;
-const IMG_PATH = (n) => `/300/${String(n).padStart(5, '0')}.jpg`;
+const IMG_PATH = (n) => `/400/${String(n).padStart(5, '0')}.jpg`;
 
 // Cap DPR at 2 — phones with dpr=3/4 would create massive canvases
 const getDpr = () => Math.min(window.devicePixelRatio || 1, 2);
@@ -183,11 +183,11 @@ const HeroWadha = () => {
   return (
     /*
      * Section height drives how long the user scrolls through the animation.
-     * 500vh gives a comfortable scroll on both desktop and mobile.
+     * 620vh → ~23 frames per 100vh scrolled (sweet spot between 500 and 800).
      */
     <section
       ref={sectionRef}
-      style={{ height: '500vh' }}
+      style={{ height: '620vh' }}
       className="relative w-full"
     >
       {/*
@@ -198,7 +198,7 @@ const HeroWadha = () => {
       <div
         ref={stickyRef}
         className="sticky left-0 w-full overflow-hidden bg-black"
-        style={{ top: '72px', height: 'calc(100vh - 72px)' }}
+        style={{ top: '72px', height: 'calc(100vh - 72px)', marginTop: 0 }}
       >
         {/* Loading overlay */}
         {!ready && (
