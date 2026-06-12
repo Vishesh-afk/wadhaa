@@ -72,7 +72,7 @@ const NavbarWadha = () => {
                         <img src={logoImg} alt="Wadha Logo" className="h-12 w-auto object-contain" />
                         <div className="flex flex-col">
                             <span className="text-xl font-black tracking-tight text-blue-900 leading-none">SWAMI</span>
-                            <span className="text-[10px] font-bold tracking-widest text-green-600 uppercase leading-none">Industry</span>
+                            <span className="text-[10px] font-bold tracking-widest text-green-600 uppercase leading-none">Industries</span>
                         </div>
                     </div>
 

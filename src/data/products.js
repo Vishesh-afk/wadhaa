@@ -57,19 +57,6 @@ export const productsData = [
         }
       },
       {
-        id: "wadha-detergent-powder-5kg-new",
-        name: "Detergent Powder - 5 Kg",
-        price: "Rs. 373.83 / Bag",
-        moq: "5,000 Bags",
-        desc: "Superior cleaning power in a Family Pack. Our 5 Kg Detergent Powder provides deep stain fighting and long-lasting freshness for all your laundry needs.",
-        specs: {
-          Brand: "Wadha",
-          Weight: "5 Kg",
-          Fragrance: "Lemon Fresh",
-          Packaging: "Family Pack Bag"
-        }
-      },
-      {
         id: "toto-detergent-powder-1kg",
         name: "1 Kg TOTO Detergent Powder",
         price: "Rs. 39.17 / Pack",

@@ -16,63 +16,113 @@ const getNavbarHeight = () => {
   return nav ? nav.getBoundingClientRect().height : 72;
 };
 
-// Use the real visible viewport height (avoids the mobile 100vh bug where
-// mobile browser chrome is included in 100vh)
+// Use the real visible viewport height (avoids the mobile 100vh bug)
 const getViewportH = () =>
   window.visualViewport ? window.visualViewport.height : window.innerHeight;
 
-// Reliable portrait check — use matchMedia so it works immediately after mount
+// Reliable portrait check
 const isPortraitScreen = () =>
   typeof window !== 'undefined' &&
   window.matchMedia('(orientation: portrait)').matches;
 
-// ─── Preloader ────────────────────────────────────────────────────────────────
-function preloadImages(portrait, onProgress) {
-  const images = new Array(TOTAL_FRAMES);
-  let loaded = 0;
+// ─── Module-level frame cache ─────────────────────────────────────────────────
+// Persists across React mounts/unmounts for the lifetime of the browser tab.
+// Key: 'landscape' | 'portrait'
+// Value: { images: Image[], fullyLoaded: boolean, firstFrameReady: boolean }
+const frameCache = {};
 
-  return new Promise((resolve) => {
-    for (let i = 1; i <= TOTAL_FRAMES; i++) {
+// ─── Progressive Loader ───────────────────────────────────────────────────────
+// • firstFramePromise resolves after just frame 1 (~150 KB) → canvas shows NOW
+// • remaining 120 frames trickle in via batched background requests
+// • writes into both imagesArray AND frameCache so re-mounts reuse results
+function startProgressiveLoad(portrait, imagesArray, onProgress) {
+  const cacheKey = portrait ? 'portrait' : 'landscape';
+  let cancelled = false;
+
+  const loadOne = (i) =>
+    new Promise((resolve) => {
       const img = new Image();
       img.src = getImgPath(i, portrait);
-      img.onload = img.onerror = () => {
-        loaded++;
-        onProgress(loaded / TOTAL_FRAMES);
-        if (loaded === TOTAL_FRAMES) resolve(images);
+      img.onload = () => {
+        if (!cancelled) {
+          imagesArray[i - 1] = img;
+          frameCache[cacheKey].images[i - 1] = img; // write to cache
+        }
+        resolve();
       };
-      images[i - 1] = img;
-    }
+      img.onerror = () => resolve();
+    });
+
+  const firstFramePromise = loadOne(1).then(() => {
+    if (!cancelled) frameCache[cacheKey].firstFrameReady = true;
   });
+
+  firstFramePromise.then(() => {
+    if (cancelled) return;
+    onProgress(1 / TOTAL_FRAMES);
+
+    let loaded = 1;
+    const BATCH = 8;
+
+    const loadBatch = async (start) => {
+      if (cancelled || start > TOTAL_FRAMES) return;
+      const end = Math.min(start + BATCH - 1, TOTAL_FRAMES);
+      const batch = [];
+      for (let i = start; i <= end; i++) batch.push(loadOne(i));
+      await Promise.all(batch);
+      if (!cancelled) {
+        loaded += batch.length;
+        const ratio = Math.min(loaded / TOTAL_FRAMES, 1);
+        onProgress(ratio);
+        if (ratio >= 1) frameCache[cacheKey].fullyLoaded = true;
+        loadBatch(end + 1);
+      }
+    };
+
+    loadBatch(2);
+  });
+
+  return {
+    firstFramePromise,
+    cancelAll: () => { cancelled = true; },
+  };
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
 const HeroWadha = () => {
-  const sectionRef     = useRef(null);
-  const stickyRef      = useRef(null);
-  const canvasRef      = useRef(null);
-  const imagesRef      = useRef([]);
-  const frameRef       = useRef(0);
-  const rafRef         = useRef(null);
-  const navHRef        = useRef(72);    // live navbar height in px
-  const viewHRef       = useRef(600);   // live visible viewport height
-  const portraitRef    = useRef(isPortraitScreen()); // which sequence is loaded
+  const sectionRef  = useRef(null);
+  const stickyRef   = useRef(null);
+  const canvasRef   = useRef(null);
+  const imagesRef   = useRef([]);
+  const frameRef    = useRef(0);
+  const rafRef      = useRef(null);
+  const navHRef     = useRef(72);
+  const viewHRef    = useRef(600);
+  const portraitRef = useRef(isPortraitScreen());
+  const cancelRef   = useRef(null);
 
   const [loadProgress, setLoadProgress] = useState(0);
   const [ready, setReady]               = useState(false);
+  const [fullyLoaded, setFullyLoaded]   = useState(false);
 
-  // ── Draw frame (all dimensions in physical pixels — NO ctx.scale) ─────────
+  // ── Draw frame — falls back to nearest loaded frame if target not yet ready ──
   const drawFrame = useCallback((index) => {
     const canvas = canvasRef.current;
-    const img    = imagesRef.current[index];
-    if (!canvas || !img || !img.complete || !img.naturalWidth) return;
+    if (!canvas) return;
+
+    let img = imagesRef.current[index];
+    if (!img || !img.complete || !img.naturalWidth) {
+      for (let i = index - 1; i >= 0; i--) {
+        const c = imagesRef.current[i];
+        if (c && c.complete && c.naturalWidth) { img = c; break; }
+      }
+    }
+    if (!img || !img.complete || !img.naturalWidth) return;
 
     const ctx = canvas.getContext('2d');
     const W = canvas.width;
     const H = canvas.height;
 
-    // Always use cover — the correct aspect-ratio sequence is loaded per
-    // orientation (/900/ for portrait, /400/ for landscape) so there is
-    // no mismatch and the image fills edge-to-edge on every device.
     const scale = Math.max(W / img.naturalWidth, H / img.naturalHeight);
     const sw = img.naturalWidth  * scale;
     const sh = img.naturalHeight * scale;
@@ -83,100 +133,125 @@ const HeroWadha = () => {
     ctx.drawImage(img, sx, sy, sw, sh);
   }, []);
 
-  // ── Resize canvas (correct HiDPI — no ctx.scale) ─────────────────────────
+  // ── Resize canvas (correct HiDPI) ─────────────────────────────────────────
   const resizeCanvas = useCallback(() => {
     const canvas = canvasRef.current;
     const sticky = stickyRef.current;
     if (!canvas || !sticky) return;
 
-    const navH   = getNavbarHeight();
-    const viewH  = getViewportH();
-    const dpr    = getDpr();
+    const navH = getNavbarHeight();
+    const viewH = getViewportH();
+    const dpr = getDpr();
 
-    // Store live values for scroll handler
     navHRef.current  = navH;
     viewHRef.current = viewH;
 
-    // Use the container's actual rendered width to avoid any mismatch with
-    // window.innerWidth on mobile (e.g. scrollbar offset, sub-pixel rounding)
     const displayW = sticky.clientWidth || window.innerWidth;
     const displayH = viewH - navH;
 
-    // Physical pixel canvas size (setting .width resets the context transform)
     canvas.width  = Math.round(displayW * dpr);
     canvas.height = Math.round(displayH * dpr);
-
-    // CSS display size — fill the container exactly, no overflow
     canvas.style.width  = '100%';
     canvas.style.height = `${displayH}px`;
 
-    // Update sticky container dimensions inline to match real viewport
     sticky.style.top    = `${navH}px`;
     sticky.style.height = `${displayH}px`;
 
-    // Redraw at current frame with the fresh canvas size
     drawFrame(frameRef.current);
   }, [drawFrame]);
 
-  // ── Preload images (pick correct sequence for current orientation) ─────────
+  // ── Start (or restart) progressive load — checks cache first ────────────────
+  const startLoad = useCallback((portrait) => {
+    if (cancelRef.current) cancelRef.current();
+
+    const cacheKey = portrait ? 'portrait' : 'landscape';
+    const cached = frameCache[cacheKey];
+
+    // ✅ Cache hit: frames already in memory — show instantly, no network needed
+    if (cached && cached.firstFrameReady) {
+      imagesRef.current = cached.images;
+      frameRef.current  = 0;
+      setLoadProgress(1);
+      setReady(true);
+      setFullyLoaded(cached.fullyLoaded);
+
+      // If the previous load hadn't fully finished, resume it in background
+      if (!cached.fullyLoaded) {
+        const { cancelAll } = startProgressiveLoad(
+          portrait,
+          imagesRef.current,
+          (ratio) => {
+            setLoadProgress(ratio);
+            if (ratio >= 1) setFullyLoaded(true);
+          }
+        );
+        cancelRef.current = cancelAll;
+      }
+      return;
+    }
+
+    // ❌ Cache miss: initialise cache entry and start fresh progressive load
+    frameCache[cacheKey] = {
+      images: new Array(TOTAL_FRAMES).fill(null),
+      firstFrameReady: false,
+      fullyLoaded: false,
+    };
+
+    setReady(false);
+    setFullyLoaded(false);
+    setLoadProgress(0);
+    imagesRef.current = frameCache[cacheKey].images;
+    frameRef.current  = 0;
+
+    const { firstFramePromise, cancelAll } = startProgressiveLoad(
+      portrait,
+      imagesRef.current,
+      (ratio) => {
+        setLoadProgress(ratio);
+        if (ratio >= 1) setFullyLoaded(true);
+      }
+    );
+    cancelRef.current = cancelAll;
+
+    // Show canvas the moment frame 1 arrives
+    firstFramePromise.then(() => setReady(true));
+  }, []);
+
+  // ── Initial load ──────────────────────────────────────────────────────────
   useEffect(() => {
     const portrait = isPortraitScreen();
     portraitRef.current = portrait;
-    setReady(false);
-    setLoadProgress(0);
-    imagesRef.current = [];
-    preloadImages(portrait, (p) => setLoadProgress(p)).then((imgs) => {
-      imagesRef.current = imgs;
-      setReady(true);
-    });
-  }, []);
+    startLoad(portrait);
+    return () => { if (cancelRef.current) cancelRef.current(); };
+  }, [startLoad]);
 
-  // ── Attach resize / orientation listeners ─────────────────────────────────
+  // ── Resize / orientation listeners ───────────────────────────────────────
   useEffect(() => {
     resizeCanvas();
 
     const onResize = () => {
       const nowPortrait = isPortraitScreen();
-
-      // If orientation flipped, reload the correct image sequence
       if (nowPortrait !== portraitRef.current) {
         portraitRef.current = nowPortrait;
-        setReady(false);
-        setLoadProgress(0);
-        imagesRef.current = [];
-        frameRef.current = 0;
-        preloadImages(nowPortrait, (p) => setLoadProgress(p)).then((imgs) => {
-          imagesRef.current = imgs;
-          setReady(true);
-        });
+        startLoad(nowPortrait);
       }
-
       resizeCanvas();
     };
 
     window.addEventListener('resize', onResize);
     window.addEventListener('orientationchange', onResize);
-
-    // visualViewport fires when mobile browser chrome shows/hides
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener('resize', onResize);
-    }
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', onResize);
 
     return () => {
       window.removeEventListener('resize', onResize);
       window.removeEventListener('orientationchange', onResize);
-      if (window.visualViewport) {
-        window.visualViewport.removeEventListener('resize', onResize);
-      }
+      if (window.visualViewport) window.visualViewport.removeEventListener('resize', onResize);
     };
-  }, [resizeCanvas]);
+  }, [resizeCanvas, startLoad]);
 
-  // ── Redraw first frame once images are loaded ─────────────────────────────
+  // ── Draw frame 0 as soon as images start arriving ─────────────────────────
   useEffect(() => {
-    if (ready) {
-      resizeCanvas();
-      drawFrame(0);
-    }
+    if (ready) { resizeCanvas(); drawFrame(0); }
   }, [ready, resizeCanvas, drawFrame]);
 
   // ── Scroll driver ─────────────────────────────────────────────────────────
@@ -185,12 +260,11 @@ const HeroWadha = () => {
       const section = sectionRef.current;
       if (!section || !ready) return;
 
-      const rect            = section.getBoundingClientRect();
-      // scrollable distance = section height minus the visible window height
-      const scrollableH     = section.offsetHeight - window.innerHeight;
-      const scrolled        = -rect.top;
-      const progress        = Math.max(0, Math.min(1, scrolled / scrollableH));
-      const targetFrame     = Math.round(progress * (TOTAL_FRAMES - 1));
+      const rect        = section.getBoundingClientRect();
+      const scrollableH = section.offsetHeight - window.innerHeight;
+      const scrolled    = -rect.top;
+      const progress    = Math.max(0, Math.min(1, scrolled / scrollableH));
+      const targetFrame = Math.round(progress * (TOTAL_FRAMES - 1));
 
       if (targetFrame !== frameRef.current) {
         frameRef.current = targetFrame;
@@ -200,41 +274,27 @@ const HeroWadha = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Also listen on visual-viewport scroll for some mobile browsers
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener('scroll', handleScroll);
-    }
+    if (window.visualViewport) window.visualViewport.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (window.visualViewport) {
-        window.visualViewport.removeEventListener('scroll', handleScroll);
-      }
+      if (window.visualViewport) window.visualViewport.removeEventListener('scroll', handleScroll);
       cancelAnimationFrame(rafRef.current);
     };
   }, [ready, drawFrame]);
 
   return (
-    /*
-     * Section height drives how long the user scrolls through the animation.
-     * 620vh → ~23 frames per 100vh scrolled (sweet spot between 500 and 800).
-     */
     <section
       ref={sectionRef}
       style={{ height: '620vh' }}
       className="relative w-full"
     >
-      {/*
-       * Sticky container — dimensions are set inline by resizeCanvas()
-       * so they always match the real visible area on every device.
-       * Initial inline values are sensible defaults before JS runs.
-       */}
       <div
         ref={stickyRef}
         className="sticky left-0 w-full overflow-hidden bg-black"
         style={{ top: '72px', height: 'calc(100vh - 72px)', marginTop: 0 }}
       >
-        {/* Loading overlay */}
+        {/* Full-screen overlay — only shown until frame 1 arrives */}
         {!ready && (
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black gap-6">
             <div className="text-white text-sm font-semibold tracking-[0.3em] uppercase opacity-60">
@@ -252,7 +312,7 @@ const HeroWadha = () => {
           </div>
         )}
 
-        {/* Canvas — sized by resizeCanvas(), crisp on all pixel densities */}
+        {/* Canvas */}
         <canvas
           ref={canvasRef}
           role="img"
@@ -260,14 +320,22 @@ const HeroWadha = () => {
           className="block"
           style={{
             position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
+            top: 0, left: 0, right: 0,
             width: '100%',
             opacity: ready ? 1 : 0,
             transition: 'opacity 0.6s ease',
           }}
         />
+
+        {/* Thin progress bar — visible after frame 1 while rest stream in */}
+        {ready && !fullyLoaded && (
+          <div className="absolute bottom-0 left-0 w-full h-[2px] bg-white/10 z-10">
+            <div
+              className="h-full bg-white/40 transition-all duration-500"
+              style={{ width: `${loadProgress * 100}%` }}
+            />
+          </div>
+        )}
 
         {/* Scroll hint */}
         {ready && (
