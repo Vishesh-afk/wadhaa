@@ -207,9 +207,7 @@ const NavbarWadha = () => {
                             <div key={link.name}>
                                 <button
                                     className="block w-full text-left px-3 py-3 text-base font-bold text-gray-800 hover:bg-blue-50 rounded-md border-b border-gray-50"
-                                    onClick={() => {
-                                        if (!link.hasDropdown) handleNavClick(link);
-                                    }}
+                                    onClick={() => handleNavClick(link)}
                                 >
                                     {link.name}
                                 </button>

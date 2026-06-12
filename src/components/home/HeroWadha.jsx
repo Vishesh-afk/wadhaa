@@ -255,6 +255,8 @@ const HeroWadha = () => {
         {/* Canvas — sized by resizeCanvas(), crisp on all pixel densities */}
         <canvas
           ref={canvasRef}
+          role="img"
+          aria-label="Wadha detergent product animation"
           className="block"
           style={{
             position: 'absolute',

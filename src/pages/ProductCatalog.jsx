@@ -10,13 +10,13 @@ import SocialProofWadha from '../components/home/SocialProofWadha';
 // Product Images
 import imgPowder from '../assets/wadha powder.jpeg';
 import imgBar from '../assets/wadha bar.jpeg';
-import imgMatic from '../assets/IMG_2192.PNG';
+import imgMatic from '../assets/IMG_2192.jpeg';
 import img5Kg from '../assets/WhatsApp Image 2026-01-17 at 5.05.56 PM.jpeg';
 import imgToto from '../assets/WhatsApp Image 2026-01-17 at 5.05.55 PM.jpeg';
 import imgDishwash from '../assets/dishwash.jpeg';
 import imgTikiya from '../assets/tikiya.jpeg';
 import imgCake from '../assets/cake.jpeg';
-import imgPhenyl1L from '../assets/phenyl/hf_20260221_125455_8617201f-82c2-402a-9c97-5506a6a14d97.png';
+import imgPhenyl1L from '../assets/phenyl/hf_20260221_125455_8617201f-82c2-402a-9c97-5506a6a14d97.jpeg';
 import imgPhenyl5L from '../assets/phenyl/hf_20260221_130847_98686629-861c-44fd-84a8-c08598b441d2.jpeg';
 
 const ProductCatalog = () => {
@@ -197,6 +197,7 @@ const ProductCatalog = () => {
                                                                 <img
                                                                     src={imgSrc}
                                                                     alt={product.name}
+                                                                    loading="lazy"
                                                                     className="max-w-full max-h-full md:max-h-[85%] object-contain group-hover:scale-105 transition-transform duration-700 drop-shadow-sm"
                                                                 />
                                                             );

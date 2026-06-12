@@ -38,7 +38,7 @@ export const productsData = [
       {
         id: "wadha-detergent-powder-5kg",
         name: "Detergent Washing Powder – 5 Kg",
-        price: "Rs. 373.83 / Piece",
+        price: "Rs. 373.83 / bag",
         moq: "25,000 Pieces",
         desc: "WADHA detergent powders ensure superior cleaning performance. Manufactured under hygienic conditions using a precise blend of Borax, Washing Soda, Bleach, Builders, and Perfumes, ensuring long shelf life and consistent effectiveness.",
         specs: { 

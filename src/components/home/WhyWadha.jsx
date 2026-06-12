@@ -35,10 +35,10 @@ const WhyWadha = () => {
                                 "We promise a clean that you can see, feel, and smell. No compromise."
                             </p>
                             <div className="mt-4 flex items-center">
-                                <div className="w-10 h-10 bg-gray-300 rounded-full mr-3"></div>
+                                <div className="w-10 h-10 bg-blue-700 rounded-full mr-3 flex items-center justify-center text-white font-black text-sm">SI</div>
                                 <div>
-                                    <div className="text-sm font-bold text-white">Dr. Rajesh Kumar</div>
-                                    <div className="text-xs text-blue-200">Head of R&D, Wadha Labs</div>
+                                    <div className="text-sm font-bold text-white">Swami Industries R&amp;D</div>
+                                    <div className="text-xs text-blue-200">Wadha Formulation Team</div>
                                 </div>
                             </div>
                         </div>

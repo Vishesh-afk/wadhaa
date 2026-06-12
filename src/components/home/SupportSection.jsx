@@ -74,9 +74,12 @@ const SupportSection = () => {
                         <div className="mt-12">
                             <p className="text-xs text-blue-200 mb-2">Connect with us</p>
                             <div className="flex space-x-4">
-                                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/40 transition-colors">FB</div>
-                                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/40 transition-colors">IG</div>
-                                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/40 transition-colors">YT</div>
+                                <a href="https://www.facebook.com/share/1CimkLh6wZ/" target="_blank" rel="noopener noreferrer"
+                                   className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/40 transition-colors font-bold text-xs">FB</a>
+                                <a href="https://www.instagram.com/wadhadetergent" target="_blank" rel="noopener noreferrer"
+                                   className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/40 transition-colors font-bold text-xs">IG</a>
+                                <a href="https://www.youtube.com/@Wadhadetergent/videos" target="_blank" rel="noopener noreferrer"
+                                   className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/40 transition-colors font-bold text-xs">YT</a>
                             </div>
                         </div>
                     </div>

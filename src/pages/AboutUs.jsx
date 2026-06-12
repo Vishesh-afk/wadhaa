@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import NavbarWadha from '../components/layout/NavbarWadha';
 import FooterWadha from '../components/layout/FooterWadha';
 import SocialProofWadha from '../components/home/SocialProofWadha';
 
 const AboutUs = () => {
+    // Fixed positions — memoized so they don't re-randomize on every render
+    const bubbles = useMemo(() => [
+        { left: '12%',  size: '40px', delay: '0s',    duration: '14s' },
+        { left: '30%',  size: '60px', delay: '2.5s',  duration: '18s' },
+        { left: '52%',  size: '28px', delay: '1s',    duration: '12s' },
+        { left: '70%',  size: '50px', delay: '4s',    duration: '20s' },
+        { left: '88%',  size: '36px', delay: '3s',    duration: '16s' },
+    ], []);
+
     const factsheet = {
         basicInfo: [
             { label: 'Nature of Business', value: 'Manufacturer', icon: "🏭" },
@@ -35,15 +44,10 @@ const AboutUs = () => {
                 <section className="relative py-20 lg:py-32 bg-gradient-to-br from-blue-900 via-blue-800 to-green-900 overflow-hidden text-white">
                     {/* Background Bubbles */}
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                        {[...Array(5)].map((_, i) => (
+                        {bubbles.map((b, i) => (
                             <div key={i} className="absolute rounded-full bg-white/10 backdrop-blur-sm animate-float-bubble"
-                                style={{
-                                    left: `${Math.random() * 100}%`,
-                                    width: `${Math.random() * 60 + 20}px`,
-                                    height: `${Math.random() * 60 + 20}px`,
-                                    animationDelay: `${Math.random() * 5}s`,
-                                    animationDuration: `${Math.random() * 10 + 10}s`
-                                }}></div>
+                                style={{ left: b.left, width: b.size, height: b.size, animationDelay: b.delay, animationDuration: b.duration }}>
+                            </div>
                         ))}
                     </div>
 
@@ -173,7 +177,7 @@ const AboutUs = () => {
                                     ))}
                                     <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-[30px] border border-orange-200 relative overflow-hidden group">
                                         <h5 className="font-bold uppercase text-[10px] tracking-widest mb-4 text-orange-800">Strategic Alignment</h5>
-                                        <p className="text-xs font-medium text-orange-900 leading-relaxed">Accepting enterprise distribution contracts for FY 24-25. Contact our logistics wing for quote estimates.</p>
+                                        <p className="text-xs font-medium text-orange-900 leading-relaxed">Accepting enterprise distribution contracts for FY 25-26. Contact our logistics wing for quote estimates.</p>
                                     </div>
                                 </div>
                             </div>

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Instagram } from 'lucide-react';
 
-// Family Images
-import family1 from '../../assets/family/Screenshot 2026-02-21 181747.png';
-import family2 from '../../assets/family/Screenshot 2026-02-21 181803.png';
-import family3 from '../../assets/family/Screenshot 2026-02-21 181815.png';
-import family4 from '../../assets/family/Screenshot 2026-02-21 181831.png';
+// Family Images (optimized JPEG versions)
+import family1 from '../../assets/family/Screenshot 2026-02-21 181747.jpeg';
+import family2 from '../../assets/family/Screenshot 2026-02-21 181803.jpeg';
+import family3 from '../../assets/family/Screenshot 2026-02-21 181815.jpeg';
+import family4 from '../../assets/family/Screenshot 2026-02-21 181831.jpeg';
 
 const SocialProofWadha = () => {
     const instagramUrl = "https://www.instagram.com/wadhadetergent?igsh=MTB2dGY0emVnZW8wYQ==";
@@ -42,6 +42,7 @@ const SocialProofWadha = () => {
                             <img
                                 src={image.url}
                                 alt={image.alt}
+                                loading="lazy"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
                             {/* Overlay */}
