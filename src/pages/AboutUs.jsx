@@ -103,7 +103,7 @@ const AboutUs = () => {
 
                         <div className="lg:w-1/3">
                             <div className="bg-gradient-to-br from-slate-900 to-blue-900 rounded-[40px] p-10 text-white flex flex-col items-center justify-center text-center space-y-6 h-full shadow-2xl relative overflow-hidden group">
-                                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)', backgroundSize: '8px 8px' }}></div>
                                 <div className="relative z-10 text-8xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400">10+</div>
                                 <div className="relative z-10 space-y-2">
                                     <h4 className="text-2xl font-bold tracking-tight">Decade of Trust</h4>

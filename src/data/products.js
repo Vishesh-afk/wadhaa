@@ -1,17 +1,101 @@
-import { 
-  Sparkles, 
-  Droplets, 
-  Trash2, 
-  UtensilsCrossed, 
-  ShieldCheck, 
+import {
+  Sparkles,
+  Droplets,
+  UtensilsCrossed,
+  ShieldCheck,
   Factory,
   Zap,
-  Waves
+  Waves,
+  Wind
 } from 'lucide-react';
 
+// ── WADHA Detergent Powder (toto pwd folder = WADHA powder) ───────────────────
+import wdhaPwd_1 from '../assets/wadha/toto pwd/p1.png';
+import wdhaPwd_2 from '../assets/wadha/toto pwd/p2.png';
+import wdhaPwd_3 from '../assets/wadha/toto pwd/p3.png';
+import wdhaPwd_4 from '../assets/wadha/toto pwd/p4.png';
+import wdhaPwd_5 from '../assets/wadha/toto pwd/hf_20260720_130204_8a20da08-a5c7-4c67-af06-014a575d5485.png';
+import wdhaPwd_6 from '../assets/wadha/toto pwd/hf_20260720_130222_7814f339-7d19-4e63-952a-6c5ddb398400.png';
+
+// ── TOTO Detergent Powder (toto powder folder = TOTO powder) ──────────────────
+import totoPwd_1 from '../assets/wadha/toto powder/tp1.png';
+import totoPwd_2 from '../assets/wadha/toto powder/tp2.png';
+import totoPwd_3 from '../assets/wadha/toto powder/tp3.png';
+import totoPwd_4 from '../assets/wadha/toto powder/tp4.png';
+import totoPwd_5 from '../assets/wadha/toto powder/hf_20260720_130915_cb0ac8ac-b7f7-4ec8-a7b8-736b1d798bf3.png';
+
+// ── WADHA Detergent Cake / Bar (rin bar folder = WADHA Detergent Cake) ─────────
+import wdhaCake_1 from '../assets/wadha/rin bar/b1.png';
+import wdhaCake_2 from '../assets/wadha/rin bar/b2.png';
+import wdhaCake_3 from '../assets/wadha/rin bar/b3.png';
+import wdhaCake_4 from '../assets/wadha/rin bar/b4.png';
+import wdhaCake_5 from '../assets/wadha/rin bar/hf_20260720_131049_fdea2ae9-a9d9-4e77-8e96-6e71b7f7b30c.png';
+import wdhaCake_6 from '../assets/wadha/rin bar/hf_20260720_131114_0d9f6ee0-dc9b-408c-8300-b1b09b6f976a.png';
+
+// ── TOTO Matic Liquid (toto liq folder = TOTO Matic Liquid) ───────────────────
+import totoLiq_1 from '../assets/wadha/toto liq/t1.png';
+import totoLiq_2 from '../assets/wadha/toto liq/t2.png';
+import totoLiq_3 from '../assets/wadha/toto liq/t3.png';
+import totoLiq_4 from '../assets/wadha/toto liq/t4.png';
+import totoLiq_5 from '../assets/wadha/toto liq/t5.png';
+import totoLiq_6 from '../assets/wadha/toto liq/hf_20260720_131452_79e4ddd0-1be9-478c-9e62-4823c992a65b.png';
+import totoLiq_7 from '../assets/wadha/toto liq/hf_20260720_131507_db3f7ab2-9403-4d00-b62f-782c8d86f130.png';
+
+// ── WADHA Toilet Cleaner (harpic folder = WADHA Toilet Cleaner) ───────────────
+import toilet_1 from '../assets/wadha/harpic/hf_20260720_134321_497fffdc-5329-417b-8e2d-7aa66c889d99.png';
+import toilet_2 from '../assets/wadha/harpic/hf_20260720_134340_ec70e1d5-26fc-4947-a273-a6bfe3958d7c.png';
+import toilet_3 from '../assets/wadha/harpic/hf_20260720_134354_878da122-d8b0-4040-baef-6de75e2ca8ca.png';
+import toilet_4 from '../assets/wadha/harpic/hf_20260720_134409_cf345c3a-6796-4a9d-9a10-34b93863a140.png';
+import toilet_5 from '../assets/wadha/harpic/hf_20260720_134433_bc418742-4912-47ff-a883-5175aa1c1b47.png';
+
+// ── WADHA Dishwash Liquid/Bottle (dish bottle folder = WADHA Dishwash bottle) ─
+import wdhaDish_1 from '../assets/wadha/dish bottle/d1.png';
+import wdhaDish_2 from '../assets/wadha/dish bottle/d2.png';
+import wdhaDish_3 from '../assets/wadha/dish bottle/d3.png';
+import wdhaDish_4 from '../assets/wadha/dish bottle/d4.png';
+import wdhaDish_5 from '../assets/wadha/dish bottle/hf_20260720_132748_c9fbd681-004f-4c74-affd-c61b1bca4917.png';
+
+// ── TOTO Dishwash Liquid (dishwash liq folder = TOTO Dishwash) ────────────────
+import totoDish_1 from '../assets/wadha/dishwash liq/hf_20260720_135654_7a06ee63-5694-4698-9eed-0434f0703f38.png';
+import totoDish_2 from '../assets/wadha/dishwash liq/hf_20260720_135709_ae2049d3-1e27-4144-82fb-6a45c44fd1de.png';
+import totoDish_3 from '../assets/wadha/dishwash liq/hf_20260720_135735_335e67fe-86c9-4d4b-832d-5168ac6fc56a.png';
+import totoDish_4 from '../assets/wadha/dishwash liq/hf_20260720_135810_f356302c-7df0-4831-b448-c97b08788735.png';
+import totoDish_5 from '../assets/wadha/dishwash liq/hf_20260720_135824_93430adf-0558-49a2-bee8-47d419e3a4b0.png';
+
+// ── WADHA Dishwash Bar (dishwash bar folder = WADHA Dishwash Bar) ─────────────
+import dishBar_1 from '../assets/wadha/dishwash bar/hf_20260720_134810_32e303c1-15c9-4a88-9f3a-b30ea85e4f33.png';
+import dishBar_2 from '../assets/wadha/dishwash bar/hf_20260720_134833_e82df7da-7d8e-4711-94cf-8ab0b42a8091.png';
+import dishBar_3 from '../assets/wadha/dishwash bar/hf_20260720_134849_ae8b7d71-9e78-4248-83e1-bfd60f894622.png';
+import dishBar_4 from '../assets/wadha/dishwash bar/hf_20260720_134908_3766d8ed-6e0f-4a54-9fa0-84631269270b.png';
+import dishBar_5 from '../assets/wadha/dishwash bar/hf_20260720_134926_55f58c30-6f7a-483c-bd9d-69f8807709d8.png';
+import dishBar_6 from '../assets/wadha/dishwash bar/hf_20260720_134941_93403e89-dd1a-490f-aeb0-331d86fc99c8.png';
+
+// ── WADHA Phenyl (phny folder = WADHA Phenyl) ─────────────────────────────────
+import phenyl_1 from '../assets/wadha/phny/c1.png';
+import phenyl_2 from '../assets/wadha/phny/c2.png';
+import phenyl_3 from '../assets/wadha/phny/c3.png';
+import phenyl_4 from '../assets/wadha/phny/c4.png';
+import phenyl_5 from '../assets/wadha/phny/c5.png';
+import phenyl_6 from '../assets/wadha/phny/hf_20260720_131745_e247caac-58dc-4e8d-8c3e-248d100043ae.png';
+
+// ── WADHA Glass Cleaner (colin folder = WADHA Glass Cleaner) ──────────────────
+import glass_1 from '../assets/wadha/colin/hf_20260720_133639_ff7dd8f5-93cb-4d4e-9396-c3712a3eb66a.png';
+import glass_2 from '../assets/wadha/colin/hf_20260720_133654_be768396-bfd7-4cae-b01f-88280ea806ad.png';
+import glass_3 from '../assets/wadha/colin/hf_20260720_133711_fda8b37d-c677-46ce-9bd6-ee539ac2bc18.png';
+import glass_4 from '../assets/wadha/colin/hf_20260720_133730_2006ac0f-273e-4325-a4ad-cacc89d69022.png';
+import glass_5 from '../assets/wadha/colin/hf_20260720_133746_13f48b14-bf64-4462-af5d-c1339302e449.png';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PRODUCTS DATA — matches the WADHA PRODUCT CATALOG exactly
+// Category order: Detergent Powder → Detergent Cake → Toilet Cleaner
+//                 → Dishwash Liquid → Dishwash Bar → Phenyl → Glass Cleaner
+//                 → Contract Manufacturing
+// ─────────────────────────────────────────────────────────────────────────────
 export const productsData = [
+
+  // ── 1. DETERGENT POWDER ────────────────────────────────────────────────────
   {
-    category: "Wash and Shine Range",
+    category: "Detergent Powder",
     id: "detergent-powder",
     icon: Sparkles,
     description: "Superior stain removal and fabric care formulations.",
@@ -20,150 +104,165 @@ export const productsData = [
         id: "wadha-detergent-powder-1kg",
         name: "Detergent Powder 1 Kg – Wadha",
         price: "Rs. 55.10 / Kg",
-        moq: "200,000 Kg",
+        moq: "2,00,000 Kg",
+        images: [wdhaPwd_1, wdhaPwd_2, wdhaPwd_3, wdhaPwd_4, wdhaPwd_5, wdhaPwd_6],
         desc: "With our vast experience and in-depth industry knowledge, we are engaged in offering a quality-assured range of Wadha Detergent Powder. The product provides effective cleaning performance and is suitable for daily laundry use.",
-        specs: { 
-          Brand: "Wadha", 
-          Grade: "Medium", 
-          Fragrance: "Lemon", 
-          Color: "White", 
-          Weight: "1 Kg", 
-          Packaging: "Packet", 
-          PackSize: "500 gm",
-          Usage: "Laundry",
-          Delivery: "3 Days",
-          PackDetails: "Pouch Packing"
+        specs: {
+          Brand: "Wadha",
+          "Quality Grade": "Medium",
+          Fragrance: "Lemon",
+          Color: "White",
+          Weight: "1 Kg",
+          "Packaging Type": "Packet",
+          "Packaging Size": "500 gm",
+          "Usage/Application": "Laundry",
+          "Delivery Time": "3 Days",
+          "Packaging Details": "Pouch Packing"
         }
       },
       {
         id: "wadha-detergent-powder-5kg",
         name: "Detergent Washing Powder – 5 Kg",
-        price: "Rs. 373.83 / bag",
+        price: "Rs. 373.83 / Piece",
         moq: "25,000 Pieces",
+        images: [wdhaPwd_1, wdhaPwd_2, wdhaPwd_3, wdhaPwd_4, wdhaPwd_5, wdhaPwd_6],
         desc: "WADHA detergent powders ensure superior cleaning performance. Manufactured under hygienic conditions using a precise blend of Borax, Washing Soda, Bleach, Builders, and Perfumes, ensuring long shelf life and consistent effectiveness.",
-        specs: { 
-          Brand: "Wadha", 
-          Weight: "5 Kg", 
-          Grade: "Premium", 
-          PackSize: "5 Kg",
-          ShelfLife: "9 Months",
-          Usage: "Laundry",
+        specs: {
+          Brand: "Wadha",
+          Weight: "5 Kg",
+          "Quality Grade": "Premium",
+          "Packaging Size": "5 Kg",
+          "Shelf Life": "9 Months",
+          "Usage/Application": "Laundry",
           Color: "White",
-          Origin: "Made in India",
-          KeyFeatures: "Color Safe, Enzymatic Formula, Germ Protection, Strong Stain Removal, Suitable for Hard Water, Brightening Action",
-          Capacity: "2,500,000",
-          Delivery: "5 Days",
-          Packaging: "Pouch"
+          "Country of Origin": "Made in India",
+          "Key Features": "Color Safe, Enzymatic Formula, Germ Protection, Strong Stain Removal, Hard Water Formula, Brightening Action",
+          "Production Capacity": "25,00,000",
+          "Delivery Time": "5 Days",
+          "Packaging Details": "Pouch"
         }
       },
       {
         id: "toto-detergent-powder-1kg",
-        name: "1 Kg TOTO Detergent Powder",
+        name: "TOTO Detergent Powder – 1 Kg",
         price: "Rs. 39.17 / Pack",
         moq: "5,000 Packs",
+        images: [totoPwd_1, totoPwd_2, totoPwd_3, totoPwd_4, totoPwd_5],
         desc: "Best quality product in its segment. Superior performance compared to other detergent powders in the same price range. Comparable to detergent powders priced between Rs. 70–80. MRP: Rs. 60/-",
-        specs: { 
-          Brand: "Toto", 
-          Size: "1 Kg", 
+        specs: {
+          Brand: "Toto",
+          Size: "1 Kg",
           Fragrance: "Lime",
-          ShelfLife: "9 Months",
+          "Shelf Life": "9 Months",
           MRP: "Rs. 60",
-          Packaging: "Pouch"
+          Packaging: "Pouch",
+          "Delivery Time": "3-5 Days"
         }
       }
     ]
   },
+
+  // ── 2. LIQUID DETERGENT (TOTO Matic) ─────────────────────────────────────
   {
     category: "Liquid Detergent",
     id: "liquid-detergent",
     icon: Waves,
-    description: "Concentrated liquid solutions for modern washing machines.",
+    description: "Concentrated liquid formula for all machine types — top & front load.",
     products: [
       {
-        id: "toto-matic-liquid-2l",
-        name: "Toto Matic Liquid 2L",
-        price: "Rs. 99 / 2L",
+        id: "toto-matic-liquid-1-5l",
+        name: "Toto Matic Liquid – 1.5 L",
+        price: "Rs. 99 / Pack",
         moq: "5,000 Packs",
-        desc: "Premium liquid detergent specialized for washing machines. Deep cleaning formula that protects your machine and your clothes.",
+        images: [totoLiq_1, totoLiq_2, totoLiq_3, totoLiq_4, totoLiq_5, totoLiq_6, totoLiq_7],
+        desc: "TOTO Matic Liquid Detergent delivers superior cleaning performance for all machine types — both top load and front load. The high-quality formula protects fabric, leaves a long-lasting fragrance, and ensures spotless results every wash.",
         specs: {
           Brand: "Toto",
-          Size: "2 Litre",
-          Usage: "Machine Wash",
+          Size: "1.5 Litre",
+          MRP: "Rs. 99",
+          Usage: "Top Load & Front Load Machines",
           Type: "Liquid",
-          Fragrance: "Fresh Floral",
-          Delivery: "3 Days"
+          Fragrance: "Fresh",
+          "Delivery Time": "3 Days"
         }
       }
     ]
   },
+
+  // ── 3. DETERGENT CAKE ──────────────────────────────────────────────────────
   {
-    category: "Wash and Shine Cakes",
+    category: "Detergent Cake",
     id: "detergent-cake",
     icon: Zap,
     description: "Powerful cleaning bars for hand-wash laundry.",
     products: [
       {
-        id: "wadha-mahabar-detergent-cake-240g",
+        id: "wadha-mahabar-240g",
         name: "Detergent Cake 240 g – WADHA MAHABAR",
         price: "Rs. 7.85 / Piece",
         moq: "10,000 Pieces",
+        images: [wdhaCake_1, wdhaCake_2, wdhaCake_3, wdhaCake_4, wdhaCake_5, wdhaCake_6],
         desc: "Backed by rich industry experience, we are actively engaged in offering a premium quality 240 g Detergent Cake (Mahabar). It is known for strong stain-removal performance and is recognized as one of the largest cake sizes available in the market.",
-        specs: { 
-          Brand: "Wadha", 
-          Weight: "250 gm", 
-          PackSize: "240 g",
-          Shape: "Rectangle", 
-          Fragrance: "Lemon", 
-          pHValue: "10", 
-          Moisture: "3%",
-          StainRemoval: "Yes",
-          PackContains: "50 Pieces" 
+        specs: {
+          Brand: "Wadha",
+          Weight: "250 gm",
+          "Packaging Size": "240 g",
+          Shape: "Rectangle",
+          Fragrance: "Lemon",
+          "pH Value": "10",
+          "Moisture Content": "3%",
+          "Removes Tough Stains": "Yes",
+          "Pack Contains": "50 Pieces"
         }
       },
       {
-        id: "wadha-detergent-cake-240g",
+        id: "wadha-cake-240g",
         name: "Detergent Cake 240 g – WADHA",
         price: "Rs. 6.65 / Piece",
         moq: "25,000 Pieces",
+        images: [wdhaCake_1, wdhaCake_2, wdhaCake_3, wdhaCake_4, wdhaCake_5, wdhaCake_6],
         desc: "We are among the reputed organizations engaged in offering an optimum quality 240 g Detergent Cake with Rs. 10 MRP, suitable for both handwash and regular laundry needs.",
-        specs: { 
-          Brand: "Wadha", 
+        specs: {
+          Brand: "Wadha",
           Weight: "250 gm",
-          PackSize: "240 gm",
+          "Packaging Size": "240 gm",
           Shape: "Rectangle",
-          Color: "Blue", 
-          Fragrance: "Jasmine, Citrus", 
-          Usage: "Cloth Washing",
-          PackQty: "60 Pieces",
-          PackType: "Box",
-          Form: "Solid",
-          pHValue: "10", 
-          KeyFeatures: "Gentle on Hands and Clothes, Non-Sogging Formula, High Lather, Removes Tough Stains",
-          Capacity: "10 Ton",
-          Delivery: "10 Days",
-          Packaging: "Standard Size 240 g"
+          Color: "Blue",
+          Fragrance: "Jasmine, Citrus",
+          "Use/Application": "Cloth Washing",
+          "Soaps per Pack": "60 Pieces",
+          "Packaging Type": "Box",
+          "Form Type": "Solid",
+          "pH Value": "10",
+          "Key Features": "Gentle on Hands, Non-Sogging, High Lather, Removes Tough Stains",
+          "Production Capacity": "10 Ton",
+          "Delivery Time": "10 Days",
+          "Packaging Details": "Standard Size 240 g"
         }
       },
       {
-        id: "wadha-detergent-cake-110g",
-        name: "Detergent Tikiya 110 g – WADHA",
+        id: "wadha-cake-110g",
+        name: "Detergent Cake 110 g – WADHA",
         price: "Rs. 3.33 / Piece",
         moq: "50,000 Pieces",
+        images: [wdhaCake_1, wdhaCake_2, wdhaCake_3, wdhaCake_4, wdhaCake_5, wdhaCake_6],
         desc: "We offer a high-quality 110 g Detergent Cake with Rs. 5 MRP, specially designed for effective cleaning. Known as a large-size cake in its category, it delivers excellent performance and durability.",
-        specs: { 
-          Brand: "Wadha", 
-          PackSize: "115 gm", 
+        specs: {
+          Brand: "Wadha",
+          "Packaging Size": "115 gm",
           Shape: "Rectangle",
-          Color: "Blue", 
-          Fragrance: "Lemon", 
+          Color: "Blue",
+          Fragrance: "Lemon",
           Form: "Bar",
-          ShelfLife: "2 Years", 
-          Capacity: "100 Ton",
-          Delivery: "5 Days" 
+          "Shelf Life": "2 Years",
+          "Production Capacity": "100 Ton",
+          "Delivery Time": "5 Days"
         }
       }
     ]
   },
+
+  // ── 4. TOILET CLEANER ─────────────────────────────────────────────────────
   {
     category: "Toilet Cleaner",
     id: "toilet-cleaner",
@@ -171,61 +270,66 @@ export const productsData = [
     description: "Kill 99.9% germs with our high-viscosity blue formula.",
     products: [
       {
+        id: "wadha-toilet-cleaner-200ml",
+        name: "Toilet Cleaner – WADHA (200 ml)",
+        price: "Rs. 23.64 / Bottle",
+        images: [toilet_1, toilet_2, toilet_3, toilet_4, toilet_5],
+        desc: "An effective compact-size toilet cleaner, ideal for household and travel use, delivering powerful cleaning action in a convenient bottle.",
+        specs: {
+          Brand: "Wadha",
+          Form: "Liquid",
+          Color: "Blue",
+          "Packaging Type": "Bottle",
+          "Packaging Size": "200 ml",
+          "Usage/Application": "Toilet Cleaning"
+        }
+      },
+      {
         id: "wadha-toilet-cleaner-500ml",
         name: "Toilet Cleaner – WADHA (500 ml)",
         price: "Rs. 45.45 / Bottle",
         moq: "1,000 Bottles",
+        images: [toilet_1, toilet_2, toilet_3, toilet_4, toilet_5],
         desc: "Backed by in-depth industry knowledge, we are engaged in offering a high-quality liquid toilet cleaner that effectively removes stains, kills germs, and ensures long-lasting freshness.",
-        specs: { 
-          Brand: "Wadha", 
+        specs: {
+          Brand: "Wadha",
           Form: "Liquid",
           Color: "Blue",
-          PackSize: "500 ml",
-          PackType: "Bottle",
-          BottleMat: "HDPE",
-          pHRange: "1–2", 
-          Viscosity: "3000 cPs", 
-          Biodegradable: "Yes", 
-          Usage: "Toilet Cleaning",
-          CartonQty: "24 Bottles", 
-          Capacity: "50 Ton",
-          Delivery: "3 Days",
-          AvailablePacks: "500 ml, 5 L, 50 L"
-        }
-      },
-      {
-        id: "wadha-toilet-cleaner-200ml",
-        name: "Toilet Cleaner – WADHA (200 ml)",
-        price: "Rs. 23.64 / Bottle",
-        desc: "An effective compact-size toilet cleaner, ideal for household and travel use, delivering powerful cleaning action in a convenient bottle.",
-        specs: { 
-          Brand: "Wadha", 
-          Form: "Liquid", 
-          Color: "Blue", 
-          PackType: "Bottle",
-          PackSize: "200 ml",
-          Usage: "Toilet Cleaning"
+          "Packaging Size": "500 ml",
+          "Pack Type": "Bottle",
+          "Bottle Material": "HDPE",
+          "pH Range": "1–2",
+          Viscosity: "3000 cPs",
+          Biodegradable: "Yes",
+          "Usage/Application": "Toilet Cleaning",
+          "Carton Box": "24 Bottles",
+          "Production Capacity": "50 Ton",
+          "Delivery Time": "3 Days",
+          "Available Packs": "200 ml, 500 ml, 5 L, 50 L"
         }
       },
       {
         id: "wadha-toilet-cleaner-5l",
         name: "Toilet Cleaner – WADHA (5 Litre)",
         price: "Rs. 288 / Bottle",
+        images: [toilet_1, toilet_2, toilet_3, toilet_4, toilet_5],
         desc: "Ideal for commercial and bulk usage, the 5-litre Wadha Toilet Cleaner provides powerful stain removal and hygiene maintenance at an economical cost.",
-        specs: { 
-          Brand: "Wadha", 
+        specs: {
+          Brand: "Wadha",
           Form: "Liquid",
           Color: "Blue",
-          PackSize: "5 L", 
-          PackType: "Can", 
-          Usage: "Toilet Cleaning",
-          Origin: "Made in India" 
+          "Packaging Size": "5 L",
+          "Packaging Type": "Can",
+          "Usage/Application": "Toilet Cleaning",
+          "Country of Origin": "Made in India"
         }
       }
     ]
   },
+
+  // ── 5. DISHWASH LIQUID ────────────────────────────────────────────────────
   {
-    category: "Liquid Dishwash",
+    category: "Dishwash Liquid",
     id: "liquid-dishwash",
     icon: UtensilsCrossed,
     description: "Grease-cutting lemon formula for crystal clear dishes.",
@@ -235,72 +339,122 @@ export const productsData = [
         name: "Dishwash Liquid – WADHA (250 ml)",
         price: "Rs. 28.24 / Bottle",
         moq: "10,000 Bottles",
+        images: [wdhaDish_1, wdhaDish_2, wdhaDish_3, wdhaDish_4, wdhaDish_5],
         desc: "WADHA Dishwash Liquid is among the best in its segment, delivering powerful grease-cutting action while being gentle on utensils. Offered at affordable rates, it ensures high cleaning efficiency with low consumption.",
-        specs: { 
-          Brand: "Wadha", 
-          Usage: "Dish Washing",
-          PackSize: "250 ml",
-          Fragrance: "Lemon", 
-          PackType: "Plastic Bottle", 
+        specs: {
+          Brand: "Wadha",
+          "Usage/Application": "Dish Washing",
+          "Packaging Size": "250 ml",
+          Fragrance: "Lemon",
+          "Pack Type": "Plastic Bottle",
           Form: "Liquid",
-          DilutionRate: "1 : 10"
+          "Dilution Rate": "1 : 10"
         }
       },
       {
         id: "wadha-dishwash-liquid-500ml",
         name: "Dishwash Liquid – WADHA (500 ml)",
         price: "Rs. 75 / Bottle",
+        images: [wdhaDish_1, wdhaDish_2, wdhaDish_3, wdhaDish_4, wdhaDish_5],
         desc: "The 500 ml variant is ideal for regular household usage, offering long-lasting performance and effective cleaning results.",
-        specs: { 
-          Brand: "Wadha", 
-          Usage: "Dish Washing",
-          PackSize: "500 ml",
-          PackType: "Can",
+        specs: {
+          Brand: "Wadha",
+          "Usage/Application": "Dish Washing",
+          "Packaging Size": "500 ml",
+          "Packaging Type": "Can",
           Form: "Liquid",
-          Color: "Yellow", 
-          Origin: "Made in India" 
+          Color: "Yellow",
+          "Country of Origin": "Made in India"
         }
       },
       {
         id: "wadha-dishwash-liquid-5l",
         name: "Dishwash Liquid – WADHA (5 Litre)",
         price: "Rs. 288 / Bottle",
+        images: [wdhaDish_1, wdhaDish_2, wdhaDish_3, wdhaDish_4, wdhaDish_5],
         desc: "Designed for bulk and commercial use, the 5-litre WADHA Dishwash Liquid offers superior grease removal at an economical cost, making it ideal for hotels, restaurants, and large households.",
-        specs: { 
-          Brand: "Wadha", 
-          Usage: "Dish Washing",
-          PackSize: "5 L", 
-          PackType: "Bottle",
+        specs: {
+          Brand: "Wadha",
+          "Usage/Application": "Dish Washing",
+          "Packaging Size": "5 L",
+          "Packaging Type": "Bottle",
           Form: "Liquid",
-          Fragrance: "Floral", 
-          Origin: "Made in India" 
+          Fragrance: "Floral",
+          "Country of Origin": "Made in India"
+        }
+      },
+      {
+        id: "toto-dishwash-liquid-1-5l",
+        name: "Toto Dishwash Liquid – 1.5 L",
+        price: "Rs. 99 / Pack",
+        moq: "5,000 Packs",
+        images: [totoDish_1, totoDish_2, totoDish_3, totoDish_4, totoDish_5],
+        desc: "TOTO Dishwash Liquid in a convenient 1.5L value pack delivers powerful grease-cutting action — Chipchipa Tel Gayab! Ideal for everyday kitchen use with high lather and a refreshing lemon fragrance.",
+        specs: {
+          Brand: "Toto",
+          "Usage/Application": "Dish Washing",
+          "Packaging Size": "1.5 L",
+          Fragrance: "Lemon",
+          Form: "Liquid",
+          MRP: "Rs. 99",
+          "Country of Origin": "Made in India"
         }
       }
     ]
   },
+
+  // ── 6. DISHWASH BAR ───────────────────────────────────────────────────────
+  {
+    category: "Dishwash Bar",
+    id: "dishwash-bar",
+    icon: Zap,
+    description: "50% Maha Bachat — powerful bar for sparkling utensils.",
+    products: [
+      {
+        id: "wadha-dishwash-bar",
+        name: "Dishwash Bar – WADHA",
+        price: "Rs. 15 / Piece",
+        moq: "10,000 Pieces",
+        images: [dishBar_1, dishBar_2, dishBar_3, dishBar_4, dishBar_5, dishBar_6],
+        desc: "Our Wadha Dishwash Bar delivers superior grease-cutting performance in a convenient solid bar format — Grease Hatao, Chamak Lao! Ideal for kitchen use with high lather and a refreshing lemon fragrance.",
+        specs: {
+          Brand: "Wadha",
+          Form: "Bar / Solid",
+          "Usage/Application": "Dish Washing",
+          Fragrance: "Lemon",
+          Feature: "50% Maha Bachat",
+          Technology: "Power Technology",
+          "Country of Origin": "Made in India"
+        }
+      }
+    ]
+  },
+
+  // ── 7. LIQUID PHENYL ──────────────────────────────────────────────────────
   {
     category: "Liquid Phenyl",
     id: "liquid-phenyl",
     icon: Waves,
-    description: "Disinfectant phenyls for hygienic living spaces.",
+    description: "Disinfectant phenyls for hygienic, fresh-smelling spaces.",
     products: [
       {
         id: "wadha-white-phenyl-5l",
         name: "White Phenyl – WADHA (5 Litre)",
         price: "Rs. 173.86 / Can",
         moq: "250 Cans",
+        images: [phenyl_1, phenyl_2, phenyl_3, phenyl_4, phenyl_5, phenyl_6],
         desc: "We are among the renowned organizations engaged in offering a premium quality range of 5 Litre White Phenyl. The product provides excellent cleaning performance, pleasant fragrance, and is suitable for homes, offices, hospitals, and commercial spaces.",
-        specs: { 
-          Brand: "Wadha", 
+        specs: {
+          Brand: "Wadha",
           Form: "Liquid",
-          CleanType: "Floor Cleaning",
-          Usage: "Floor Cleaning",
-          PackSize: "5 L", 
-          PackType: "Bottle",
-          Colors: "Pink, Orange, Green, White", 
-          QtyPerPack: "4 Bottles",
-          Solubility: "Soluble in Water", 
-          Origin: "Gondia" 
+          "Clean Type": "Floor Cleaning",
+          "Usage/Application": "Floor Cleaning",
+          "Packaging Size": "5 L",
+          "Packaging Type": "Bottle",
+          "Colors Available": "Pink, Orange, Green, White",
+          "Quantity per Pack": "4 Bottles",
+          Solubility: "Soluble in Water",
+          "Place of Origin": "Gondia"
         }
       },
       {
@@ -308,26 +462,57 @@ export const productsData = [
         name: "Phenyl – WADHA (1 Litre)",
         price: "Rs. 30.50 / Litre",
         moq: "5,000 Litres",
+        images: [phenyl_1, phenyl_2, phenyl_3, phenyl_4, phenyl_5, phenyl_6],
         desc: "Leveraging extensive industry expertise, we offer a broad range of WADHA Phenyl, formulated for effective cleaning, hygiene, and long-lasting freshness across multiple surfaces.",
-        specs: { 
-          Brand: "Wadha", 
-          Form: "Liquid", 
-          PackSize: "1 Litre",
-          PackType: "Bottle",
+        specs: {
+          Brand: "Wadha",
+          Form: "Liquid",
+          "Packaging Size": "1 Litre",
+          "Packaging Type": "Bottle",
           Color: "4 Variants",
-          CleanType: "Floor, Kitchen & Toilet",
-          Fragrance: "Pine", 
-          ShelfLife: "2 Years", 
-          pHValue: "7", 
+          "Clean Type": "Floor, Kitchen & Toilet",
+          "Fragrance Type": "Pine",
+          "Shelf Life": "2 Years",
+          "pH Value": "7",
           Purity: "100%",
           Solubility: "Soluble in Water",
-          QtyPerPack: "12 Bottles",
-          Capacity: "52 Ton",
-          AvailablePacks: "1 L, 5 L, 20 L, 50 L & 200 L"
+          "Quantity per Pack": "12 Bottles",
+          "Production Capacity": "52 Ton",
+          "Available Packs": "1 L, 5 L, 20 L, 50 L & 200 L"
         }
       }
     ]
   },
+
+  // ── 8. GLASS CLEANER ──────────────────────────────────────────────────────
+  {
+    category: "Glass Cleaner",
+    id: "glass-cleaner",
+    icon: Wind,
+    description: "Crystal clear, streak-free shine — 3X Action formula.",
+    products: [
+      {
+        id: "wadha-glass-cleaner-500ml",
+        name: "Glass Cleaner – WADHA (500 ml)",
+        price: "Contact for Price",
+        moq: "5,000 Bottles",
+        images: [glass_1, glass_2, glass_3, glass_4, glass_5],
+        desc: "Our Wadha Glass Cleaner delivers a crystal-clear, streak-free finish on glass surfaces, mirrors, and tiles. With 3X Action formula, it removes smudges, fingerprints, dust, and grime effortlessly — bringing back the brilliant shine every time.",
+        specs: {
+          Brand: "Wadha",
+          Form: "Liquid",
+          "Usage/Application": "Glass, Mirrors, Tiles",
+          Feature: "3X Action — Streak Free Shine",
+          Fragrance: "Fresh",
+          "Packaging Size": "500 ml",
+          "Packaging Type": "Spray Bottle",
+          "Country of Origin": "Made in India"
+        }
+      }
+    ]
+  },
+
+  // ── 9. THIRD PARTY / CONTRACT MFG ────────────────────────────────────────
   {
     category: "Third Party MFG",
     id: "contract-manufacturing",
@@ -338,10 +523,11 @@ export const productsData = [
         id: "contract-manufacturing-service",
         name: "Contract Manufacturing",
         price: "Consultation Required",
+        images: [],
         desc: "Swami Industries offers professional end-to-end contract manufacturing services for home cleaning and industrial chemical solutions. Our state-of-the-art facilities and quality control ensure your brand meets the highest standards.",
-        specs: { 
-          Sector: "Home Care & Industrial", 
-          Grade: "Premium / Customized", 
+        specs: {
+          Sector: "Home Care & Industrial",
+          Grade: "Premium / Customized",
           Capacity: "Scalable",
           Services: "Formulation, Packaging, Branding",
           Location: "Gondia, India"
