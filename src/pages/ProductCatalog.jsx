@@ -46,11 +46,15 @@ const getProductThumbnail = (product) => {
     return product.images?.[0] || null;
 };
 
-// ─── Image Carousel (used inside detail modal) ────────────────────────────────
+// Helper: is a media item a video?
+const isVideo = (src) => typeof src === 'string' && (src.includes('.mp4') || src.endsWith('.mp4') || src.includes('mp4'));
+
+// ─── Image Carousel (used inside detail modal) ────────────────────────────────────────────────
 const ImageCarousel = ({ images, productName }) => {
     const [currentIdx, setCurrentIdx] = useState(0);
     const [direction, setDirection] = useState(1);
     const timerRef = useRef(null);
+    const videoRef = useRef(null);
     const hasImages = images && images.length > 0;
 
     const goTo = useCallback((idx, dir) => {
@@ -88,6 +92,13 @@ const ImageCarousel = ({ images, productName }) => {
         return () => clearInterval(timerRef.current);
     }, [images, hasImages]);
 
+    // Pause timer while a video slide is active, resume when done / navigated away
+    useEffect(() => {
+        if (hasImages && isVideo(images[currentIdx])) {
+            clearInterval(timerRef.current);
+        }
+    }, [currentIdx, images, hasImages]);
+
     const variants = {
         enter: dir => ({ x: dir > 0 ? 60 : -60, opacity: 0 }),
         center: { x: 0, opacity: 1 },
@@ -102,22 +113,49 @@ const ImageCarousel = ({ images, productName }) => {
         );
     }
 
+    const currentMedia = images[currentIdx];
+    const currentIsVideo = isVideo(currentMedia);
+
     return (
         <div className="relative w-full h-full overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50/30 group/carousel">
             <AnimatePresence custom={direction} mode="wait" initial={false}>
-                <motion.img
-                    key={currentIdx}
-                    custom={direction}
-                    variants={variants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    src={images[currentIdx]}
-                    alt={`${productName} ${currentIdx + 1}`}
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-contain p-3"
-                />
+                {currentIsVideo ? (
+                    <motion.video
+                        key={currentIdx}
+                        custom={direction}
+                        variants={variants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        ref={videoRef}
+                        src={currentMedia}
+                        autoPlay
+                        muted
+                        playsInline
+                        onEnded={() => {
+                            clearInterval(timerRef.current);
+                            const nextIdx = (currentIdx + 1) % images.length;
+                            goTo(nextIdx, 1);
+                            resetTimer();
+                        }}
+                        className="absolute inset-0 w-full h-full object-cover"
+                    />
+                ) : (
+                    <motion.img
+                        key={currentIdx}
+                        custom={direction}
+                        variants={variants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        src={currentMedia}
+                        alt={`${productName} ${currentIdx + 1}`}
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover md:object-contain md:p-3"
+                    />
+                )}
             </AnimatePresence>
 
             {images.length > 1 && (
@@ -130,13 +168,28 @@ const ImageCarousel = ({ images, productName }) => {
                         className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 bg-white/90 border border-slate-200 rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity">
                         <ChevronRight className="w-4 h-4 text-blue-900" />
                     </button>
-                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
-                        {images.map((_, i) => (
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5 items-center">
+                        {images.map((src, i) => (
                             <button key={i} onClick={() => { goTo(i, i > currentIdx ? 1 : -1); resetTimer(); }}
-                                className={`rounded-full transition-all duration-300 ${i === currentIdx ? 'w-5 h-1.5 bg-white' : 'w-1.5 h-1.5 bg-white/50 hover:bg-white/80'}`}
-                            />
+                                className={`rounded-full transition-all duration-300 flex items-center justify-center ${
+                                    i === currentIdx
+                                        ? 'w-5 h-1.5 bg-white'
+                                        : 'w-1.5 h-1.5 bg-white/50 hover:bg-white/80'
+                                }`}
+                            >
+                                {isVideo(src) && i !== currentIdx && (
+                                    <span className="sr-only">Video</span>
+                                )}
+                            </button>
                         ))}
                     </div>
+                    {/* Video badge */}
+                    {currentIsVideo && (
+                        <div className="absolute top-3 right-3 z-10 bg-black/50 text-white text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-full flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
+                            Video
+                        </div>
+                    )}
                 </>
             )}
         </div>
@@ -156,20 +209,20 @@ const ProductCard = ({ product, onClick }) => {
             transition={{ duration: 0.25 }}
             className="group w-full text-left bg-white rounded-2xl border border-slate-200 hover:border-blue-300 hover:shadow-xl shadow-sm transition-all overflow-hidden flex flex-col cursor-pointer"
         >
-            {/* Thumbnail — object-contain so full image is visible, no crop */}
-            <div className="relative w-full bg-gradient-to-br from-slate-50 to-blue-50/60 overflow-hidden" style={{ paddingBottom: '100%' }}>
-                <div className="absolute inset-0 flex items-center justify-center p-3">
-                    {thumb ? (
-                        <img
-                            src={thumb}
-                            alt={product.name}
-                            loading="lazy"
-                            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                        />
-                    ) : (
+            {/* Thumbnail */}
+            <div className="relative w-full h-52 bg-white overflow-hidden">
+                {thumb ? (
+                    <img
+                        src={thumb}
+                        alt={product.name}
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                    />
+                ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
                         <Sparkles className="w-10 h-10 text-slate-200" />
-                    )}
-                </div>
+                    </div>
+                )}
                 {/* Category badge */}
                 <span className="absolute top-3 left-3 bg-blue-600/90 backdrop-blur-sm text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full shadow">
                     {product.categoryName}
@@ -219,16 +272,16 @@ const ProductDetailModal = ({ product, onClose, onQuote }) => {
                     exit={{ opacity: 0, scale: 0.94, y: 24 }}
                     transition={{ type: 'spring', damping: 24, stiffness: 280 }}
                     onClick={e => e.stopPropagation()}
-                    className="bg-white rounded-3xl shadow-2xl w-full max-w-5xl overflow-hidden flex flex-row"
-                    style={{ height: 'min(620px, 85vh)' }}
+                    className="bg-white rounded-3xl shadow-2xl w-full max-w-7xl overflow-hidden flex flex-col md:flex-row"
+                    style={{ maxHeight: '90vh', height: 'auto', minHeight: '0' }}
                 >
-                    {/* Left — Image Carousel panel, stretches to full height with premium gradient background */}
-                    <div className="w-[44%] flex-shrink-0 overflow-hidden rounded-l-3xl bg-gradient-to-br from-slate-50 to-blue-50/40 relative h-full">
-                        <ImageCarousel images={product.images || []} productName={product.name} />
+                    {/* Top/Left — Image Carousel panel */}
+                    <div className="w-full md:w-[55%] flex-shrink-0 overflow-hidden rounded-t-3xl md:rounded-t-none md:rounded-l-3xl bg-gradient-to-br from-slate-50 to-blue-50/40 relative h-64 md:h-auto md:self-stretch">
+                        <div className="absolute inset-0"><ImageCarousel images={product.images || []} productName={product.name} /></div>
                     </div>
 
-                    {/* Right — Details, matches full modal height and scrolls internally */}
-                    <div className="flex-1 flex flex-col h-full overflow-hidden">
+                    {/* Bottom/Right — Details */}
+                    <div className="flex-1 flex flex-col overflow-hidden">
                         {/* Header bar */}
                         <div className="flex items-start justify-between p-6 pb-4 border-b border-slate-100 sticky top-0 bg-white z-10">
                             <div className="pr-8">
@@ -463,37 +516,37 @@ const ProductCatalog = () => {
         <div className="min-h-screen bg-white font-sans">
             <NavbarWadha />
 
-            <main className="pt-32 pb-24 bg-gradient-to-b from-blue-50 to-white min-h-screen">
-                <div className="max-w-[1400px] mx-auto px-6">
+            <main className="pt-24 md:pt-32 pb-16 md:pb-24 bg-gradient-to-b from-blue-50 to-white min-h-screen">
+                <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
 
                     {/* ── Page Header ── */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6"
+                        className="mb-8 md:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6"
                     >
-                        <div className="space-y-3">
+                        <div className="space-y-2 md:space-y-3">
                             <div className="flex items-center gap-2 text-blue-900 font-bold tracking-widest uppercase text-[10px] bg-blue-50 w-fit px-4 py-1.5 rounded-full border border-blue-100">
                                 <Sparkles className="w-3 h-3" />
                                 Product Catalog
                             </div>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-blue-900 tracking-tight leading-none">
+                            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-blue-900 tracking-tight leading-none">
                                 Our <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">Products</span>
                             </h1>
-                            <p className="text-slate-500 max-w-lg text-base font-medium">
+                            <p className="text-slate-500 max-w-lg text-sm md:text-base font-medium">
                                 Click any product to view full details, specifications & pricing.
                             </p>
                         </div>
 
                         {/* Search */}
-                        <div className="relative">
+                        <div className="relative w-full md:w-auto">
                             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                             <input
                                 type="text"
                                 placeholder="Search products..."
                                 value={searchQuery}
                                 onChange={e => setSearchQuery(e.target.value)}
-                                className="pl-11 pr-6 py-3 bg-white border border-slate-200 rounded-2xl text-sm font-semibold w-full sm:w-[300px] focus:ring-2 focus:ring-blue-200 shadow-sm transition-all outline-none text-slate-900"
+                                className="pl-11 pr-6 py-3 bg-white border border-slate-200 rounded-2xl text-sm font-semibold w-full md:w-[300px] focus:ring-2 focus:ring-blue-200 shadow-sm transition-all outline-none text-slate-900"
                             />
                         </div>
                     </motion.div>
@@ -560,7 +613,7 @@ const ProductCatalog = () => {
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
                                     transition={{ duration: 0.2 }}
-                                    className="grid grid-cols-2 md:grid-cols-3 gap-5"
+                                    className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5"
                                 >
                                     {filteredProducts.map((product, idx) => (
                                         <ProductCard

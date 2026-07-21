@@ -23,11 +23,11 @@ const products = [
     },
     {
         id: 2,
-        name: "Wadha Dishwash",
+        name: "Wadha Dishwash Liquid",
         benefit: "Sparkling clean vessels",
         rating: 4.7,
         reviews: 850,
-        price: "Best Price",
+        price: "Rs. 28.24 / Bottle",
         image: imgDishwash,
         tag: "Grease Fighter"
     },
@@ -37,7 +37,7 @@ const products = [
         benefit: "Powerful stain removal",
         rating: 4.9,
         reviews: 2100,
-        price: "Best Price",
+        price: "Rs. 3.33 / Piece",
         image: imgTikiya,
         tag: "New Arrival"
     },
@@ -47,7 +47,7 @@ const products = [
         benefit: "Long-lasting freshness",
         rating: 4.8,
         reviews: 980,
-        price: "Best Price",
+        price: "Rs. 6.65 / Piece",
         image: imgCake,
         tag: "Premium Care"
     }
@@ -114,14 +114,13 @@ const ProductHighlight = () => {
                             )}
 
                             {/* Image Area */}
-                            <div className="w-full h-72 bg-white flex items-center justify-center p-8 transition-colors relative overflow-hidden">
+                            <div className="w-full h-72 bg-gray-100 relative overflow-hidden">
                                 <motion.img
                                     src={product.image}
                                     alt={product.name}
-                                    className="w-full h-full object-contain transition-all duration-500 drop-shadow-sm"
+                                    className="absolute inset-0 w-full h-full object-cover transition-all duration-500"
                                     whileHover={{ scale: 1.05 }}
                                 />
-
                                 {/* Flash effect on hover */}
                                 <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none mix-blend-overlay" />
                             </div>

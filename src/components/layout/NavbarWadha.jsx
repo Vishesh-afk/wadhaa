@@ -35,7 +35,7 @@ const NavbarWadha = () => {
     }, [location.pathname, pendingHash]);
 
     const navLinks = [
-        { name: 'Shop Products', id: 'products', hasDropdown: true, route: '/catalog' },
+        { name: 'Shop Products', route: '/catalog' },
         { name: 'About Us', route: '/about' },
         { name: 'Stain Removal', hash: '#stain-guide' },
         { name: 'Why Wadha', hash: '#why-wadha' },

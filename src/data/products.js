@@ -9,6 +9,18 @@ import {
   Wind
 } from 'lucide-react';
 
+// ── Product Videos ────────────────────────────────────────────────────────────
+import vidWadhaDetergent from '../assets/WADHA_detergent_commercial_202607211448.mp4';
+import vidTotoDetergent  from '../assets/TOTO_detergent_commercial_202607211447.mp4';
+import vidTotoMatic      from '../assets/TOTO_Matic_Liquid_commercial_202607211447.mp4';
+import vidDetergentCake  from '../assets/Detergent_cake_cleaning_soiled_s…_202607211447.mp4';
+import vidToiletCleaner  from '../assets/WADHA_Toilet_Cleaner_10X_Power_202607211447.mp4';
+import vidDishwashLiquid from '../assets/Dishwash_Power_Gel_cleaning_grease_202607211447.mp4';
+import vidTotoDishwash   from '../assets/TOTO_Dishwash_Liquid_commercial_202607211447.mp4';
+import vidDishwashBar    from '../assets/WADHA_Dishwash_Bar_commercial_202607211447.mp4';
+import vidPhenyl         from '../assets/Phenyl_floor_cleaner_commercial_202607211447.mp4';
+import vidGlassCleaner   from '../assets/WADHA_Glass_Cleaner_commercial_202607211450.mp4';
+
 // ── WADHA Detergent Powder (toto pwd folder = WADHA powder) ───────────────────
 import wdhaPwd_1 from '../assets/wadha/toto pwd/p1.png';
 import wdhaPwd_2 from '../assets/wadha/toto pwd/p2.png';
@@ -105,7 +117,7 @@ export const productsData = [
         name: "Detergent Powder 1 Kg – Wadha",
         price: "Rs. 55.10 / Kg",
         moq: "2,00,000 Kg",
-        images: [wdhaPwd_1, wdhaPwd_2, wdhaPwd_3, wdhaPwd_4, wdhaPwd_5, wdhaPwd_6],
+        images: [wdhaPwd_1, vidWadhaDetergent, wdhaPwd_2, wdhaPwd_3, wdhaPwd_4, wdhaPwd_5, wdhaPwd_6],
         desc: "With our vast experience and in-depth industry knowledge, we are engaged in offering a quality-assured range of Wadha Detergent Powder. The product provides effective cleaning performance and is suitable for daily laundry use.",
         specs: {
           Brand: "Wadha",
@@ -125,7 +137,7 @@ export const productsData = [
         name: "Detergent Washing Powder – 5 Kg",
         price: "Rs. 373.83 / Piece",
         moq: "25,000 Pieces",
-        images: [wdhaPwd_1, wdhaPwd_2, wdhaPwd_3, wdhaPwd_4, wdhaPwd_5, wdhaPwd_6],
+        images: [wdhaPwd_1, vidWadhaDetergent, wdhaPwd_2, wdhaPwd_3, wdhaPwd_4, wdhaPwd_5, wdhaPwd_6],
         desc: "WADHA detergent powders ensure superior cleaning performance. Manufactured under hygienic conditions using a precise blend of Borax, Washing Soda, Bleach, Builders, and Perfumes, ensuring long shelf life and consistent effectiveness.",
         specs: {
           Brand: "Wadha",
@@ -147,7 +159,7 @@ export const productsData = [
         name: "TOTO Detergent Powder – 1 Kg",
         price: "Rs. 39.17 / Pack",
         moq: "5,000 Packs",
-        images: [totoPwd_1, totoPwd_2, totoPwd_3, totoPwd_4, totoPwd_5],
+        images: [totoPwd_1, vidTotoDetergent, totoPwd_2, totoPwd_3, totoPwd_4, totoPwd_5],
         desc: "Best quality product in its segment. Superior performance compared to other detergent powders in the same price range. Comparable to detergent powders priced between Rs. 70–80. MRP: Rs. 60/-",
         specs: {
           Brand: "Toto",
@@ -174,7 +186,7 @@ export const productsData = [
         name: "Toto Matic Liquid – 1.5 L",
         price: "Rs. 99 / Pack",
         moq: "5,000 Packs",
-        images: [totoLiq_1, totoLiq_2, totoLiq_3, totoLiq_4, totoLiq_5, totoLiq_6, totoLiq_7],
+        images: [totoLiq_1, vidTotoMatic, totoLiq_2, totoLiq_3, totoLiq_4, totoLiq_5, totoLiq_6, totoLiq_7],
         desc: "TOTO Matic Liquid Detergent delivers superior cleaning performance for all machine types — both top load and front load. The high-quality formula protects fabric, leaves a long-lasting fragrance, and ensures spotless results every wash.",
         specs: {
           Brand: "Toto",
@@ -201,7 +213,7 @@ export const productsData = [
         name: "Detergent Cake 240 g – WADHA MAHABAR",
         price: "Rs. 7.85 / Piece",
         moq: "10,000 Pieces",
-        images: [wdhaCake_1, wdhaCake_2, wdhaCake_3, wdhaCake_4, wdhaCake_5, wdhaCake_6],
+        images: [wdhaCake_1, vidDetergentCake, wdhaCake_2, wdhaCake_3, wdhaCake_4, wdhaCake_5, wdhaCake_6],
         desc: "Backed by rich industry experience, we are actively engaged in offering a premium quality 240 g Detergent Cake (Mahabar). It is known for strong stain-removal performance and is recognized as one of the largest cake sizes available in the market.",
         specs: {
           Brand: "Wadha",
@@ -220,7 +232,7 @@ export const productsData = [
         name: "Detergent Cake 240 g – WADHA",
         price: "Rs. 6.65 / Piece",
         moq: "25,000 Pieces",
-        images: [wdhaCake_1, wdhaCake_2, wdhaCake_3, wdhaCake_4, wdhaCake_5, wdhaCake_6],
+        images: [wdhaCake_1, vidDetergentCake, wdhaCake_2, wdhaCake_3, wdhaCake_4, wdhaCake_5, wdhaCake_6],
         desc: "We are among the reputed organizations engaged in offering an optimum quality 240 g Detergent Cake with Rs. 10 MRP, suitable for both handwash and regular laundry needs.",
         specs: {
           Brand: "Wadha",
@@ -245,7 +257,7 @@ export const productsData = [
         name: "Detergent Cake 110 g – WADHA",
         price: "Rs. 3.33 / Piece",
         moq: "50,000 Pieces",
-        images: [wdhaCake_1, wdhaCake_2, wdhaCake_3, wdhaCake_4, wdhaCake_5, wdhaCake_6],
+        images: [wdhaCake_1, vidDetergentCake, wdhaCake_2, wdhaCake_3, wdhaCake_4, wdhaCake_5, wdhaCake_6],
         desc: "We offer a high-quality 110 g Detergent Cake with Rs. 5 MRP, specially designed for effective cleaning. Known as a large-size cake in its category, it delivers excellent performance and durability.",
         specs: {
           Brand: "Wadha",
@@ -273,7 +285,7 @@ export const productsData = [
         id: "wadha-toilet-cleaner-200ml",
         name: "Toilet Cleaner – WADHA (200 ml)",
         price: "Rs. 23.64 / Bottle",
-        images: [toilet_1, toilet_2, toilet_3, toilet_4, toilet_5],
+        images: [toilet_1, vidToiletCleaner, toilet_2, toilet_3, toilet_4, toilet_5],
         desc: "An effective compact-size toilet cleaner, ideal for household and travel use, delivering powerful cleaning action in a convenient bottle.",
         specs: {
           Brand: "Wadha",
@@ -289,7 +301,7 @@ export const productsData = [
         name: "Toilet Cleaner – WADHA (500 ml)",
         price: "Rs. 45.45 / Bottle",
         moq: "1,000 Bottles",
-        images: [toilet_1, toilet_2, toilet_3, toilet_4, toilet_5],
+        images: [toilet_1, vidToiletCleaner, toilet_2, toilet_3, toilet_4, toilet_5],
         desc: "Backed by in-depth industry knowledge, we are engaged in offering a high-quality liquid toilet cleaner that effectively removes stains, kills germs, and ensures long-lasting freshness.",
         specs: {
           Brand: "Wadha",
@@ -312,7 +324,7 @@ export const productsData = [
         id: "wadha-toilet-cleaner-5l",
         name: "Toilet Cleaner – WADHA (5 Litre)",
         price: "Rs. 288 / Bottle",
-        images: [toilet_1, toilet_2, toilet_3, toilet_4, toilet_5],
+        images: [toilet_1, vidToiletCleaner, toilet_2, toilet_3, toilet_4, toilet_5],
         desc: "Ideal for commercial and bulk usage, the 5-litre Wadha Toilet Cleaner provides powerful stain removal and hygiene maintenance at an economical cost.",
         specs: {
           Brand: "Wadha",
@@ -339,7 +351,7 @@ export const productsData = [
         name: "Dishwash Liquid – WADHA (250 ml)",
         price: "Rs. 28.24 / Bottle",
         moq: "10,000 Bottles",
-        images: [wdhaDish_1, wdhaDish_2, wdhaDish_3, wdhaDish_4, wdhaDish_5],
+        images: [wdhaDish_1, vidDishwashLiquid, wdhaDish_2, wdhaDish_3, wdhaDish_4, wdhaDish_5],
         desc: "WADHA Dishwash Liquid is among the best in its segment, delivering powerful grease-cutting action while being gentle on utensils. Offered at affordable rates, it ensures high cleaning efficiency with low consumption.",
         specs: {
           Brand: "Wadha",
@@ -355,7 +367,7 @@ export const productsData = [
         id: "wadha-dishwash-liquid-500ml",
         name: "Dishwash Liquid – WADHA (500 ml)",
         price: "Rs. 75 / Bottle",
-        images: [wdhaDish_1, wdhaDish_2, wdhaDish_3, wdhaDish_4, wdhaDish_5],
+        images: [wdhaDish_1, vidDishwashLiquid, wdhaDish_2, wdhaDish_3, wdhaDish_4, wdhaDish_5],
         desc: "The 500 ml variant is ideal for regular household usage, offering long-lasting performance and effective cleaning results.",
         specs: {
           Brand: "Wadha",
@@ -371,7 +383,7 @@ export const productsData = [
         id: "wadha-dishwash-liquid-5l",
         name: "Dishwash Liquid – WADHA (5 Litre)",
         price: "Rs. 288 / Bottle",
-        images: [wdhaDish_1, wdhaDish_2, wdhaDish_3, wdhaDish_4, wdhaDish_5],
+        images: [wdhaDish_1, vidDishwashLiquid, wdhaDish_2, wdhaDish_3, wdhaDish_4, wdhaDish_5],
         desc: "Designed for bulk and commercial use, the 5-litre WADHA Dishwash Liquid offers superior grease removal at an economical cost, making it ideal for hotels, restaurants, and large households.",
         specs: {
           Brand: "Wadha",
@@ -388,7 +400,7 @@ export const productsData = [
         name: "Toto Dishwash Liquid – 1.5 L",
         price: "Rs. 99 / Pack",
         moq: "5,000 Packs",
-        images: [totoDish_1, totoDish_2, totoDish_3, totoDish_4, totoDish_5],
+        images: [totoDish_1, vidTotoDishwash, totoDish_2, totoDish_3, totoDish_4, totoDish_5],
         desc: "TOTO Dishwash Liquid in a convenient 1.5L value pack delivers powerful grease-cutting action — Chipchipa Tel Gayab! Ideal for everyday kitchen use with high lather and a refreshing lemon fragrance.",
         specs: {
           Brand: "Toto",
@@ -415,7 +427,7 @@ export const productsData = [
         name: "Dishwash Bar – WADHA",
         price: "Rs. 15 / Piece",
         moq: "10,000 Pieces",
-        images: [dishBar_1, dishBar_2, dishBar_3, dishBar_4, dishBar_5, dishBar_6],
+        images: [dishBar_1, vidDishwashBar, dishBar_2, dishBar_3, dishBar_4, dishBar_5, dishBar_6],
         desc: "Our Wadha Dishwash Bar delivers superior grease-cutting performance in a convenient solid bar format — Grease Hatao, Chamak Lao! Ideal for kitchen use with high lather and a refreshing lemon fragrance.",
         specs: {
           Brand: "Wadha",
@@ -442,7 +454,7 @@ export const productsData = [
         name: "White Phenyl – WADHA (5 Litre)",
         price: "Rs. 173.86 / Can",
         moq: "250 Cans",
-        images: [phenyl_1, phenyl_2, phenyl_3, phenyl_4, phenyl_5, phenyl_6],
+        images: [phenyl_1, vidPhenyl, phenyl_2, phenyl_3, phenyl_4, phenyl_5, phenyl_6],
         desc: "We are among the renowned organizations engaged in offering a premium quality range of 5 Litre White Phenyl. The product provides excellent cleaning performance, pleasant fragrance, and is suitable for homes, offices, hospitals, and commercial spaces.",
         specs: {
           Brand: "Wadha",
@@ -462,7 +474,7 @@ export const productsData = [
         name: "Phenyl – WADHA (1 Litre)",
         price: "Rs. 30.50 / Litre",
         moq: "5,000 Litres",
-        images: [phenyl_1, phenyl_2, phenyl_3, phenyl_4, phenyl_5, phenyl_6],
+        images: [phenyl_1, vidPhenyl, phenyl_2, phenyl_3, phenyl_4, phenyl_5, phenyl_6],
         desc: "Leveraging extensive industry expertise, we offer a broad range of WADHA Phenyl, formulated for effective cleaning, hygiene, and long-lasting freshness across multiple surfaces.",
         specs: {
           Brand: "Wadha",
@@ -496,7 +508,7 @@ export const productsData = [
         name: "Glass Cleaner – WADHA (500 ml)",
         price: "Contact for Price",
         moq: "5,000 Bottles",
-        images: [glass_1, glass_2, glass_3, glass_4, glass_5],
+        images: [glass_1, vidGlassCleaner, glass_2, glass_3, glass_4, glass_5],
         desc: "Our Wadha Glass Cleaner delivers a crystal-clear, streak-free finish on glass surfaces, mirrors, and tiles. With 3X Action formula, it removes smudges, fingerprints, dust, and grime effortlessly — bringing back the brilliant shine every time.",
         specs: {
           Brand: "Wadha",
