@@ -3,7 +3,7 @@ import { Menu, X, ChevronDown, ArrowRight, Sparkles, ShieldCheck } from 'lucide-
 import { AnimatePresence, motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { productsData } from '../../data/products';
-import logoImg from '../../assets/logo-90x90.webp';
+import logoImg from '../../assets/IMG_3696.PNG';
 import oipImg from '../../assets/OIP.jpg';
 
 const NavbarWadha = () => {

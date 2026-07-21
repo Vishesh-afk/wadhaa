@@ -33,6 +33,7 @@ const getProductThumbnail = (product) => {
     if (name.includes('powder') && isWadha) return imgPowder;
     if (name.includes('toilet cleaner') || name.includes('toilet')) return imgToiletCleaner;
     if (name.includes('mahabar') || name.includes('mahabase')) return imgBar;
+    if (name.includes('dishwash') && name.includes('toto')) return product.images?.[0] || null;
     if (name.includes('dishwash')) return imgDishwash;
     if (name.includes('liquid') && isWadha) return imgMatic;
     if (name.includes('matic')) return imgMatic;
