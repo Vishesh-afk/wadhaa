@@ -5,7 +5,6 @@ import { useNavigate, Link } from 'react-router-dom';
 
 // Product Images
 import imgPowder from '../../assets/wadha powder.jpeg';
-import imgDishwash from '../../assets/dishwash.jpeg';
 import imgTikiya from '../../assets/tikiya.jpeg';
 import imgCake from '../../assets/cake.jpeg';
 
@@ -17,25 +16,15 @@ const products = [
         benefit: "Deep cleaning for bright whites",
         rating: 4.8,
         reviews: 1240,
-        price: "Rs. 55.10 / Kg",
+        price: "Rs. 89 / Kg",
         image: imgPowder,
         tag: "Bestseller"
-    },
-    {
-        id: 2,
-        name: "Wadha Dishwash Liquid",
-        benefit: "Sparkling clean vessels",
-        rating: 4.7,
-        reviews: 850,
-        price: "Rs. 28.24 / Bottle",
-        image: imgDishwash,
-        tag: "Grease Fighter"
     },
     {
         id: 3,
         name: "Wadha Detergent Tikiya",
         benefit: "Powerful stain removal",
-        rating: 4.9,
+        rating: 10,
         reviews: 2100,
         price: "Rs. 3.33 / Piece",
         image: imgTikiya,

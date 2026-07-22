@@ -24,7 +24,12 @@ import imgToiletCleaner from '../assets/toilet cleaner.jpg';
 import imgTotoNew from '../assets/toto new.jpg';
 
 // Helper function to get product thumbnail image
+// Prefer product.images[0] (clean PNG renders) over legacy JPEG assets
 const getProductThumbnail = (product) => {
+    // If product has dedicated images array with a first image, use it
+    if (product.images?.[0]) return product.images[0];
+
+    // Legacy fallbacks for products without images
     const name = product.name.toLowerCase();
     const brand = (product.specs?.Brand || "").toLowerCase();
     const isWadha = name.includes('wadha') || brand.includes('wadha');
@@ -33,7 +38,6 @@ const getProductThumbnail = (product) => {
     if (name.includes('powder') && isWadha) return imgPowder;
     if (name.includes('toilet cleaner') || name.includes('toilet')) return imgToiletCleaner;
     if (name.includes('mahabar') || name.includes('mahabase')) return imgBar;
-    if (name.includes('dishwash') && name.includes('toto')) return product.images?.[0] || null;
     if (name.includes('dishwash')) return imgDishwash;
     if (name.includes('liquid') && isWadha) return imgMatic;
     if (name.includes('matic')) return imgMatic;
@@ -43,7 +47,7 @@ const getProductThumbnail = (product) => {
     if (name.includes('phenyl') && name.includes('5 l')) return imgPhenyl5L;
     if (name.includes('phenyl')) return imgPhenyl1L;
 
-    return product.images?.[0] || null;
+    return null;
 };
 
 // Helper: is a media item a video?
@@ -210,13 +214,13 @@ const ProductCard = ({ product, onClick }) => {
             className="group w-full text-left bg-white rounded-2xl border border-slate-200 hover:border-blue-300 hover:shadow-xl shadow-sm transition-all overflow-hidden flex flex-col cursor-pointer"
         >
             {/* Thumbnail */}
-            <div className="relative w-full h-52 bg-white overflow-hidden">
+            <div className="relative w-full aspect-square bg-slate-50 overflow-hidden">
                 {thumb ? (
                     <img
                         src={thumb}
                         alt={product.name}
                         loading="lazy"
-                        className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                 ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -613,7 +617,7 @@ const ProductCatalog = () => {
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
                                     transition={{ duration: 0.2 }}
-                                    className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5"
+                                    className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5"
                                 >
                                     {filteredProducts.map((product, idx) => (
                                         <ProductCard
