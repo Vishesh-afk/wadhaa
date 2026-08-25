@@ -14,10 +14,10 @@ const FooterWadha = () => {
                         <h3 className="text-2xl font-bold text-white mb-6 uppercase tracking-wider">Wadha</h3>
                         <div className="flex flex-col space-y-2 text-sm">
                             <div className="flex items-center gap-2">
-                                <span>📞</span> 9404007182, 7887881694
+                                <span>📞</span> 7887881694, 7887881695
                             </div>
                             <div className="flex items-center gap-2">
-                                <span>✉️</span> swamiindustries.wadha@gmail.com
+                                <span>✉️</span> wadhadetergent@gmail.com
                             </div>
                         </div>
                         <div className="flex flex-col space-y-2 text-sm">
@@ -43,23 +43,14 @@ const FooterWadha = () => {
                     <div>
                         <h4 className="text-lg font-bold text-white mb-6">Learn</h4>
                         <ul className="space-y-3 text-sm">
-                            <li><a href="#" className="hover:text-white transition-colors">Stain Removal Guide</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">How to Wash</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Fabric Care Tips</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">FAQs</a></li>
+                            <li><Link to="/" state={{ scrollTo: '#stain-guide' }} className="hover:text-white transition-colors">Stain Removal Guide</Link></li>
+                            <li><Link to="/" state={{ scrollTo: '#how-to-wash' }} className="hover:text-white transition-colors">How to Wash</Link></li>
+    
                         </ul>
                     </div>
 
                     {/* Column 4 */}
-                    <div>
-                        <h4 className="text-lg font-bold text-white mb-6">Legal</h4>
-                        <ul className="space-y-3 text-sm">
-                            <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Terms & Conditions</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Return Policy</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Cookie Policy</a></li>
-                        </ul>
-                    </div>
+                    
                 </div>
 
                 <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">

@@ -5,7 +5,6 @@ import { useNavigate, Link } from 'react-router-dom';
 
 // Product Images
 import imgPowder from '../../assets/wadha powder.jpeg';
-import imgTikiya from '../../assets/tikiya.jpeg';
 import imgCake from '../../assets/cake.jpeg';
 
 
@@ -19,16 +18,6 @@ const products = [
         price: "Rs. 89 / Kg",
         image: imgPowder,
         tag: "Bestseller"
-    },
-    {
-        id: 3,
-        name: "Wadha Detergent Tikiya",
-        benefit: "Powerful stain removal",
-        rating: 10,
-        reviews: 2100,
-        price: "Rs. 3.33 / Piece",
-        image: imgTikiya,
-        tag: "New Arrival"
     },
     {
         id: 4,
@@ -86,7 +75,7 @@ const ProductHighlight = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto"
                 >
                     {products.map((product) => (
                         <motion.div

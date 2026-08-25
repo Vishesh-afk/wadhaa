@@ -9,6 +9,7 @@ const AboutUs          = lazy(() => import('./pages/AboutUs'));
 const ProductCatalog   = lazy(() => import('./pages/ProductCatalog'));
 const Contact          = lazy(() => import('./pages/Contact'));
 const StainRemovalPage = lazy(() => import('./pages/StainRemovalPage'));
+const GuideArticlePage = lazy(() => import('./pages/GuideArticlePage'));
 
 // Minimal loading fallback
 const PageLoader = () => (
@@ -56,6 +57,7 @@ function App() {
             <Route path="/about"                 element={<AboutUs />} />
             <Route path="/contact"               element={<Contact />} />
             <Route path="/stain-removal/:stainId" element={<StainRemovalPage />} />
+            <Route path="/guides/:guideId"       element={<GuideArticlePage />} />
             {/* Redirect legacy aliases */}
             <Route path="/products"              element={<Navigate to="/catalog" replace />} />
             <Route path="/about-us"              element={<Navigate to="/about"   replace />} />

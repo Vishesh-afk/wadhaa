@@ -100,7 +100,7 @@ import glass_5 from '../assets/wadha/colin/hf_20260720_133746_13f48b14-bf64-4462
 // ─────────────────────────────────────────────────────────────────────────────
 // PRODUCTS DATA — matches the WADHA PRODUCT CATALOG exactly
 // Category order: Detergent Powder → Detergent Cake → Toilet Cleaner
-//                 → Dishwash Liquid → Dishwash Bar → Phenyl → Glass Cleaner
+//                 → Dishwash Liquid → Dishwash Bar → Floor Cleaner → Glass Cleaner
 //                 → Contract Manufacturing
 // ─────────────────────────────────────────────────────────────────────────────
 export const productsData = [
@@ -116,13 +116,13 @@ export const productsData = [
         id: "wadha-detergent-powder-1kg",
         name: "Detergent Powder 1 Kg – Wadha",
         price: "Rs. 55.10 / Kg",
-        moq: "2,00,000 Kg",
-        images: [wdhaPwd_1, vidWadhaDetergent, wdhaPwd_2, wdhaPwd_3, wdhaPwd_4, wdhaPwd_5, wdhaPwd_6],
+        moq: "1,000 Kg",
+        images: [wdhaPwd_4, vidWadhaDetergent, wdhaPwd_1, wdhaPwd_2, wdhaPwd_3, wdhaPwd_5, wdhaPwd_6],
         desc: "With our vast experience and in-depth industry knowledge, we are engaged in offering a quality-assured range of Wadha Detergent Powder. The product provides effective cleaning performance and is suitable for daily laundry use.",
         specs: {
           Brand: "Wadha",
           "Quality Grade": "Medium",
-          Fragrance: "Lemon",
+          Fragrance: "Floral",
           Color: "White",
           Weight: "1 Kg",
           "Packaging Type": "Packet",
@@ -136,7 +136,7 @@ export const productsData = [
         id: "wadha-detergent-powder-5kg",
         name: "Detergent Washing Powder – 5 Kg",
         price: "Rs. 373.83 / Piece",
-        moq: "25,000 Pieces",
+        moq: "600 Pieces",
         images: [wdhaPwd_1, vidWadhaDetergent, wdhaPwd_2, wdhaPwd_3, wdhaPwd_4, wdhaPwd_5, wdhaPwd_6],
         desc: "WADHA detergent powders ensure superior cleaning performance. Manufactured under hygienic conditions using a precise blend of Borax, Washing Soda, Bleach, Builders, and Perfumes, ensuring long shelf life and consistent effectiveness.",
         specs: {
@@ -144,7 +144,7 @@ export const productsData = [
           Weight: "5 Kg",
           "Quality Grade": "Premium",
           "Packaging Size": "5 Kg",
-          "Shelf Life": "9 Months",
+          "Shelf Life": "2 Years",
           "Usage/Application": "Laundry",
           Color: "White",
           "Country of Origin": "Made in India",
@@ -158,14 +158,15 @@ export const productsData = [
         id: "toto-detergent-powder-1kg",
         name: "TOTO Detergent Powder – 1 Kg",
         price: "Rs. 39.17 / Pack",
-        moq: "5,000 Packs",
+        moq: "100 Packs",
         images: [totoPwd_1, vidTotoDetergent, totoPwd_2, totoPwd_3, totoPwd_4, totoPwd_5],
-        desc: "Best quality product in its segment. Superior performance compared to other detergent powders in the same price range. Comparable to detergent powders priced between Rs. 70–80. MRP: Rs. 60/-",
+        desc: "Best quality product in its segment. Superior performance compared to other detergent powders in the same price range. Comparable to detergent powders priced between Rs. 70–80. MRP: Rs. 60/-. Available in multiple pack sizes: 3.4 Kg, 1.7 Kg, 850 g, 420 g & 275 g.",
         specs: {
           Brand: "Toto",
           Size: "1 Kg",
-          Fragrance: "Lime",
-          "Shelf Life": "9 Months",
+          Fragrance: "Lemon",
+          "Shelf Life": "2 Years",
+          "Available Packs": "3.4 Kg, 1.7 Kg, 850 g, 420 g, 275 g",
           MRP: "Rs. 60",
           Packaging: "Pouch",
           "Delivery Time": "3-5 Days"
@@ -229,18 +230,19 @@ export const productsData = [
       },
       {
         id: "wadha-cake-240g",
-        name: "Detergent Cake 240 g – WADHA",
-        price: "Rs. 6.65 / Piece",
+        name: "Detergent Cake 200 g – WADHA",
+        price: "Rs. 10.00 / Piece",
         moq: "25,000 Pieces",
         images: [wdhaCake_1, vidDetergentCake, wdhaCake_2, wdhaCake_3, wdhaCake_4, wdhaCake_5, wdhaCake_6],
-        desc: "We are among the reputed organizations engaged in offering an optimum quality 240 g Detergent Cake with Rs. 10 MRP, suitable for both handwash and regular laundry needs.",
+        desc: "We are among the reputed organizations engaged in offering an optimum quality 200 g Detergent Cake with Rs. 10 MRP, suitable for both handwash and regular laundry needs.",
         specs: {
           Brand: "Wadha",
-          Weight: "250 gm",
-          "Packaging Size": "240 gm",
+          Weight: "200 gm",
+          "Packaging Size": "200 g",
           Shape: "Rectangle",
           Color: "Blue",
           Fragrance: "Jasmine, Citrus",
+          MRP: "Rs. 10",
           "Use/Application": "Cloth Washing",
           "Soaps per Pack": "60 Pieces",
           "Packaging Type": "Box",
@@ -249,23 +251,24 @@ export const productsData = [
           "Key Features": "Gentle on Hands, Non-Sogging, High Lather, Removes Tough Stains",
           "Production Capacity": "10 Ton",
           "Delivery Time": "10 Days",
-          "Packaging Details": "Standard Size 240 g"
+          "Packaging Details": "Standard Size 200 g"
         }
       },
       {
         id: "wadha-cake-110g",
-        name: "Detergent Cake 110 g – WADHA",
-        price: "Rs. 3.33 / Piece",
+        name: "Detergent Cake 95 g – WADHA",
+        price: "Rs. 5/ Piece",
         moq: "50,000 Pieces",
         images: [wdhaCake_1, vidDetergentCake, wdhaCake_2, wdhaCake_3, wdhaCake_4, wdhaCake_5, wdhaCake_6],
-        desc: "We offer a high-quality 110 g Detergent Cake with Rs. 5 MRP, specially designed for effective cleaning. Known as a large-size cake in its category, it delivers excellent performance and durability.",
+        desc: "We offer a high-quality 95 g Detergent Cake with Rs. 5 MRP, specially designed for effective cleaning. It delivers excellent performance and durability at a pocket-friendly price.",
         specs: {
           Brand: "Wadha",
-          "Packaging Size": "115 gm",
+          "Packaging Size": "95 g",
           Shape: "Rectangle",
           Color: "Blue",
           Fragrance: "Lemon",
           Form: "Bar",
+          MRP: "Rs. 5",
           "Shelf Life": "2 Years",
           "Production Capacity": "100 Ton",
           "Delivery Time": "5 Days"
@@ -425,15 +428,18 @@ export const productsData = [
       {
         id: "wadha-dishwash-bar",
         name: "Dishwash Bar – WADHA",
-        price: "Rs. 15 / Piece",
+        price: "Rs. 5 – Rs. 30",
         moq: "10,000 Pieces",
         images: [dishBar_1, vidDishwashBar, dishBar_2, dishBar_3, dishBar_4, dishBar_5, dishBar_6],
-        desc: "Our Wadha Dishwash Bar delivers superior grease-cutting performance in a convenient solid bar format — Grease Hatao, Chamak Lao! Ideal for kitchen use with high lather and a refreshing lemon fragrance.",
+        desc: "Our Wadha Dishwash Bar delivers superior grease-cutting performance in a convenient solid bar format — Grease Hatao, Chamak Lao! Available in a 4-piece set (₹30, 115 g each), a ₹10 bar (140 g) and a ₹5 bar (80 g), with high lather and a refreshing lemon fragrance.",
         specs: {
           Brand: "Wadha",
           Form: "Bar / Solid",
           "Usage/Application": "Dish Washing",
           Fragrance: "Lemon",
+          "4-Piece Set": "₹30 · 115 g each",
+          "Large Bar": "₹10 · 140 g",
+          "Small Bar": "₹5 · 80 g",
           Feature: "50% Maha Bachat",
           Technology: "Power Technology",
           "Country of Origin": "Made in India"
@@ -442,20 +448,20 @@ export const productsData = [
     ]
   },
 
-  // ── 7. LIQUID PHENYL ──────────────────────────────────────────────────────
+  // ── 7. FLOOR CLEANER ──────────────────────────────────────────────────────
   {
-    category: "Liquid Phenyl",
-    id: "liquid-phenyl",
+    category: "Floor Cleaner",
+    id: "floor-cleaner",
     icon: Waves,
-    description: "Disinfectant phenyls for hygienic, fresh-smelling spaces.",
+    description: "Disinfectant floor cleaners for hygienic, fresh-smelling spaces.",
     products: [
       {
         id: "wadha-white-phenyl-5l",
-        name: "White Phenyl – WADHA (5 Litre)",
+        name: "White Floor Cleaner – WADHA (5 Litre)",
         price: "Rs. 173.86 / Can",
         moq: "250 Cans",
         images: [phenyl_1, vidPhenyl, phenyl_2, phenyl_3, phenyl_4, phenyl_5, phenyl_6],
-        desc: "We are among the renowned organizations engaged in offering a premium quality range of 5 Litre White Phenyl. The product provides excellent cleaning performance, pleasant fragrance, and is suitable for homes, offices, hospitals, and commercial spaces.",
+        desc: "We are among the renowned organizations engaged in offering a premium quality range of 5 Litre White Floor Cleaner. The product provides excellent cleaning performance, pleasant fragrance, and is suitable for homes, offices, hospitals, and commercial spaces.",
         specs: {
           Brand: "Wadha",
           Form: "Liquid",
@@ -471,11 +477,11 @@ export const productsData = [
       },
       {
         id: "wadha-phenyl-1l",
-        name: "Phenyl – WADHA (1 Litre)",
+        name: "Floor Cleaner – WADHA (1 Litre)",
         price: "Rs. 30.50 / Litre",
         moq: "5,000 Litres",
         images: [phenyl_1, vidPhenyl, phenyl_2, phenyl_3, phenyl_4, phenyl_5, phenyl_6],
-        desc: "Leveraging extensive industry expertise, we offer a broad range of WADHA Phenyl, formulated for effective cleaning, hygiene, and long-lasting freshness across multiple surfaces.",
+        desc: "Leveraging extensive industry expertise, we offer a broad range of WADHA Floor Cleaner, formulated for effective cleaning, hygiene, and long-lasting freshness across multiple surfaces.",
         specs: {
           Brand: "Wadha",
           Form: "Liquid",

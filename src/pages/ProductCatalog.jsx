@@ -16,7 +16,6 @@ import imgBar from '../assets/wadha bar.jpeg';
 import imgMatic from '../assets/IMG_2192.jpeg';
 import img5Kg from '../assets/WhatsApp Image 2026-01-17 at 5.05.56 PM.jpeg';
 import imgDishwash from '../assets/dishwash.jpeg';
-import imgTikiya from '../assets/tikiya.jpeg';
 import imgCake from '../assets/cake.jpeg';
 import imgPhenyl1L from '../assets/phenyl/hf_20260221_125455_8617201f-82c2-402a-9c97-5506a6a14d97.jpeg';
 import imgPhenyl5L from '../assets/phenyl/hf_20260221_130847_98686629-861c-44fd-84a8-c08598b441d2.jpeg';
@@ -42,7 +41,6 @@ const getProductThumbnail = (product) => {
     if (name.includes('liquid') && isWadha) return imgMatic;
     if (name.includes('matic')) return imgMatic;
     if (name.includes('toto')) return imgTotoNew;
-    if (name.includes('tikiya')) return imgTikiya;
     if (name.includes('cake')) return imgCake;
     if (name.includes('phenyl') && name.includes('5 l')) return imgPhenyl5L;
     if (name.includes('phenyl')) return imgPhenyl1L;
