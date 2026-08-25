@@ -1,30 +1,28 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const guides = [
     {
+        id: "how-to-wash-clothes",
         title: "How to Wash Clothes Properly",
         desc: "Master the art of laundry with our step-by-step 101 guide for long-lasting freshness.",
         tag: "Essential",
         image: "https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&q=80&w=800"
     },
     {
+        id: "protect-colours",
         title: "How to Protect Colours",
         desc: "Keep your favorite brights looking new for longer with these specialized care tips.",
         tag: "Fabric Care",
         image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800"
     },
     {
+        id: "washing-machine-care",
         title: "Washing Machine Dos & Don’ts",
         desc: "Extend the life of your machine and your clothes with proper maintenance.",
         tag: "Appliance Care",
         image: "https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-        title: "Understanding Fabric Labels",
-        desc: "Decode those mysterious symbols on your clothing tags for professional results.",
-        tag: "Tips",
-        image: "https://images.unsplash.com/photo-1582733732697-b8303e21239c?auto=format&fit=crop&q=80&w=800"
     },
 ];
 
@@ -38,9 +36,13 @@ const LaundryEducation = () => {
                     <p className="text-gray-600 mt-6 max-w-2xl mx-auto">Become a laundry pro with our expert advice on fabric care, stain removal, and garment longevity.</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {guides.map((guide, idx) => (
-                        <div key={idx} className="bg-white rounded-3xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group flex flex-col h-full border border-gray-100 hover:-translate-y-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {guides.map((guide) => (
+                        <Link
+                            to={`/guides/${guide.id}`}
+                            key={guide.id}
+                            className="bg-white rounded-3xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group flex flex-col h-full border border-gray-100 hover:-translate-y-2"
+                        >
                             {/* Image Section */}
                             <div className="h-48 w-full relative overflow-hidden">
                                 <img
@@ -63,11 +65,11 @@ const LaundryEducation = () => {
                                 <p className="text-sm text-gray-500 mb-6 flex-1 leading-relaxed">
                                     {guide.desc}
                                 </p>
-                                <a href="#" className="inline-flex items-center text-xs font-black uppercase tracking-widest text-[var(--color-brand-primary)] group/link pt-4 border-t border-gray-50">
-                                    Read Guide <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                                </a>
+                                <span className="inline-flex items-center text-xs font-black uppercase tracking-widest text-[var(--color-brand-primary)] group/link pt-4 border-t border-gray-50">
+                                    Read Guide <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                </span>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

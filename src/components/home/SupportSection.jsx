@@ -62,11 +62,11 @@ const SupportSection = () => {
                             <div className="space-y-4">
                                 <div className="flex items-center">
                                     <Phone className="w-5 h-5 mr-3 text-blue-300" />
-                                    <span>9404007182, 7887881694</span>
+                                    <span>7887881694, 7887881695</span>
                                 </div>
                                 <div className="flex items-center">
                                     <Mail className="w-5 h-5 mr-3 text-blue-300" />
-                                    <span>swamiindustries.wadha@gmail.com</span>
+                                    <span>wadhadetergent@gmail.com</span>
                                 </div>
                             </div>
                         </div>

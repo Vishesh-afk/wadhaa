@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 const TOTAL_FRAMES = 121;
@@ -346,6 +347,46 @@ const HeroWadha = () => {
             <div className="w-[1px] h-8 bg-gradient-to-b from-white/50 to-transparent animate-pulse" />
           </div>
         )}
+
+        {/* Promo bubble — 1.5 L @ ₹99 offer */}
+        {ready && (
+          <Link
+            to="/catalog?cat=liquid-detergent"
+            aria-label="Toto Matic 1.5 litre at Rs. 99 only — shop now"
+            className="group absolute z-20 top-4 right-3 sm:top-6 sm:right-6"
+          >
+            {/* Pop-in wrapper — animation lives here, NOT on the Link, so the Link
+                always keeps a stable clickable box even while the pop is mid-flight */}
+            <div style={{ animation: 'wadhaBubblePop 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards' }}>
+              {/* Floating visual bubble (separate layer → no transform conflict with pop) */}
+              <div
+                className="relative flex flex-col items-center justify-center text-center rounded-full text-white shadow-2xl ring-2 ring-white/60 w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36"
+                style={{
+                  background: 'radial-gradient(circle at 32% 26%, #38bdf8 0%, #2563eb 55%, #1e3a8a 100%)',
+                  animation: 'wadhaBubbleFloat 3.2s ease-in-out infinite',
+                }}
+              >
+                <span className="absolute top-2.5 left-3 sm:top-4 sm:left-5 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-white/70 blur-[1px]" />
+                <span className="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-cyan-100 leading-none mb-0.5">Toto Matic</span>
+                <span className="text-lg sm:text-2xl md:text-3xl font-black leading-none">1.5 L</span>
+                <span className="text-[9px] sm:text-xs font-semibold text-cyan-50 leading-tight mt-0.5">@ ₹99 only</span>
+                <span className="mt-1 text-[7px] sm:text-[9px] font-bold uppercase tracking-wider bg-white text-blue-700 rounded-full px-1.5 py-0.5 opacity-0 group-hover:opacity-100 transition-opacity">Shop →</span>
+              </div>
+            </div>
+          </Link>
+        )}
+
+        <style>{`
+          @keyframes wadhaBubblePop {
+            0%   { transform: scale(0);    opacity: 0; }
+            60%  { transform: scale(1.15); opacity: 1; }
+            100% { transform: scale(1);    opacity: 1; }
+          }
+          @keyframes wadhaBubbleFloat {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-8px); }
+          }
+        `}</style>
       </div>
     </section>
   );

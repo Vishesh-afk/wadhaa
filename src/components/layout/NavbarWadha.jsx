@@ -4,13 +4,11 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { productsData } from '../../data/products';
 import logoImg from '../../assets/IMG_3696.PNG';
-import oipImg from '../../assets/OIP.jpg';
 
 const NavbarWadha = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeMenu, setActiveMenu] = useState(null);
-    const [pendingHash, setPendingHash] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -22,17 +20,24 @@ const NavbarWadha = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Handle scrolling to hash after navigation completes
+    // Scroll to a section after landing on the home page.
+    // The target is carried in router location state (set by handleNavClick or the
+    // footer links) rather than component state, because every page mounts its OWN
+    // Navbar instance — plain useState would be discarded the moment navigate('/')
+    // unmounts the page the click happened on. This effect runs on the freshly
+    // mounted home Navbar, so the target sections are guaranteed to exist in the DOM.
     useEffect(() => {
-        if (pendingHash && location.pathname === '/') {
+        const scrollTo = location.state?.scrollTo;
+        if (location.pathname === '/' && scrollTo) {
             const timer = setTimeout(() => {
-                const element = document.querySelector(pendingHash);
+                const element = document.querySelector(scrollTo);
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
-                setPendingHash(null);
+                // Clear the state so a remount / back-forward nav doesn't re-scroll
+                navigate('/', { replace: true, state: null });
             }, 300);
             return () => clearTimeout(timer);
         }
-    }, [location.pathname, pendingHash]);
+    }, [location, navigate]);
 
     const navLinks = [
         { name: 'Shop Products', route: '/catalog' },
@@ -53,8 +58,9 @@ const NavbarWadha = () => {
                 const element = document.querySelector(link.hash);
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
             } else {
-                setPendingHash(link.hash);
-                navigate('/');
+                // Carry the target through the navigation itself; the home Navbar's
+                // effect reads location.state.scrollTo once the sections are mounted.
+                navigate('/', { state: { scrollTo: link.hash } });
             }
         }
     };
@@ -173,23 +179,6 @@ const NavbarWadha = () => {
                         ))}
                     </div>
 
-                    {/* IndiaMART Trusted Badge */}
-                    <div className="hidden md:flex items-center">
-                        <a
-                            href="https://www.indiamart.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 hover:shadow-md transition-all bg-green-50 border border-green-200 rounded-full px-4 py-1.5"
-                        >
-                            <img
-                                src={oipImg}
-                                alt="IndiaMART Verified"
-                                className="h-12 w-auto object-contain rounded"
-                            />
-                            <span className="text-sm font-extrabold text-green-800 tracking-tight leading-tight">IndiaMART<br />Verified</span>
-                        </a>
-                    </div>
-
                     {/* Mobile Menu Button */}
                     <div className="md:hidden flex items-center">
                         <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-gray-700">
@@ -234,21 +223,6 @@ const NavbarWadha = () => {
                                 )}
                             </div>
                         ))}
-                        <div className="pt-6">
-                            <a
-                                href="https://www.indiamart.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-3 w-full bg-green-50 border border-green-200 rounded-xl px-4 py-3"
-                            >
-                                <img
-                                    src={oipImg}
-                                    alt="IndiaMART Verified"
-                                    className="h-12 w-auto object-contain rounded"
-                                />
-                                <span className="text-sm font-extrabold text-green-800">IndiaMART Verified</span>
-                            </a>
-                        </div>
                     </div>
                 </div>
             )}

@@ -193,7 +193,7 @@ const Contact = () => {
                                         <span className="text-2xl">🏢</span> Head Office
                                     </h3>
                                     <p className="text-slate-700 font-medium leading-relaxed">
-                                        Swami Industries Pvt. Ltd.<br />
+                                        Swami Industries<br />
                                         A-3, Gondia MIDC, Industrial Area,<br />
                                         Gondia - 441614, Maharashtra, India.
                                     </p>
@@ -208,14 +208,14 @@ const Contact = () => {
                                             <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-orange-500">📞</div>
                                             <div>
                                                 <p className="text-xs font-bold text-slate-500 uppercase">Phone</p>
-                                                <p className="font-bold text-slate-800">9404007182, 7887881694</p>
+                                                <p className="font-bold text-slate-800">7887881694, 7887881695</p>
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-4">
                                             <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-orange-500">✉️</div>
                                             <div>
                                                 <p className="text-xs font-bold text-slate-500 uppercase">Email</p>
-                                                <p className="font-bold text-slate-800">swamiindustries.wadha@gmail.com</p>
+                                                <p className="font-bold text-slate-800">wadhadetergent@gmail.com</p>
                                             </div>
                                         </div>
                                     </div>
@@ -276,20 +276,6 @@ const Contact = () => {
                                             </div>
                                         </a>
                                     </div>
-                                </div>
-
-                                {/* Google Maps Embed */}
-                                <div className="h-64 rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-                                    <iframe
-                                        title="Swami Industries Location — Gondia MIDC"
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.3!2d80.193!3d21.461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2b5c0a0a0a0a0a%3A0x0!2sGondia+MIDC+Industrial+Area%2C+Gondia%2C+Maharashtra+441614!5e0!3m2!1sen!2sin!4v1"
-                                        width="100%"
-                                        height="100%"
-                                        style={{ border: 0 }}
-                                        allowFullScreen=""
-                                        loading="lazy"
-                                        referrerPolicy="no-referrer-when-downgrade"
-                                    />
                                 </div>
                             </div>
 

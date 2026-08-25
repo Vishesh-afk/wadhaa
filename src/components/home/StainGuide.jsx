@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronUp, ChevronDown, ArrowRight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const stains = [
     { name: "Coffee & Tea", id: "coffee-tea" },
@@ -136,9 +136,9 @@ const StainGuide = () => {
                             <ArrowRight className="ml-2 w-5 h-5" />
                         </button>
 
-                        <a href="#" className="mt-4 text-sm text-gray-500 font-medium underline hover:text-[var(--color-brand-primary)]">
+                        <Link to="/contact" className="mt-4 text-sm text-gray-500 font-medium underline hover:text-[var(--color-brand-primary)]">
                             Can't find the right stain?
-                        </a>
+                        </Link>
 
                     </div>
 

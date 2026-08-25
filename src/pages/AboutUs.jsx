@@ -17,7 +17,7 @@ const AboutUs = () => {
         basicInfo: [
             { label: 'Nature of Business', value: 'Manufacturer', icon: "🏭" },
             { label: 'Additional Business', value: 'Technical R&D, Enterprise Supply', icon: "🔬" },
-            { label: 'Head of Operations', value: 'Aditya Swami', icon: "👨‍💼" },
+            { label: 'Head of Operations', value: 'Aditya Wadhwa, Karan Wadhwa & Mohit Wadhwa', icon: "👨‍💼" },
             { label: 'Regional HQ', value: 'A-3, Gondia MIDC, Industrial Area, Gondia- 441614, Maharashtra', icon: "📍" },
             { label: 'Enterprise Workforce', value: '25+ Professionals', icon: "👥" },
             { label: 'Legal Structure', value: 'Private Partnership', icon: "⚖️" },

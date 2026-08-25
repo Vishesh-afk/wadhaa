@@ -23,7 +23,6 @@ export const productsData = [
     icon: Droplets,
     items: [
       { name: "Toilet Cleaner", desc: "Kills 99.9% germs", href: "/products/toilet-cleaner" },
-      { name: "Liquid Phenyl", desc: "Hospital grade disinfectant", href: "/products/phenyl" },
       { name: "Floor Cleaner", desc: "Streak-free shine", href: "/products/floor-cleaner" },
       { name: "Glass Cleaner", desc: "Crystal clear surfaces", href: "/products/glass-cleaner" }
     ]
