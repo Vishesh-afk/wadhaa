@@ -21,20 +21,11 @@ import vidDishwashBar    from '../assets/WADHA_Dishwash_Bar_commercial_202607211
 import vidPhenyl         from '../assets/Phenyl_floor_cleaner_commercial_202607211447.mp4';
 import vidGlassCleaner   from '../assets/WADHA_Glass_Cleaner_commercial_202607211450.mp4';
 
-// ── WADHA Detergent Powder (toto pwd folder = WADHA powder) ───────────────────
-import wdhaPwd_1 from '../assets/wadha/toto pwd/p1.png';
-import wdhaPwd_2 from '../assets/wadha/toto pwd/p2.png';
-import wdhaPwd_3 from '../assets/wadha/toto pwd/p3.png';
-import wdhaPwd_4 from '../assets/wadha/toto pwd/p4.png';
-import wdhaPwd_5 from '../assets/wadha/toto pwd/hf_20260720_130204_8a20da08-a5c7-4c67-af06-014a575d5485.png';
-import wdhaPwd_6 from '../assets/wadha/toto pwd/hf_20260720_130222_7814f339-7d19-4e63-952a-6c5ddb398400.png';
+// ── WADHA Detergent Powder — single shared pack image for all sizes ───────────
+import wadhaPowderImg from '../assets/wadha powder new.jpg';
 
-// ── TOTO Detergent Powder (toto powder folder = TOTO powder) ──────────────────
-import totoPwd_1 from '../assets/wadha/toto powder/tp1.png';
-import totoPwd_2 from '../assets/wadha/toto powder/tp2.png';
-import totoPwd_3 from '../assets/wadha/toto powder/tp3.png';
-import totoPwd_4 from '../assets/wadha/toto powder/tp4.png';
-import totoPwd_5 from '../assets/wadha/toto powder/hf_20260720_130915_cb0ac8ac-b7f7-4ec8-a7b8-736b1d798bf3.png';
+// ── TOTO Detergent Powder — single shared pack image for all sizes ────────────
+import totoPowderImg from '../assets/toto new.jpg';
 
 // ── WADHA Detergent Cake / Bar (rin bar folder = WADHA Detergent Cake) ─────────
 import wdhaCake_1 from '../assets/wadha/rin bar/b1.png';
@@ -113,35 +104,16 @@ export const productsData = [
     description: "Superior stain removal and fabric care formulations.",
     products: [
       {
-        id: "wadha-detergent-powder-1kg",
-        name: "Detergent Powder 1 Kg – Wadha",
-        price: "Rs. 55.10 / Kg",
-        moq: "1,000 Kg",
-        images: [wdhaPwd_4, vidWadhaDetergent, wdhaPwd_1, wdhaPwd_2, wdhaPwd_3, wdhaPwd_5, wdhaPwd_6],
-        desc: "With our vast experience and in-depth industry knowledge, we are engaged in offering a quality-assured range of Wadha Detergent Powder. The product provides effective cleaning performance and is suitable for daily laundry use.",
-        specs: {
-          Brand: "Wadha",
-          "Quality Grade": "Medium",
-          Fragrance: "Floral",
-          Color: "White",
-          Weight: "1 Kg",
-          "Packaging Type": "Packet",
-          "Packaging Size": "500 gm",
-          "Usage/Application": "Laundry",
-          "Delivery Time": "3 Days",
-          "Packaging Details": "Pouch Packing"
-        }
-      },
-      {
-        id: "wadha-detergent-powder-5kg",
-        name: "Detergent Washing Powder – 5 Kg",
-        price: "Rs. 373.83 / Piece",
+        id: "wadha-detergent-powder-5kg-artical",
+        name: "Detergent Washing Powder – 5 Kg (Artical)",
+        price: "Rs. 428.35 / Piece",
         moq: "600 Pieces",
-        images: [wdhaPwd_1, vidWadhaDetergent, wdhaPwd_2, wdhaPwd_3, wdhaPwd_4, wdhaPwd_5, wdhaPwd_6],
+        images: [wadhaPowderImg, vidWadhaDetergent],
         desc: "WADHA detergent powders ensure superior cleaning performance. Manufactured under hygienic conditions using a precise blend of Borax, Washing Soda, Bleach, Builders, and Perfumes, ensuring long shelf life and consistent effectiveness.",
         specs: {
           Brand: "Wadha",
           Weight: "5 Kg",
+          Variant: "Artical",
           "Quality Grade": "Premium",
           "Packaging Size": "5 Kg",
           "Shelf Life": "2 Years",
@@ -155,19 +127,214 @@ export const productsData = [
         }
       },
       {
-        id: "toto-detergent-powder-1kg",
-        name: "TOTO Detergent Powder – 1 Kg",
-        price: "Rs. 39.17 / Pack",
+        id: "wadha-detergent-powder-5kg-plan",
+        name: "Detergent Washing Powder – 5 Kg (Plan)",
+        price: "Rs. 295.95 / Piece",
+        moq: "600 Pieces",
+        images: [wadhaPowderImg, vidWadhaDetergent],
+        desc: "WADHA 5 Kg detergent powder in the Plan grade — the same trusted formula offered at an economical rate for value-conscious buyers. Manufactured under hygienic conditions for consistent, dependable cleaning.",
+        specs: {
+          Brand: "Wadha",
+          Weight: "5 Kg",
+          Variant: "Plan",
+          "Quality Grade": "Standard",
+          "Packaging Size": "5 Kg",
+          "Shelf Life": "2 Years",
+          "Usage/Application": "Laundry",
+          Color: "White",
+          "Country of Origin": "Made in India",
+          "Key Features": "Color Safe, Enzymatic Formula, Germ Protection, Strong Stain Removal, Hard Water Formula, Brightening Action",
+          "Production Capacity": "25,00,000",
+          "Delivery Time": "5 Days",
+          "Packaging Details": "Pouch"
+        }
+      },
+      {
+        id: "wadha-detergent-powder-3kg-artical",
+        name: "Detergent Washing Powder – 3 Kg (Artical)",
+        price: "Rs. 257.01 / Piece",
+        moq: "600 Pieces",
+        images: [wadhaPowderImg, vidWadhaDetergent],
+        desc: "WADHA 3 Kg detergent powder delivers the same superior cleaning performance in a mid-size economy pack. Manufactured under hygienic conditions using a precise blend of Borax, Washing Soda, Bleach, Builders, and Perfumes for consistent, long-lasting results.",
+        specs: {
+          Brand: "Wadha",
+          Weight: "3 Kg",
+          Variant: "Artical",
+          "Quality Grade": "Premium",
+          "Packaging Size": "3 Kg",
+          "Shelf Life": "2 Years",
+          "Usage/Application": "Laundry",
+          Color: "White",
+          "Country of Origin": "Made in India",
+          "Key Features": "Color Safe, Enzymatic Formula, Germ Protection, Strong Stain Removal, Hard Water Formula, Brightening Action",
+          "Delivery Time": "5 Days",
+          "Packaging Details": "Pouch"
+        }
+      },
+      {
+        id: "wadha-detergent-powder-3kg-plan",
+        name: "Detergent Washing Powder – 3 Kg (Plan)",
+        price: "Rs. 177.57 / Piece",
+        moq: "600 Pieces",
+        images: [wadhaPowderImg, vidWadhaDetergent],
+        desc: "WADHA 3 Kg detergent powder in the Plan grade — the same dependable formula at an economical rate. Manufactured under hygienic conditions for consistent, long-lasting cleaning results.",
+        specs: {
+          Brand: "Wadha",
+          Weight: "3 Kg",
+          Variant: "Plan",
+          "Quality Grade": "Standard",
+          "Packaging Size": "3 Kg",
+          "Shelf Life": "2 Years",
+          "Usage/Application": "Laundry",
+          Color: "White",
+          "Country of Origin": "Made in India",
+          "Key Features": "Color Safe, Enzymatic Formula, Germ Protection, Strong Stain Removal, Hard Water Formula, Brightening Action",
+          "Delivery Time": "5 Days",
+          "Packaging Details": "Pouch"
+        }
+      },
+      {
+        id: "wadha-detergent-powder-1kg",
+        name: "Detergent Powder 1 Kg – Wadha",
+        price: "Rs. 60.75 / Kg",
+        moq: "1,000 Kg",
+        images: [wadhaPowderImg, vidWadhaDetergent],
+        desc: "With our vast experience and in-depth industry knowledge, we are engaged in offering a quality-assured range of Wadha Detergent Powder. The product provides effective cleaning performance and is suitable for daily laundry use.",
+        specs: {
+          Brand: "Wadha",
+          "Quality Grade": "Medium",
+          Fragrance: "Floral",
+          Color: "White",
+          Weight: "1 Kg",
+          "Packaging Type": "Packet",
+          "Packaging Size": "1 Kg",
+          "Usage/Application": "Laundry",
+          "Delivery Time": "3 Days",
+          "Packaging Details": "Pouch Packing"
+        }
+      },
+      {
+        id: "wadha-detergent-powder-500g",
+        name: "Detergent Powder 500 g – Wadha",
+        price: "Rs. 30.93 / Pack",
+        moq: "1,000 Packs",
+        images: [wadhaPowderImg, vidWadhaDetergent],
+        desc: "A convenient 500 g pack of Wadha Detergent Powder delivering effective cleaning performance for everyday laundry — ideal for small households and trial packs.",
+        specs: {
+          Brand: "Wadha",
+          "Quality Grade": "Medium",
+          Fragrance: "Floral",
+          Color: "White",
+          Weight: "500 g",
+          "Packaging Type": "Packet",
+          "Packaging Size": "500 g",
+          "Usage/Application": "Laundry",
+          "Delivery Time": "3 Days",
+          "Packaging Details": "Pouch Packing"
+        }
+      },
+      {
+        id: "wadha-detergent-powder-110g",
+        name: "Detergent Powder Rs.10 Thella (110 g) – Wadha",
+        price: "Rs. 7.01 / Piece",
+        moq: "5,000 Pieces",
+        images: [wadhaPowderImg, vidWadhaDetergent],
+        desc: "The Rs.10 Thella is a 110 g single-use sachet of Wadha Detergent Powder — a pocket-friendly pack that delivers reliable cleaning power for daily laundry needs.",
+        specs: {
+          Brand: "Wadha",
+          "Quality Grade": "Medium",
+          Fragrance: "Floral",
+          Color: "White",
+          Weight: "110 g",
+          "Packaging Type": "Sachet",
+          "Packaging Size": "110 g",
+          MRP: "Rs. 10",
+          "Usage/Application": "Laundry",
+          "Delivery Time": "3 Days",
+          "Packaging Details": "Pouch Packing"
+        }
+      },
+      {
+        id: "toto-detergent-powder-3-4kg",
+        name: "TOTO Detergent Powder – 3.4 Kg",
+        price: "Rs. 149.53 / Pack",
         moq: "100 Packs",
-        images: [totoPwd_1, vidTotoDetergent, totoPwd_2, totoPwd_3, totoPwd_4, totoPwd_5],
-        desc: "Best quality product in its segment. Superior performance compared to other detergent powders in the same price range. Comparable to detergent powders priced between Rs. 70–80. MRP: Rs. 60/-. Available in multiple pack sizes: 3.4 Kg, 1.7 Kg, 850 g, 420 g & 275 g.",
+        images: [totoPowderImg, vidTotoDetergent],
+        desc: "TOTO Detergent Powder in a value 3.4 Kg pack — best quality in its segment, with superior performance compared to other powders in the same price range. Available in multiple pack sizes: 3.4 Kg, 1.7 Kg, 850 g, 410 g & 275 g.",
         specs: {
           Brand: "Toto",
-          Size: "1 Kg",
+          Size: "3.4 Kg",
           Fragrance: "Lemon",
           "Shelf Life": "2 Years",
-          "Available Packs": "3.4 Kg, 1.7 Kg, 850 g, 420 g, 275 g",
-          MRP: "Rs. 60",
+          "Available Packs": "3.4 Kg, 1.7 Kg, 850 g, 410 g, 275 g",
+          Packaging: "Pouch",
+          "Delivery Time": "3-5 Days"
+        }
+      },
+      {
+        id: "toto-detergent-powder-1-7kg",
+        name: "TOTO Detergent Powder – 1.7 Kg",
+        price: "Rs. 74.77 / Pack",
+        moq: "100 Packs",
+        images: [totoPowderImg, vidTotoDetergent],
+        desc: "TOTO Detergent Powder in a 1.7 Kg pack — best quality in its segment, with superior performance compared to other powders in the same price range. Available in multiple pack sizes: 3.4 Kg, 1.7 Kg, 850 g, 410 g & 275 g.",
+        specs: {
+          Brand: "Toto",
+          Size: "1.7 Kg",
+          Fragrance: "Lemon",
+          "Shelf Life": "2 Years",
+          "Available Packs": "3.4 Kg, 1.7 Kg, 850 g, 410 g, 275 g",
+          Packaging: "Pouch",
+          "Delivery Time": "3-5 Days"
+        }
+      },
+      {
+        id: "toto-detergent-powder-850g",
+        name: "TOTO Detergent Powder – 850 g",
+        price: "Rs. 39.16 / Pack",
+        moq: "100 Packs",
+        images: [totoPowderImg, vidTotoDetergent],
+        desc: "TOTO Detergent Powder in an 850 g pack — best quality in its segment, with superior performance compared to other powders in the same price range. Available in multiple pack sizes: 3.4 Kg, 1.7 Kg, 850 g, 410 g & 275 g.",
+        specs: {
+          Brand: "Toto",
+          Size: "850 g",
+          Fragrance: "Lemon",
+          "Shelf Life": "2 Years",
+          "Available Packs": "3.4 Kg, 1.7 Kg, 850 g, 410 g, 275 g",
+          Packaging: "Pouch",
+          "Delivery Time": "3-5 Days"
+        }
+      },
+      {
+        id: "toto-detergent-powder-410g",
+        name: "TOTO Detergent Powder – 410 g",
+        price: "Rs. 20.06 / Pack",
+        moq: "100 Packs",
+        images: [totoPowderImg, vidTotoDetergent],
+        desc: "TOTO Detergent Powder in a 410 g pack — best quality in its segment, with superior performance compared to other powders in the same price range. Available in multiple pack sizes: 3.4 Kg, 1.7 Kg, 850 g, 410 g & 275 g.",
+        specs: {
+          Brand: "Toto",
+          Size: "410 g",
+          Fragrance: "Lemon",
+          "Shelf Life": "2 Years",
+          "Available Packs": "3.4 Kg, 1.7 Kg, 850 g, 410 g, 275 g",
+          Packaging: "Pouch",
+          "Delivery Time": "3-5 Days"
+        }
+      },
+      {
+        id: "toto-detergent-powder-275g",
+        name: "TOTO Detergent Powder – 275 g",
+        price: "Rs. 13.71 / Pack",
+        moq: "100 Packs",
+        images: [totoPowderImg, vidTotoDetergent],
+        desc: "TOTO Detergent Powder in a 275 g pack — best quality in its segment, with superior performance compared to other powders in the same price range. Available in multiple pack sizes: 3.4 Kg, 1.7 Kg, 850 g, 410 g & 275 g.",
+        specs: {
+          Brand: "Toto",
+          Size: "275 g",
+          Fragrance: "Lemon",
+          "Shelf Life": "2 Years",
+          "Available Packs": "3.4 Kg, 1.7 Kg, 850 g, 410 g, 275 g",
           Packaging: "Pouch",
           "Delivery Time": "3-5 Days"
         }
@@ -231,7 +398,7 @@ export const productsData = [
       {
         id: "wadha-cake-240g",
         name: "Detergent Cake 200 g – WADHA",
-        price: "Rs. 10.00 / Piece",
+        price: "Rs. 7.85 / Piece",
         moq: "25,000 Pieces",
         images: [wdhaCake_1, vidDetergentCake, wdhaCake_2, wdhaCake_3, wdhaCake_4, wdhaCake_5, wdhaCake_6],
         desc: "We are among the reputed organizations engaged in offering an optimum quality 200 g Detergent Cake with Rs. 10 MRP, suitable for both handwash and regular laundry needs.",
@@ -257,7 +424,7 @@ export const productsData = [
       {
         id: "wadha-cake-110g",
         name: "Detergent Cake 95 g – WADHA",
-        price: "Rs. 5/ Piece",
+        price: "Rs. 3.93 / Piece",
         moq: "50,000 Pieces",
         images: [wdhaCake_1, vidDetergentCake, wdhaCake_2, wdhaCake_3, wdhaCake_4, wdhaCake_5, wdhaCake_6],
         desc: "We offer a high-quality 95 g Detergent Cake with Rs. 5 MRP, specially designed for effective cleaning. It delivers excellent performance and durability at a pocket-friendly price.",
@@ -426,20 +593,57 @@ export const productsData = [
     description: "50% Maha Bachat — powerful bar for sparkling utensils.",
     products: [
       {
-        id: "wadha-dishwash-bar",
-        name: "Dishwash Bar – WADHA",
-        price: "Rs. 5 – Rs. 30",
-        moq: "10,000 Pieces",
+        id: "wadha-dishwash-bar-set",
+        name: "Dishwash Bar – WADHA (₹30 · 4-Piece Set)",
+        price: "Rs. 30 / Set",
+        moq: "10,000 Sets",
         images: [dishBar_1, vidDishwashBar, dishBar_2, dishBar_3, dishBar_4, dishBar_5, dishBar_6],
-        desc: "Our Wadha Dishwash Bar delivers superior grease-cutting performance in a convenient solid bar format — Grease Hatao, Chamak Lao! Available in a 4-piece set (₹30, 115 g each), a ₹10 bar (140 g) and a ₹5 bar (80 g), with high lather and a refreshing lemon fragrance.",
+        desc: "Our Wadha Dishwash Bar 4-piece value set (115 g each) delivers superior grease-cutting performance — Grease Hatao, Chamak Lao! High lather and a refreshing lemon fragrance in a convenient family pack.",
         specs: {
           Brand: "Wadha",
           Form: "Bar / Solid",
           "Usage/Application": "Dish Washing",
           Fragrance: "Lemon",
-          "4-Piece Set": "₹30 · 115 g each",
-          "Large Bar": "₹10 · 140 g",
-          "Small Bar": "₹5 · 80 g",
+          "Pack Contains": "4 Bars · 115 g each",
+          MRP: "Rs. 30",
+          Feature: "50% Maha Bachat",
+          Technology: "Power Technology",
+          "Country of Origin": "Made in India"
+        }
+      },
+      {
+        id: "wadha-dishwash-bar-10",
+        name: "Dishwash Bar – WADHA (₹10 · 100 g)",
+        price: "Rs. 5.89 / Piece",
+        moq: "10,000 Pieces",
+        images: [dishBar_3, vidDishwashBar, dishBar_1, dishBar_2, dishBar_4, dishBar_5, dishBar_6],
+        desc: "The ₹10 Wadha Dishwash Bar (100 g) cuts through tough grease with ease — Grease Hatao, Chamak Lao! A long-lasting solid bar with high lather and a refreshing lemon fragrance.",
+        specs: {
+          Brand: "Wadha",
+          Form: "Bar / Solid",
+          "Usage/Application": "Dish Washing",
+          Fragrance: "Lemon",
+          Weight: "100 g",
+          MRP: "Rs. 10",
+          Feature: "50% Maha Bachat",
+          Technology: "Power Technology",
+          "Country of Origin": "Made in India"
+        }
+      },
+      {
+        id: "wadha-dishwash-bar-5",
+        name: "Dishwash Bar – WADHA (₹5 · 80 g)",
+        price: "Rs. 5 / Piece",
+        moq: "10,000 Pieces",
+        images: [dishBar_5, vidDishwashBar, dishBar_1, dishBar_2, dishBar_3, dishBar_4, dishBar_6],
+        desc: "The pocket-friendly ₹5 Wadha Dishwash Bar (80 g) offers powerful grease-cutting action in a compact solid bar — high lather and a refreshing lemon fragrance for sparkling utensils.",
+        specs: {
+          Brand: "Wadha",
+          Form: "Bar / Solid",
+          "Usage/Application": "Dish Washing",
+          Fragrance: "Lemon",
+          Weight: "80 g",
+          MRP: "Rs. 5",
           Feature: "50% Maha Bachat",
           Technology: "Power Technology",
           "Country of Origin": "Made in India"
