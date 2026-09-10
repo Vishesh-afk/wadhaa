@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useNavigate, Link } from 'react-router-dom';
 
 // Product Images
-import imgPowder from '../../assets/powder (2).jpeg';
+import imgIMG_9624 from '../../assets/IMG_9624.PNG';
 import imgCake from '../../assets/cake.jpeg';
 
 
@@ -16,7 +16,7 @@ const products = [
         rating: 4.8,
         reviews: 1240,
         price: "Rs.60.75 Kg",
-        image: imgPowder,
+        image: imgIMG_9624,
         tag: "Bestseller"
     },
     {
@@ -92,11 +92,11 @@ const ProductHighlight = () => {
                             )}
 
                             {/* Image Area */}
-                            <div className="w-full h-72 bg-gray-100 relative overflow-hidden">
+                            <div className="w-full h-80 bg-slate-100 relative overflow-hidden">
                                 <motion.img
                                     src={product.image}
                                     alt={product.name}
-                                    className="absolute inset-0 w-full h-full object-cover transition-all duration-500"
+                                    className="absolute inset-0 w-full h-full object-cover object-center transition-all duration-500"
                                     whileHover={{ scale: 1.05 }}
                                 />
                                 {/* Flash effect on hover */}
