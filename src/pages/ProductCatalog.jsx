@@ -11,7 +11,7 @@ import FooterWadha from '../components/layout/FooterWadha';
 import SocialProofWadha from '../components/home/SocialProofWadha';
 
 // Product Images
-import imgPowder from '../assets/wadha powder new.jpg';
+import imgPowder from '../assets/wadha_powder_pack.png';
 import imgBar from '../assets/wadha bar.jpeg';
 import imgMatic from '../assets/IMG_2192.jpeg';
 import img5Kg from '../assets/WhatsApp Image 2026-01-17 at 5.05.56 PM.jpeg';
@@ -278,7 +278,7 @@ const ProductDetailModal = ({ product, onClose, onQuote }) => {
                     style={{ maxHeight: '90vh', height: 'auto', minHeight: '0' }}
                 >
                     {/* Top/Left — Image Carousel panel */}
-                    <div className="w-full md:w-[55%] flex-shrink-0 overflow-hidden rounded-t-3xl md:rounded-t-none md:rounded-l-3xl bg-gradient-to-br from-slate-50 to-blue-50/40 relative h-64 md:h-auto md:self-stretch">
+                    <div className="w-full md:w-[55%] flex-shrink-0 overflow-hidden rounded-t-3xl md:rounded-t-none md:rounded-l-3xl bg-gradient-to-br from-slate-50 to-blue-50/40 relative h-72 sm:h-80 md:h-auto md:self-stretch">
                         <div className="absolute inset-0"><ImageCarousel images={product.images || []} productName={product.name} /></div>
                     </div>
 

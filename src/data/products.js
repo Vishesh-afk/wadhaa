@@ -22,7 +22,7 @@ import vidPhenyl         from '../assets/Phenyl_floor_cleaner_commercial_2026072
 import vidGlassCleaner   from '../assets/WADHA_Glass_Cleaner_commercial_202607211450.mp4';
 
 // ── WADHA Detergent Powder — single shared pack image for all sizes ───────────
-import wadhaPowderImg from '../assets/wadha powder new.jpg';
+import wadhaPowderImg from '../assets/wadha_powder_pack.png';
 
 // ── TOTO Detergent Powder — single shared pack image for all sizes ────────────
 import totoPowderImg from '../assets/toto new.jpg';
