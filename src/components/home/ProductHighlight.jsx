@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useNavigate, Link } from 'react-router-dom';
 
 // Product Images
-import imgPowder from '../../assets/wadha powder.jpeg';
+import imgPowder from '../../assets/powder (2).jpeg';
 import imgCake from '../../assets/cake.jpeg';
 
 
@@ -15,7 +15,7 @@ const products = [
         benefit: "Deep cleaning for bright whites",
         rating: 4.8,
         reviews: 1240,
-        price: "Rs. 89 / Kg",
+        price: "Rs.60.75 Kg",
         image: imgPowder,
         tag: "Bestseller"
     },
